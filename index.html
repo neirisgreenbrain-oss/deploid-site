@@ -1,0 +1,402 @@
+<title>Деплоид</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Golos+Text:wght@400;500;600;800&family=JetBrains+Mono:wght@400;500&display=swap">
+<style>
+  :root{
+    --paper:#F2F5F1;
+    --surface:#FFFFFF;
+    --ink:#101F1A;
+    --ink-soft:#33463D;
+    --muted:#5C6B63;
+    --line:#D6DDD6;
+    --line-strong:#B9C5BC;
+    --accent:#1C6B4C;
+    --accent-soft:#E4EFE7;
+    --wait:#A6591A;
+    --wait-soft:#F6E8D9;
+    --sans:"Golos Text","Segoe UI",Roboto,Helvetica,Arial,sans-serif;
+    --mono:"JetBrains Mono","Cascadia Mono",Consolas,"Courier New",monospace;
+    --measure:34rem;
+  }
+  @media (prefers-color-scheme: dark){
+    :root:not([data-theme="light"]){
+      --paper:#0C1410;
+      --surface:#141E19;
+      --ink:#E7EEE9;
+      --ink-soft:#C2CFC7;
+      --muted:#93A49A;
+      --line:#22302A;
+      --line-strong:#334339;
+      --accent:#63C293;
+      --accent-soft:#16271F;
+      --wait:#DFA468;
+      --wait-soft:#2A1E12;
+    }
+  }
+  :root[data-theme="dark"]{
+    --paper:#0C1410;
+    --surface:#141E19;
+    --ink:#E7EEE9;
+    --ink-soft:#C2CFC7;
+    --muted:#93A49A;
+    --line:#22302A;
+    --line-strong:#334339;
+    --accent:#63C293;
+    --accent-soft:#16271F;
+    --wait:#DFA468;
+    --wait-soft:#2A1E12;
+  }
+
+  *{box-sizing:border-box}
+  body{
+    margin:0;
+    background:var(--paper);
+    color:var(--ink);
+    font-family:var(--sans);
+    font-size:17px;
+    line-height:1.6;
+    -webkit-font-smoothing:antialiased;
+  }
+  .wrap{max-width:62rem;margin:0 auto;padding-inline:20px}
+  h1,h2,h3{text-wrap:balance;margin:0;line-height:1.15;letter-spacing:-0.015em}
+  h1{font-size:clamp(2rem,5.4vw,3.35rem);font-weight:800}
+  h2{font-size:clamp(1.45rem,3vw,2rem);font-weight:800}
+  h3{font-size:1.06rem;font-weight:600;letter-spacing:0}
+  p{margin:0}
+  a{color:var(--accent);text-decoration-thickness:1px;text-underline-offset:3px}
+  a:focus-visible,button:focus-visible{outline:2px solid var(--accent);outline-offset:3px;border-radius:2px}
+
+  .label{
+    font-family:var(--mono);font-size:.7rem;font-weight:500;
+    text-transform:uppercase;letter-spacing:.14em;color:var(--muted);
+  }
+  .lede{font-size:clamp(1.05rem,2.2vw,1.3rem);color:var(--ink-soft);max-width:var(--measure)}
+  .prose{max-width:var(--measure);display:flex;flex-direction:column;gap:1rem;color:var(--ink-soft)}
+
+  header.top{border-bottom:1px solid var(--line)}
+  .top-in{
+    display:flex;flex-wrap:wrap;gap:.75rem 2rem;align-items:baseline;
+    justify-content:space-between;padding-block:1.25rem;
+  }
+  .who{display:flex;flex-direction:column;gap:.15rem}
+  .who b{font-size:1.05rem;font-weight:600;letter-spacing:-0.01em}
+  .top-contacts{display:flex;flex-wrap:wrap;gap:.35rem 1.25rem;font-size:.9rem}
+
+  section{padding-block:clamp(2.75rem,6vw,4.5rem)}
+  section + section{border-top:1px solid var(--line)}
+  .head{display:flex;flex-direction:column;gap:.9rem;margin-bottom:2rem}
+
+  /* главный экран */
+  .hero{padding-block:clamp(3rem,8vw,5.5rem)}
+  .hero h1{max-width:32rem}
+  .hero .lede{margin-top:1.4rem}
+  .hero-note{
+    margin-top:1.75rem;padding-left:1rem;border-left:2px solid var(--accent);
+    max-width:var(--measure);color:var(--ink-soft);font-size:.97rem;
+  }
+
+  /* как это выглядит */
+  .switch{display:flex;gap:.4rem;margin-bottom:1.75rem;flex-wrap:wrap}
+  .switch button{
+    font-family:var(--mono);font-size:.78rem;letter-spacing:.04em;
+    padding:.5rem .9rem;border:1px solid var(--line-strong);background:transparent;
+    color:var(--muted);cursor:pointer;border-radius:999px;
+    transition:background .15s,color .15s,border-color .15s;
+  }
+  .switch button[aria-pressed="true"]{
+    background:var(--ink);border-color:var(--ink);color:var(--paper);
+  }
+  .route{display:flex;flex-direction:column;gap:0;max-width:44rem}
+  .step{display:flex;gap:1rem;align-items:flex-start}
+  .step-n{
+    font-family:var(--mono);font-size:.78rem;color:var(--muted);
+    flex:0 0 1.75rem;padding-top:.35rem;font-variant-numeric:tabular-nums;
+  }
+  .step-body{
+    flex:1;background:var(--surface);border:1px solid var(--line);
+    padding:.85rem 1.05rem;border-radius:3px;
+  }
+  .step-body p{color:var(--ink-soft);font-size:.94rem;margin-top:.2rem}
+  .gap{display:flex;gap:1rem;align-items:center;padding-block:.5rem}
+  .gap-line{flex:0 0 1.75rem;display:flex;justify-content:center}
+  .gap-line span{width:1px;height:1.9rem;border-left:1px dashed var(--line-strong)}
+  .waits{
+    font-family:var(--mono);font-size:.74rem;letter-spacing:.06em;
+    color:var(--wait);background:var(--wait-soft);
+    padding:.2rem .55rem;border-radius:999px;
+  }
+  .flows{
+    font-family:var(--mono);font-size:.74rem;letter-spacing:.06em;
+    color:var(--accent);background:var(--accent-soft);
+    padding:.2rem .55rem;border-radius:999px;
+  }
+  .route-foot{margin-top:1.5rem;max-width:var(--measure);color:var(--muted);font-size:.9rem}
+
+  /* услуги */
+  .work{display:grid;grid-template-columns:repeat(auto-fit,minmax(15.5rem,1fr));gap:1px;background:var(--line)}
+  .work > div{background:var(--paper);padding:1.5rem 1.35rem;display:flex;flex-direction:column;gap:.55rem}
+  .work p{color:var(--ink-soft);font-size:.95rem}
+  .work .for{font-size:.85rem;color:var(--muted);margin-top:auto;padding-top:.6rem}
+  .tools{
+    margin-top:2rem;background:var(--surface);border:1px solid var(--line);
+    border-left:2px solid var(--accent);padding:1.35rem 1.5rem;
+    display:flex;flex-direction:column;gap:.7rem;max-width:46rem;
+  }
+  .tools p{color:var(--ink-soft);font-size:.97rem}
+
+  /* цена и порядок */
+  .two{display:grid;grid-template-columns:repeat(auto-fit,minmax(18rem,1fr));gap:2.5rem}
+  ol.plain{margin:0;padding:0;list-style:none;counter-reset:s;display:flex;flex-direction:column;gap:1.1rem}
+  ol.plain li{display:flex;gap:.9rem;align-items:flex-start}
+  ol.plain li::before{
+    counter-increment:s;content:counter(s);
+    font-family:var(--mono);font-size:.78rem;color:var(--accent);
+    border:1px solid var(--line-strong);border-radius:999px;
+    flex:0 0 1.6rem;height:1.6rem;display:flex;align-items:center;justify-content:center;
+    margin-top:.15rem;
+  }
+  ol.plain b{font-weight:600}
+  ol.plain p{color:var(--ink-soft);font-size:.94rem}
+
+  /* первый шаг */
+  .cta{background:var(--surface);border:1px solid var(--line)}
+  .cta-in{padding:clamp(1.75rem,4vw,2.75rem);display:flex;flex-direction:column;gap:1.1rem}
+  .cta h2{max-width:28rem}
+  .cta ul{margin:0;padding-left:1.15rem;color:var(--ink-soft);display:flex;flex-direction:column;gap:.45rem;max-width:var(--measure);font-size:.96rem}
+  .cta-links{display:flex;flex-wrap:wrap;gap:.6rem;margin-top:.4rem}
+  .btn{
+    display:inline-block;padding:.7rem 1.3rem;border-radius:3px;
+    background:var(--accent);color:var(--paper);text-decoration:none;
+    font-weight:600;font-size:.95rem;
+  }
+  .btn.ghost{background:transparent;color:var(--ink);border:1px solid var(--line-strong)}
+
+  /* реквизиты */
+  .req{display:grid;grid-template-columns:repeat(auto-fit,minmax(13rem,1fr));gap:1.5rem 2rem;max-width:52rem}
+  .req div{display:flex;flex-direction:column;gap:.3rem}
+  .req .k{font-family:var(--mono);font-size:.7rem;text-transform:uppercase;letter-spacing:.12em;color:var(--muted)}
+  .req .v{font-size:.98rem;color:var(--ink)}
+
+  footer{border-top:1px solid var(--line);padding-block:2.25rem;color:var(--muted);font-size:.87rem}
+  footer .f-in{display:flex;flex-wrap:wrap;gap:.8rem 2rem;justify-content:space-between}
+  footer p{max-width:30rem}
+
+  @media (prefers-reduced-motion: reduce){*{transition:none!important;animation:none!important}}
+</style>
+
+<header class="top">
+  <div class="wrap top-in">
+    <div class="who">
+      <b>Деплоид</b>
+      <span class="label">Вячеслав Ваньков · задачи бизнеса, доведённые до работы</span>
+    </div>
+    <div class="top-contacts">
+      <a href="mailto:vankov@deploid.ru">vankov@deploid.ru</a>
+    </div>
+  </div>
+</header>
+
+<main>
+  <section class="hero">
+    <div class="wrap">
+      <span class="label">что я делаю</span>
+      <h1>Работу, которую делают руками каждый день, делает программа</h1>
+      <p class="lede">Беру процесс, который у вас повторяется, разбираю его по шагам и снимаю с людей то, что не требует их решения. Отрасль не важна: важно, что работа повторяется и её до сих пор делают вручную.</p>
+      <p class="hero-note">Решаю задачи бизнеса с помощью ИИ и обычного кода, смотря что в вашем случае дешевле и надёжнее. Инструмент подбираю под задачу, а не задачу под инструмент: иногда это скрипт, иногда связка сервисов, иногда таблица с правилами, иногда бот. Платить за модное слово не нужно.</p>
+    </div>
+  </section>
+
+  <section>
+    <div class="wrap">
+      <div class="head">
+        <span class="label">как это выглядит</span>
+        <h2>Ручная работа устроена одинаково</h2>
+        <p class="lede">Неважно, что именно идёт по кругу: заявка, накладная, отчёт, выгрузка из сервиса. Форма всегда одна, и время теряется в одних и тех же местах.</p>
+      </div>
+
+      <div class="switch" role="group" aria-label="Выбор варианта">
+        <button type="button" id="b-now" aria-pressed="true" aria-controls="r-now">как обычно сейчас</button>
+        <button type="button" id="b-bot" aria-pressed="false" aria-controls="r-bot">как после переделки</button>
+      </div>
+
+      <div class="route" id="r-now">
+        <div class="step">
+          <span class="step-n">01</span>
+          <div class="step-body"><h3>Приходит что-то, что нужно обработать</h3>
+            <p>Заявка, письмо с файлом, накладная, выгрузка, сообщение в мессенджере, строка в таблице.</p></div>
+        </div>
+        <div class="gap"><span class="gap-line"><span></span></span><span class="waits">ждёт, пока человек заметит</span></div>
+        <div class="step">
+          <span class="step-n">02</span>
+          <div class="step-body"><h3>Человек это разбирает</h3>
+            <p>Проверяет, дополняет, ищет нужное в другом месте, решает, куда положить. Каждый раз по одним и тем же правилам, которые держит в голове.</p></div>
+        </div>
+        <div class="gap"><span class="gap-line"><span></span></span><span class="waits">ждёт, пока освободятся руки</span></div>
+        <div class="step">
+          <span class="step-n">03</span>
+          <div class="step-body"><h3>Переносит руками туда, где это нужно</h3>
+            <p>В таблицу, в программу, в документ по шаблону, в письмо. Здесь же появляются опечатки, и находят их потом.</p></div>
+        </div>
+        <div class="gap"><span class="gap-line"><span></span></span><span class="waits">ошибку видно не сразу</span></div>
+        <div class="step">
+          <span class="step-n">04</span>
+          <div class="step-body"><h3>Готово, и завтра всё то же самое</h3>
+            <p>Человек, который умеет больше, занят тем, что можно описать словами «сначала, потом, если».</p></div>
+        </div>
+      </div>
+
+      <div class="route" id="r-bot" hidden>
+        <div class="step">
+          <span class="step-n">01</span>
+          <div class="step-body"><h3>Приходит туда же, куда приходило</h3>
+            <p>Менять привычные каналы и программы не нужно, разбирать начинают с того места, где всё уже есть.</p></div>
+        </div>
+        <div class="gap"><span class="gap-line"><span></span></span><span class="flows">забирается само</span></div>
+        <div class="step">
+          <span class="step-n">02</span>
+          <div class="step-body"><h3>Правила из головы записаны один раз</h3>
+            <p>Мы вместе проговариваем, как вы это делаете, и дальше по этим правилам проверяет и раскладывает программа.</p></div>
+        </div>
+        <div class="gap"><span class="gap-line"><span></span></span><span class="flows">без переноса руками</span></div>
+        <div class="step">
+          <span class="step-n">03</span>
+          <div class="step-body"><h3>Результат сразу в нужном виде и в нужном месте</h3>
+            <p>Документ собран, строка внесена, данные сошлись. Спорные случаи откладываются человеку отдельно и не теряются.</p></div>
+        </div>
+        <div class="gap"><span class="gap-line"><span></span></span><span class="flows">человек видит только спорное</span></div>
+        <div class="step">
+          <span class="step-n">04</span>
+          <div class="step-body"><h3>Люди заняты тем, что требует решения</h3>
+            <p>А поток идёт сам, в том числе в отпуск, в выходной и в час, когда всё навалилось.</p></div>
+        </div>
+      </div>
+
+      <p class="route-foot">Людей я не заменяю и заменять не предлагаю: снимается повторяющаяся часть, решения остаются за вашими сотрудниками.</p>
+    </div>
+  </section>
+
+  <section>
+    <div class="wrap">
+      <div class="head">
+        <span class="label">за что берусь</span>
+        <h2>Что обычно автоматизируем</h2>
+        <p class="lede">Это примеры, а не список. Если ваша рутина сюда не попала, это не значит, что за неё нельзя взяться.</p>
+      </div>
+      <div class="work">
+        <div>
+          <h3>Повторяющиеся действия</h3>
+          <p>То, что делается каждый день одинаково: перенести, заполнить, свести, проверить, отправить. Правила записываются один раз, дальше это идёт само.</p>
+          <p class="for">Когда работу можно описать словами «сначала, потом, если»</p>
+        </div>
+        <div>
+          <h3>Документы, отчёты, выгрузки</h3>
+          <p>Счета, договоры, акты, сметы, прайсы, сводки собираются из данных, которые у вас уже есть, по вашей форме. Вместо того чтобы править прошлый файл.</p>
+          <p class="for">Когда новый документ делают из старого копированием</p>
+        </div>
+        <div>
+          <h3>Программы, которые не разговаривают</h3>
+          <p>Сайт, таблицы, CRM, бухгалтерия, склад, мессенджеры, почта начинают обмениваться данными сами, без переноса из окна в окно.</p>
+          <p class="for">Когда одно и то же вбивают в двух местах</p>
+        </div>
+        <div>
+          <h3>Входящие обращения</h3>
+          <p>Заявки, письма и сообщения из всех каналов собираются в одно место с нужными полями, ничего не теряется и не остаётся без ответа.</p>
+          <p class="for">Когда обращения идут сразу в нескольких каналах</p>
+        </div>
+      </div>
+
+      <div class="tools">
+        <span class="label">про инструменты</span>
+        <p>Что использовать, решает задача. Часть работы закрывается простым скриптом или настройкой того, что у вас уже куплено, и это самый дешёвый для вас вариант. Искусственный интеллект беру там, где нужно понять живой текст или разобрать неструктурированный документ, то есть где без него действительно никак. Если задача решается без него, я так и скажу: это дешевле, быстрее и потом надёжнее работает.</p>
+      </div>
+    </div>
+  </section>
+
+  <section>
+    <div class="wrap two">
+      <div>
+        <div class="head">
+          <span class="label">цена</span>
+          <h2>Откуда берётся сумма</h2>
+        </div>
+        <div class="prose">
+          <p>Сначала считаем, сколько рабочего времени уходит на ту рутину, которую снимаем, и во что это время обходится при вашей ставке. Цена работы привязана к этой экономии, ориентир окупаемости: от трёх до шести месяцев.</p>
+          <p>Поэтому сумму я называю после разбора, а не в первом письме. Если после подсчёта выйдет, что экономить особо нечего, я так и скажу: браться за работу, которая не окупится, невыгодно нам обоим.</p>
+        </div>
+      </div>
+      <div>
+        <div class="head">
+          <span class="label">порядок работы</span>
+          <h2>Как это идёт</h2>
+        </div>
+        <ol class="plain">
+          <li><div><b>Разбор, бесплатно</b><p>Смотрю, как у вас устроен процесс, и показываю, в каких местах он ждёт человека. Это письмо или разговор на полчаса.</p></div></li>
+          <li><div><b>Один процесс целиком, одна или две недели</b><p>Берём самый надоевший участок, остальное не трогаем. Видно на вашей настоящей работе, а не на демонстрации.</p></div></li>
+          <li><div><b>Дальше по списку и передача</b><p>Подключаем остальное по очереди. Отдаю с доступами и инструкцией, чтобы вы не были привязаны ко мне.</p></div></li>
+        </ol>
+      </div>
+    </div>
+  </section>
+
+  <section>
+    <div class="wrap">
+      <div class="cta">
+        <div class="cta-in">
+          <span class="label">первый шаг</span>
+          <h2>Бесплатный разбор одного процесса</h2>
+          <p class="lede">Напишите, и я разберу ваш процесс по шагам. От вас нужно только рассказать, как работа идёт сейчас и кто её делает.</p>
+          <ul>
+            <li>покажу, в каких местах работа ждёт человека, и что оттуда можно снять</li>
+            <li>скажу прямо, если автоматизировать нечего или пока рано</li>
+            <li>разбор остаётся у вас, даже если мы не станем работать</li>
+          </ul>
+          <div class="cta-links">
+            <a class="btn" href="mailto:vankov@deploid.ru?subject=%D0%A0%D0%B0%D0%B7%D0%B1%D0%BE%D1%80%20%D0%BF%D1%80%D0%BE%D1%86%D0%B5%D1%81%D1%81%D0%B0">Написать на vankov@deploid.ru</a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section>
+    <div class="wrap">
+      <div class="head">
+        <span class="label">кто исполнитель</span>
+        <h2>Реквизиты</h2>
+        <p class="lede">Работаю с договором и закрывающими документами. Те же реквизиты стоят в подписи моих писем, а статус плательщика НПД можно проверить по ИНН в сервисе ФНС «Проверить статус налогоплательщика».</p>
+      </div>
+      <div class="req">
+        <div><span class="k">исполнитель</span><span class="v">Вячеслав Ваньков, самозанятый</span></div>
+        <div><span class="k">ИНН</span><span class="v">540700478835</span></div>
+        <div><span class="k">почта</span><span class="v">vankov@deploid.ru</span></div>
+        <div><span class="k">связь</span><span class="v">по рабочим дням</span></div>
+      </div>
+    </div>
+  </section>
+</main>
+
+<footer>
+  <div class="wrap f-in">
+    <p>Вячеслав Ваньков, самозанятый, ИНН 540700478835. Письма по работе: vankov@deploid.ru. Вопросы по работе почты: postmaster@deploid.ru, жалобы: abuse@deploid.ru</p>
+    <p><a href="privacy.html">Политика обработки персональных данных</a></p>
+  </div>
+</footer>
+
+<script>
+  (function(){
+    var map = [["b-now","r-now"],["b-bot","r-bot"]];
+    function show(active){
+      map.forEach(function(pair){
+        var btn = document.getElementById(pair[0]);
+        var panel = document.getElementById(pair[1]);
+        var on = pair[0] === active;
+        btn.setAttribute("aria-pressed", on ? "true" : "false");
+        panel.hidden = !on;
+      });
+    }
+    map.forEach(function(pair){
+      document.getElementById(pair[0]).addEventListener("click", function(){ show(pair[0]); });
+    });
+  })();
+</script>
