@@ -1,8 +1,28 @@
 <title>Политика обработки персональных данных</title>
-<link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Golos+Text:wght@400;500;600;800&family=JetBrains+Mono:wght@400;500&display=swap">
 <style>
+  /* Шрифты лежат рядом с сайтом: страница не обращается ни к одному чужому
+     серверу. Golos Text и JetBrains Mono — SIL Open Font License 1.1. */
+  @font-face{
+    font-family:'Golos Text';font-style:normal;font-weight:400 800;font-display:swap;
+    src:url(fonts/golos-text-cyrillic.woff2) format('woff2');
+    unicode-range:U+0301,U+0400-045F,U+0490-0491,U+04B0-04B1,U+2116;
+  }
+  @font-face{
+    font-family:'Golos Text';font-style:normal;font-weight:400 800;font-display:swap;
+    src:url(fonts/golos-text-latin.woff2) format('woff2');
+    unicode-range:U+0000-00FF,U+0131,U+0152-0153,U+02BB-02BC,U+02C6,U+02DA,U+02DC,U+0304,U+0308,U+0329,U+2000-206F,U+20AC,U+2122,U+2191,U+2193,U+2212,U+2215,U+FEFF,U+FFFD;
+  }
+  @font-face{
+    font-family:'JetBrains Mono';font-style:normal;font-weight:400 500;font-display:swap;
+    src:url(fonts/jetbrains-mono-cyrillic.woff2) format('woff2');
+    unicode-range:U+0301,U+0400-045F,U+0490-0491,U+04B0-04B1,U+2116;
+  }
+  @font-face{
+    font-family:'JetBrains Mono';font-style:normal;font-weight:400 500;font-display:swap;
+    src:url(fonts/jetbrains-mono-latin.woff2) format('woff2');
+    unicode-range:U+0000-00FF,U+0131,U+0152-0153,U+02BB-02BC,U+02C6,U+02DA,U+02DC,U+0304,U+0308,U+0329,U+2000-206F,U+20AC,U+2122,U+2191,U+2193,U+2212,U+2215,U+FEFF,U+FFFD;
+  }
+
   :root{
     --paper:#F2F5F1;--surface:#FFFFFF;--ink:#101F1A;--ink-soft:#33463D;--muted:#5C6B63;
     --line:#D6DDD6;--line-strong:#B9C5BC;--accent:#1C6B4C;--wait:#A6591A;--wait-soft:#F6E8D9;
@@ -125,7 +145,7 @@
 
     <li>
       <h2>Сайт не следит за вами</h2>
-      <p>На сайте нет счётчиков аналитики, рекламных пикселей и cookie. Заходя сюда, вы не оставляете мне никаких данных о себе.</p>
+      <p>На сайте нет счётчиков аналитики, рекламных пикселей и cookie. Больше того, страница не обращается ни к одному стороннему серверу: шрифты и оформление лежат на самом сайте, поэтому о вашем визите не узнаёт никто, кроме хостинга, который отдаёт вам эту страницу.</p>
     </li>
 
     <li>
