@@ -74,14 +74,14 @@
         "itemListElement": [
           { "@type": "ListItem", "position": 1, "item": {
             "@type": "SoftwareApplication",
-            "name": "Конвейер автогенерации технических документов",
-            "url": "https://deploid.ru/portfolio#doc-pipeline",
-            "applicationCategory": "BusinessApplication",
+            "name": "Платформа управления ИИ-агентом с телефона",
+            "url": "https://deploid.ru/portfolio#platform",
+            "applicationCategory": "DeveloperApplication",
             "creativeWorkStatus": "в продакшене",
             "temporalCoverage": "2025/2026",
             "creator": { "@id": "https://deploid.ru/#vankov" },
-            "description": "Многофазный агентный конвейер производства документов по формальным требованиям: разбор требований, выполнение, сборка, приёмка. На стыках фаз — программные гейты, а не самопроверка модели. Ноль брака, ушедшего заказчику; 3758 автотестов; экономика прогона замерена по логам (172 хода, 51,8 минуты, $32,48, около 78% стоимости — перечитывание контекста).",
-            "keywords": "Python, Claude Agent SDK, многоагентная оркестрация, хуки, docx, pdf, pytest, git"
+            "description": "Веб-платформа поверх долгоживущей сессии агента: проекты, git-диффы, терминал, полнотекстовый поиск по истории. Сервер слушает только loopback, наружу — обратный туннель через VPS с TLS; шифрованные конфиги, двухфакторная аутентификация. 95 автотестов; защитное код-ревью роем субагентов закрыло около 40 находок.",
+            "keywords": "Node.js, Express, WebSocket, Agent SDK, SQLite FTS5, ConPTY, AES-256-GCM, nginx, TLS"
           }},
           { "@type": "ListItem", "position": 2, "item": {
             "@type": "SoftwareApplication",
@@ -96,14 +96,14 @@
           }},
           { "@type": "ListItem", "position": 3, "item": {
             "@type": "SoftwareApplication",
-            "name": "Платформа управления ИИ-агентом с телефона",
-            "url": "https://deploid.ru/portfolio#platform",
-            "applicationCategory": "DeveloperApplication",
+            "name": "Конвейер автогенерации технических документов",
+            "url": "https://deploid.ru/portfolio#doc-pipeline",
+            "applicationCategory": "BusinessApplication",
             "creativeWorkStatus": "в продакшене",
             "temporalCoverage": "2025/2026",
             "creator": { "@id": "https://deploid.ru/#vankov" },
-            "description": "Веб-платформа поверх долгоживущей сессии агента: проекты, git-диффы, терминал, полнотекстовый поиск по истории. Сервер слушает только loopback, наружу — обратный туннель через VPS с TLS; шифрованные конфиги, двухфакторная аутентификация. 95 автотестов; защитное код-ревью роем субагентов закрыло около 40 находок.",
-            "keywords": "Node.js, Express, WebSocket, Agent SDK, SQLite FTS5, ConPTY, AES-256-GCM, nginx, TLS"
+            "description": "Многофазный агентный конвейер производства документов по формальным требованиям: разбор требований, выполнение, сборка, приёмка. На стыках фаз — программные гейты, а не самопроверка модели. Ноль брака, ушедшего заказчику; 3758 автотестов; экономика прогона замерена по логам (172 хода, 51,8 минуты, $32,48, около 78% стоимости — перечитывание контекста).",
+            "keywords": "Python, Claude Agent SDK, многоагентная оркестрация, хуки, docx, pdf, pytest, git"
           }},
           { "@type": "ListItem", "position": 4, "item": {
             "@type": "SoftwareApplication",
@@ -233,115 +233,6 @@
     <section class="cases" aria-labelledby="cases-title"><div class="wrap">
       <h2 class="sr-only" id="cases-title">Кейсы: шесть систем</h2>
 
-      <article class="case" id="doc-pipeline">
-        <div class="case-head"><h3>Конвейер автогенерации технических документов</h3><span class="tag live">в проде</span><span class="tag">2025—2026</span></div>
-        <p class="case-task">Производство объёмных технических документов по формальным требованиям: оформление по стандарту, расчёты, код, графики, выгрузка в docx/pdf/zip. Раньше это был день ручной работы на документ. Задача — убрать человека из цикла целиком и при этом держать шанс брака около нуля, потому что готовый документ уходит платящему заказчику.</p>
-        <div class="case-body">
-          <div>
-            <p class="label">Что сделал</p>
-            <ul class="did">
-              <li><b>Многофазный конвейер:</b> разбор требований → выполнение → сборка → приёмка. У каждой фазы свой контекст и письменная передача следующей — один агент не тащит на себе весь объём.</li>
-              <li><b>Детерминированные гейты вместо надежды на модель.</b> На стыках фаз не «проверь себя, пожалуйста», а программные проверки: структура документа сверяется с первоисточником требований, скан на утечку секретов, отказ отдать результат при несовпадении.</li>
-              <li><b>Запуск без человека за клавиатурой.</b> Любой вопрос модели посреди работы — потерянный прогон, поэтому вся неоднозначность снимается на входе, а не диалогом.</li>
-              <li><b>Экономика замерена по логам, а не на глаз.</b> Разбор реального прогона: 172 хода, 51,8 минуты, $32,48 — и вывод, что около 78% денег уходит на перечитывание контекста, а не на генерацию. Отсюда маршрутизация моделей по сложности задачи и сброс контекста субагентами.</li>
-              <li><b>3758 автотестов</b> на архитектуре; релиз идёт через скрипт с гейтом на утечки.</li>
-            </ul>
-          </div>
-          <div class="case-aside">
-            <div class="chips"><span class="chip">Python</span><span class="chip">Claude Agent SDK</span><span class="chip">хуки PreToolUse</span><span class="chip">многоагентная оркестрация</span><span class="chip">docx / pdf</span><span class="chip">pytest</span><span class="chip">git</span></div>
-            <div class="effect"><p class="label">Эффект</p><p><span class="num">0</span> брака, ушедшего заказчику. Документ «под ключ» — около <span class="num">часа</span> машинного времени вместо дня ручного. Участие человека: скинуть исходники и принять результат.</p></div>
-          </div>
-        </div>
-        <figure>
-          <div class="scroller">
-            <svg viewBox="0 0 760 188" role="img" aria-label="Схема конвейера: требования, четыре фазы с гейтами между ними, готовый документ">
-              <defs><marker id="ar" markerWidth="8" markerHeight="8" refX="7" refY="4" orient="auto"><path d="M0 0 L8 4 L0 8 z" fill="#aeb5ae"/></marker></defs>
-              <g font-family="JetBrains Mono, monospace" font-size="11">
-                <rect x="12" y="62" width="96" height="46" fill="#e7e8e1" stroke="#aeb5ae"/>
-                <text x="60" y="80" fill="#101715" text-anchor="middle">Требования</text>
-                <text x="60" y="95" fill="#69716d" text-anchor="middle">+ исходники</text>
-                <line x1="110" y1="85" x2="136" y2="85" stroke="#aeb5ae" marker-end="url(#ar)"/>
-                <rect x="140" y="62" width="104" height="46" fill="#faf9f5" stroke="#2f7659"/>
-                <text x="192" y="86" fill="#101715" text-anchor="middle">1 · Разбор</text>
-                <line x1="246" y1="85" x2="272" y2="85" stroke="#aeb5ae" marker-end="url(#ar)"/>
-                <rect x="276" y="62" width="104" height="46" fill="#faf9f5" stroke="#2f7659"/>
-                <text x="328" y="86" fill="#101715" text-anchor="middle">2 · Выполнение</text>
-                <line x1="382" y1="85" x2="408" y2="85" stroke="#aeb5ae" marker-end="url(#ar)"/>
-                <rect x="412" y="62" width="104" height="46" fill="#faf9f5" stroke="#2f7659"/>
-                <text x="464" y="86" fill="#101715" text-anchor="middle">3 · Сборка</text>
-                <line x1="518" y1="85" x2="544" y2="85" stroke="#aeb5ae" marker-end="url(#ar)"/>
-                <rect x="548" y="62" width="104" height="46" fill="#faf9f5" stroke="#2f7659"/>
-                <text x="600" y="86" fill="#101715" text-anchor="middle">4 · Приёмка</text>
-                <line x1="654" y1="85" x2="680" y2="85" stroke="#aeb5ae" marker-end="url(#ar)"/>
-                <rect x="684" y="62" width="64" height="46" fill="#e7e8e1" stroke="#aeb5ae"/>
-                <text x="716" y="80" fill="#101715" text-anchor="middle">docx</text>
-                <text x="716" y="95" fill="#101715" text-anchor="middle">pdf · zip</text>
-                <g fill="#c9864a" font-size="10" text-anchor="middle"><text x="260" y="40">◆ гейт</text><text x="396" y="40">◆ гейт</text><text x="532" y="40">◆ гейт</text></g>
-                <g stroke="#c9864a" stroke-dasharray="3 3"><line x1="260" y1="46" x2="260" y2="60"/><line x1="396" y1="46" x2="396" y2="60"/><line x1="532" y1="46" x2="532" y2="60"/></g>
-                <path d="M600 112 L600 146 L192 146 L192 114" fill="none" stroke="#c9864a" stroke-dasharray="4 4" marker-end="url(#ar)"/>
-                <text x="396" y="164" fill="#c9864a" font-size="10" text-anchor="middle">не прошло приёмку — работа выбрасывается, чинится причина, прогон заново</text>
-              </g>
-            </svg>
-          </div>
-          <figcaption>Гейт — программная проверка, а не просьба к модели проверить себя. Не прошёл — фаза не отдаёт результат дальше.</figcaption>
-        </figure>
-      </article>
-
-      <article class="case" id="bot">
-        <div class="case-head"><h3>Бот для подрядчика: доступ к результату без доступа к системе</h3><span class="tag live">в проде</span><span class="tag">2026</span></div>
-        <p class="case-task">Нужно было подключить подрядчика к конвейеру из кейса выше, но не показывать ему саму архитектуру — она и есть актив. И заодно снять с себя учёт: заказы, сроки, платежи, долги, проценты исполнителю.</p>
-        <div class="case-body">
-          <div>
-            <p class="label">Что сделал</p>
-            <ul class="did">
-              <li><b>Бот как единственный интерфейс.</b> Исполнитель видит кнопки и форму заказа, архитектуру — никогда. Один экран: навигация переписывает то же сообщение, новым приходят только события. Есть тест, который проверяет, что ни одна кнопка не ведёт в пустоту.</li>
-              <li><b>Мост в изолированную виртуалку.</b> Бот кладёт задачу в <code>task.json</code>, запускает команду из конфига, ждёт <code>result.json</code>. Текст пользователя никогда не попадает в аргументы команды, путь к архиву проверяется на выход за пределы папки задачи — исполняющий агент не может «выбраться» и не может быть использован как инъекция.</li>
-              <li><b>Учёт и деньги.</b> Заказы, платежи, начисления по матрице процентов. Незаполненный процент не равен нулю: бот отказывается провести начисление с внятной ошибкой, а не молча проводит работу на 0 ₽.</li>
-              <li><b>Notion как витрина, а не как база.</b> Запись односторонняя, очередь событий лежит в SQLite. Notion упал — учёт продолжает работать, неотправленное догоняет следующим тиком.</li>
-              <li><b>Алерты, которые не задалбывают.</b> Повод помечается в базе ключом, то же обстоятельство второй раз не поднимается. Алерт, приходящий каждые 15 минут, перестают читать через день — это дороже пропущенного алерта.</li>
-            </ul>
-          </div>
-          <div class="case-aside">
-            <div class="chips"><span class="chip">Python 3.11</span><span class="chip">aiogram 3</span><span class="chip">SQLite</span><span class="chip">Notion API</span><span class="chip">asyncio-планировщик</span><span class="chip">TOML</span><span class="chip">pytest</span></div>
-            <div class="effect"><p class="label">Эффект</p><p>Участие владельца в заказе свелось к двум действиям: завести карточку и подтвердить приём. Учёт заказов, долгов и начислений собирается сам и не расходится с витриной. Подрядчик работает с системой, не имея к ней доступа.</p></div>
-          </div>
-        </div>
-        <figure>
-          <div class="scroller">
-            <svg viewBox="0 0 760 210" role="img" aria-label="Схема: исполнитель и владелец в Telegram, бот с базой SQLite, изолированная виртуальная машина, витрина в Notion">
-              <defs><marker id="ar2" markerWidth="8" markerHeight="8" refX="7" refY="4" orient="auto"><path d="M0 0 L8 4 L0 8 z" fill="#aeb5ae"/></marker></defs>
-              <g font-family="JetBrains Mono, monospace" font-size="11">
-                <rect x="12" y="20" width="118" height="44" fill="#e7e8e1" stroke="#aeb5ae"/>
-                <text x="71" y="47" fill="#101715" text-anchor="middle">Исполнитель</text>
-                <rect x="12" y="132" width="118" height="44" fill="#e7e8e1" stroke="#aeb5ae"/>
-                <text x="71" y="159" fill="#101715" text-anchor="middle">Владелец</text>
-                <line x1="132" y1="42" x2="228" y2="80" stroke="#aeb5ae" marker-end="url(#ar2)"/>
-                <line x1="132" y1="154" x2="228" y2="116" stroke="#aeb5ae" marker-end="url(#ar2)"/>
-                <rect x="232" y="62" width="150" height="72" fill="#faf9f5" stroke="#2f7659" stroke-width="1.5"/>
-                <text x="307" y="88" fill="#101715" text-anchor="middle">Бот</text>
-                <text x="307" y="106" fill="#69716d" text-anchor="middle">aiogram 3</text>
-                <text x="307" y="122" fill="#69716d" text-anchor="middle">SQLite · планировщик</text>
-                <line x1="384" y1="80" x2="470" y2="58" stroke="#c9864a" marker-end="url(#ar2)"/>
-                <text x="428" y="44" fill="#c9864a" font-size="10" text-anchor="middle">task.json</text>
-                <line x1="470" y1="96" x2="384" y2="116" stroke="#c9864a" marker-end="url(#ar2)"/>
-                <text x="428" y="132" fill="#c9864a" font-size="10" text-anchor="middle">result.json</text>
-                <rect x="474" y="30" width="146" height="82" fill="#faf9f5" stroke="#c9864a" stroke-dasharray="5 3"/>
-                <text x="547" y="58" fill="#101715" text-anchor="middle">Изолированная ВМ</text>
-                <text x="547" y="76" fill="#69716d" text-anchor="middle">агент-исполнитель</text>
-                <text x="547" y="94" fill="#69716d" text-anchor="middle">сеть и диск урезаны</text>
-                <line x1="307" y1="136" x2="307" y2="168" stroke="#aeb5ae" marker-end="url(#ar2)"/>
-                <rect x="232" y="170" width="150" height="34" fill="#e7e8e1" stroke="#aeb5ae"/>
-                <text x="307" y="192" fill="#101715" text-anchor="middle">Notion — витрина</text>
-                <text x="668" y="150" fill="#69716d" font-size="10" text-anchor="middle">архитектура</text>
-                <text x="668" y="165" fill="#69716d" font-size="10" text-anchor="middle">наружу не выходит</text>
-                <path d="M620 71 L700 71" stroke="#aeb5ae" stroke-dasharray="3 3"/>
-              </g>
-            </svg>
-          </div>
-          <figcaption>Подрядчик получает результат работы системы, но не саму систему. Всё общение с виртуалкой — через два файла с проверкой на каждом шаге.</figcaption>
-        </figure>
-      </article>
-
       <article class="case" id="platform">
         <div class="case-head"><h3>Платформа управления ИИ-агентом с телефона</h3><span class="tag live">в проде</span><span class="tag">2025—2026</span></div>
         <p class="case-task">Мощный ИИ-агент живёт на домашней машине, а владелец — нет. Нужен был полноценный рабочий интерфейс к нему с телефона: не «чатик», а среда, где видно проекты, диффы, терминал и историю. Требование сформулировано жёстко: работать должно всегда.</p>
@@ -398,6 +289,115 @@
             </svg>
           </div>
           <figcaption>Ни одного открытого порта на домашней машине: туннель поднимает сама платформа изнутри, наружу торчит только VPS.</figcaption>
+        </figure>
+      </article>
+
+      <article class="case" id="bot">
+        <div class="case-head"><h3>Бот для подрядчика: доступ к результату без доступа к системе</h3><span class="tag live">в проде</span><span class="tag">2026</span></div>
+        <p class="case-task">Нужно было подключить подрядчика к моему производственному конвейеру документов, но не показывать ему саму архитектуру — она и есть актив. И заодно снять с себя учёт: заказы, сроки, платежи, долги, проценты исполнителю.</p>
+        <div class="case-body">
+          <div>
+            <p class="label">Что сделал</p>
+            <ul class="did">
+              <li><b>Бот как единственный интерфейс.</b> Исполнитель видит кнопки и форму заказа, архитектуру — никогда. Один экран: навигация переписывает то же сообщение, новым приходят только события. Есть тест, который проверяет, что ни одна кнопка не ведёт в пустоту.</li>
+              <li><b>Мост в изолированную виртуалку.</b> Бот кладёт задачу в <code>task.json</code>, запускает команду из конфига, ждёт <code>result.json</code>. Текст пользователя никогда не попадает в аргументы команды, путь к архиву проверяется на выход за пределы папки задачи — исполняющий агент не может «выбраться» и не может быть использован как инъекция.</li>
+              <li><b>Учёт и деньги.</b> Заказы, платежи, начисления по матрице процентов. Незаполненный процент не равен нулю: бот отказывается провести начисление с внятной ошибкой, а не молча проводит работу на 0 ₽.</li>
+              <li><b>Notion как витрина, а не как база.</b> Запись односторонняя, очередь событий лежит в SQLite. Notion упал — учёт продолжает работать, неотправленное догоняет следующим тиком.</li>
+              <li><b>Алерты, которые не задалбывают.</b> Повод помечается в базе ключом, то же обстоятельство второй раз не поднимается. Алерт, приходящий каждые 15 минут, перестают читать через день — это дороже пропущенного алерта.</li>
+            </ul>
+          </div>
+          <div class="case-aside">
+            <div class="chips"><span class="chip">Python 3.11</span><span class="chip">aiogram 3</span><span class="chip">SQLite</span><span class="chip">Notion API</span><span class="chip">asyncio-планировщик</span><span class="chip">TOML</span><span class="chip">pytest</span></div>
+            <div class="effect"><p class="label">Эффект</p><p>Участие владельца в заказе свелось к двум действиям: завести карточку и подтвердить приём. Учёт заказов, долгов и начислений собирается сам и не расходится с витриной. Подрядчик работает с системой, не имея к ней доступа.</p></div>
+          </div>
+        </div>
+        <figure>
+          <div class="scroller">
+            <svg viewBox="0 0 760 210" role="img" aria-label="Схема: исполнитель и владелец в Telegram, бот с базой SQLite, изолированная виртуальная машина, витрина в Notion">
+              <defs><marker id="ar2" markerWidth="8" markerHeight="8" refX="7" refY="4" orient="auto"><path d="M0 0 L8 4 L0 8 z" fill="#aeb5ae"/></marker></defs>
+              <g font-family="JetBrains Mono, monospace" font-size="11">
+                <rect x="12" y="20" width="118" height="44" fill="#e7e8e1" stroke="#aeb5ae"/>
+                <text x="71" y="47" fill="#101715" text-anchor="middle">Исполнитель</text>
+                <rect x="12" y="132" width="118" height="44" fill="#e7e8e1" stroke="#aeb5ae"/>
+                <text x="71" y="159" fill="#101715" text-anchor="middle">Владелец</text>
+                <line x1="132" y1="42" x2="228" y2="80" stroke="#aeb5ae" marker-end="url(#ar2)"/>
+                <line x1="132" y1="154" x2="228" y2="116" stroke="#aeb5ae" marker-end="url(#ar2)"/>
+                <rect x="232" y="62" width="150" height="72" fill="#faf9f5" stroke="#2f7659" stroke-width="1.5"/>
+                <text x="307" y="88" fill="#101715" text-anchor="middle">Бот</text>
+                <text x="307" y="106" fill="#69716d" text-anchor="middle">aiogram 3</text>
+                <text x="307" y="122" fill="#69716d" text-anchor="middle">SQLite · планировщик</text>
+                <line x1="384" y1="80" x2="470" y2="58" stroke="#c9864a" marker-end="url(#ar2)"/>
+                <text x="428" y="44" fill="#c9864a" font-size="10" text-anchor="middle">task.json</text>
+                <line x1="470" y1="96" x2="384" y2="116" stroke="#c9864a" marker-end="url(#ar2)"/>
+                <text x="428" y="132" fill="#c9864a" font-size="10" text-anchor="middle">result.json</text>
+                <rect x="474" y="30" width="146" height="82" fill="#faf9f5" stroke="#c9864a" stroke-dasharray="5 3"/>
+                <text x="547" y="58" fill="#101715" text-anchor="middle">Изолированная ВМ</text>
+                <text x="547" y="76" fill="#69716d" text-anchor="middle">агент-исполнитель</text>
+                <text x="547" y="94" fill="#69716d" text-anchor="middle">сеть и диск урезаны</text>
+                <line x1="307" y1="136" x2="307" y2="168" stroke="#aeb5ae" marker-end="url(#ar2)"/>
+                <rect x="232" y="170" width="150" height="34" fill="#e7e8e1" stroke="#aeb5ae"/>
+                <text x="307" y="192" fill="#101715" text-anchor="middle">Notion — витрина</text>
+                <text x="668" y="150" fill="#69716d" font-size="10" text-anchor="middle">архитектура</text>
+                <text x="668" y="165" fill="#69716d" font-size="10" text-anchor="middle">наружу не выходит</text>
+                <path d="M620 71 L700 71" stroke="#aeb5ae" stroke-dasharray="3 3"/>
+              </g>
+            </svg>
+          </div>
+          <figcaption>Подрядчик получает результат работы системы, но не саму систему. Всё общение с виртуалкой — через два файла с проверкой на каждом шаге.</figcaption>
+        </figure>
+      </article>
+
+      <article class="case" id="doc-pipeline">
+        <div class="case-head"><h3>Конвейер автогенерации технических документов</h3><span class="tag live">в проде</span><span class="tag">2025—2026</span></div>
+        <p class="case-task">Производство объёмных технических документов по формальным требованиям: оформление по стандарту, расчёты, код, графики, выгрузка в docx/pdf/zip. Раньше это был день ручной работы на документ. Задача — убрать человека из цикла целиком и при этом держать шанс брака около нуля, потому что готовый документ уходит платящему заказчику.</p>
+        <div class="case-body">
+          <div>
+            <p class="label">Что сделал</p>
+            <ul class="did">
+              <li><b>Многофазный конвейер:</b> разбор требований → выполнение → сборка → приёмка. У каждой фазы свой контекст и письменная передача следующей — один агент не тащит на себе весь объём.</li>
+              <li><b>Детерминированные гейты вместо надежды на модель.</b> На стыках фаз не «проверь себя, пожалуйста», а программные проверки: структура документа сверяется с первоисточником требований, скан на утечку секретов, отказ отдать результат при несовпадении.</li>
+              <li><b>Запуск без человека за клавиатурой.</b> Любой вопрос модели посреди работы — потерянный прогон, поэтому вся неоднозначность снимается на входе, а не диалогом.</li>
+              <li><b>Экономика замерена по логам, а не на глаз.</b> Разбор реального прогона: 172 хода, 51,8 минуты, $32,48 — и вывод, что около 78% денег уходит на перечитывание контекста, а не на генерацию. Отсюда маршрутизация моделей по сложности задачи и сброс контекста субагентами.</li>
+              <li><b>3758 автотестов</b> на архитектуре; релиз идёт через скрипт с гейтом на утечки.</li>
+            </ul>
+          </div>
+          <div class="case-aside">
+            <div class="chips"><span class="chip">Python</span><span class="chip">Claude Agent SDK</span><span class="chip">хуки PreToolUse</span><span class="chip">многоагентная оркестрация</span><span class="chip">docx / pdf</span><span class="chip">pytest</span><span class="chip">git</span></div>
+            <div class="effect"><p class="label">Эффект</p><p><span class="num">0</span> брака, ушедшего заказчику. Документ «под ключ» — около <span class="num">часа</span> машинного времени вместо дня ручного. Участие человека: скинуть исходники и принять результат.</p></div>
+          </div>
+        </div>
+        <figure>
+          <div class="scroller">
+            <svg viewBox="0 0 760 188" role="img" aria-label="Схема конвейера: требования, четыре фазы с гейтами между ними, готовый документ">
+              <defs><marker id="ar" markerWidth="8" markerHeight="8" refX="7" refY="4" orient="auto"><path d="M0 0 L8 4 L0 8 z" fill="#aeb5ae"/></marker></defs>
+              <g font-family="JetBrains Mono, monospace" font-size="11">
+                <rect x="12" y="62" width="96" height="46" fill="#e7e8e1" stroke="#aeb5ae"/>
+                <text x="60" y="80" fill="#101715" text-anchor="middle">Требования</text>
+                <text x="60" y="95" fill="#69716d" text-anchor="middle">+ исходники</text>
+                <line x1="110" y1="85" x2="136" y2="85" stroke="#aeb5ae" marker-end="url(#ar)"/>
+                <rect x="140" y="62" width="104" height="46" fill="#faf9f5" stroke="#2f7659"/>
+                <text x="192" y="86" fill="#101715" text-anchor="middle">1 · Разбор</text>
+                <line x1="246" y1="85" x2="272" y2="85" stroke="#aeb5ae" marker-end="url(#ar)"/>
+                <rect x="276" y="62" width="104" height="46" fill="#faf9f5" stroke="#2f7659"/>
+                <text x="328" y="86" fill="#101715" text-anchor="middle">2 · Выполнение</text>
+                <line x1="382" y1="85" x2="408" y2="85" stroke="#aeb5ae" marker-end="url(#ar)"/>
+                <rect x="412" y="62" width="104" height="46" fill="#faf9f5" stroke="#2f7659"/>
+                <text x="464" y="86" fill="#101715" text-anchor="middle">3 · Сборка</text>
+                <line x1="518" y1="85" x2="544" y2="85" stroke="#aeb5ae" marker-end="url(#ar)"/>
+                <rect x="548" y="62" width="104" height="46" fill="#faf9f5" stroke="#2f7659"/>
+                <text x="600" y="86" fill="#101715" text-anchor="middle">4 · Приёмка</text>
+                <line x1="654" y1="85" x2="680" y2="85" stroke="#aeb5ae" marker-end="url(#ar)"/>
+                <rect x="684" y="62" width="64" height="46" fill="#e7e8e1" stroke="#aeb5ae"/>
+                <text x="716" y="80" fill="#101715" text-anchor="middle">docx</text>
+                <text x="716" y="95" fill="#101715" text-anchor="middle">pdf · zip</text>
+                <g fill="#c9864a" font-size="10" text-anchor="middle"><text x="260" y="40">◆ гейт</text><text x="396" y="40">◆ гейт</text><text x="532" y="40">◆ гейт</text></g>
+                <g stroke="#c9864a" stroke-dasharray="3 3"><line x1="260" y1="46" x2="260" y2="60"/><line x1="396" y1="46" x2="396" y2="60"/><line x1="532" y1="46" x2="532" y2="60"/></g>
+                <path d="M600 112 L600 146 L192 146 L192 114" fill="none" stroke="#c9864a" stroke-dasharray="4 4" marker-end="url(#ar)"/>
+                <text x="396" y="164" fill="#c9864a" font-size="10" text-anchor="middle">не прошло приёмку — работа выбрасывается, чинится причина, прогон заново</text>
+              </g>
+            </svg>
+          </div>
+          <figcaption>Гейт — программная проверка, а не просьба к модели проверить себя. Не прошёл — фаза не отдаёт результат дальше.</figcaption>
         </figure>
       </article>
 
