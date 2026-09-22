@@ -165,6 +165,9 @@
     .counter{padding:1.5rem 1.4rem 1.6rem;border-right:1px solid var(--line)}.counter:first-child{padding-left:0}.counter:last-child{border-right:0;padding-right:0}
     .counter b{display:block;font-size:1.85rem;line-height:1.1;letter-spacing:-.035em;font-weight:740;font-variant-numeric:tabular-nums}
     .counter span{display:block;margin-top:.45rem;font:400 .74rem/1.45 var(--mono);color:var(--muted)}
+    /* Цифра без методики — лозунг, поэтому рядом всегда написано, как она снята. */
+    .method{margin-top:1.5rem;padding-top:1.5rem;border-top:1px solid var(--line);max-width:62ch;font-size:.93rem;line-height:1.6;color:var(--muted)}
+    .method b{color:var(--ink-2);font-weight:640}
 
     /* ——— кейсы ——— */
     .cases{padding-bottom:clamp(4rem,8vw,7rem)}
@@ -192,6 +195,15 @@
     code{font:400 .92em var(--mono);color:var(--ink)}
 
     /* ——— стек ——— */
+    /* ——— проверка ——— */
+    .verify{padding:clamp(3.4rem,6vw,5rem) 0;border-top:1px solid var(--line-dark)}
+    .verify-head{margin-bottom:2.3rem}.verify-head .eyebrow{margin-bottom:1.2rem}.verify-head h2{max-width:26ch}
+    .verify-grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));border-top:1px solid var(--line)}
+    .vitem{padding:1.5rem 1.8rem 1.6rem 0;border-bottom:1px solid var(--line)}
+    .vitem:nth-child(2n){padding-right:0;padding-left:1.8rem;border-left:1px solid var(--line)}
+    .vitem h3{font-size:1.05rem;line-height:1.35;letter-spacing:-.01em;font-weight:680;margin-bottom:.45rem}
+    .vitem p{color:var(--ink-2);font-size:.96rem;line-height:1.55}
+    .verify-note{margin-top:1.9rem;padding:1.2rem 1.35rem;background:var(--surface);border:1px solid var(--line);border-left:3px solid var(--copper);font-size:.96rem;color:var(--ink-2);max-width:68ch}
     .stack{background:var(--paper-2);padding:clamp(4rem,8vw,6.5rem) 0;border-top:1px solid var(--line)}
     .stack-head{margin-bottom:2.6rem}.stack-head .eyebrow{margin-bottom:1.2rem}
     .stack-row{display:grid;grid-template-columns:200px minmax(0,1fr);gap:2rem;padding:1.5rem 0;border-top:1px solid var(--line-dark)}
@@ -210,7 +222,7 @@
     .signature b{display:block;font-size:1rem}.signature p{margin-top:.3rem;font-size:.85rem;color:#c1d1c8;max-width:25rem}
     footer{background:var(--ink);color:#dfe7e2;padding:2.5rem 0}.footer-grid{display:grid;grid-template-columns:1.1fr 1fr auto;gap:2rem;align-items:end}.footer-brand{font-weight:700}.footer-meta{font-size:.72rem;color:#93a49a;line-height:1.6}.footer-links{display:flex;gap:1rem;font-size:.76rem}.footer-links a{color:#bdc9c2;text-underline-offset:4px}
 
-    @media(max-width:900px){.nav{grid-template-columns:1fr auto}.nav-links{display:none}.page-head{padding:7.5rem 0 2.5rem}.counters{grid-template-columns:repeat(2,1fr)}.counter{padding:1.3rem 1.2rem}.counter:nth-child(2n){border-right:0;padding-right:0}.counter:nth-child(2n+1){padding-left:0}.counter:nth-child(n+3){border-top:1px solid var(--line)}.case-body{grid-template-columns:1fr;gap:1.8rem}.stack-row{grid-template-columns:1fr;gap:.5rem}.cta-grid{grid-template-columns:1fr}.footer-grid{grid-template-columns:1fr 1fr}.footer-links{grid-column:1/-1}}
+    @media(max-width:900px){.verify-grid{grid-template-columns:1fr}.vitem,.vitem:nth-child(2n){padding:1.3rem 0;border-left:0}.nav{grid-template-columns:1fr auto}.nav-links{display:none}.page-head{padding:7.5rem 0 2.5rem}.counters{grid-template-columns:repeat(2,1fr)}.counter{padding:1.3rem 1.2rem}.counter:nth-child(2n){border-right:0;padding-right:0}.counter:nth-child(2n+1){padding-left:0}.counter:nth-child(n+3){border-top:1px solid var(--line)}.case-body{grid-template-columns:1fr;gap:1.8rem}.stack-row{grid-template-columns:1fr;gap:.5rem}.cta-grid{grid-template-columns:1fr}.footer-grid{grid-template-columns:1fr 1fr}.footer-links{grid-column:1/-1}}
     @media(max-width:620px){body{font-size:16px}.wrap{width:min(100% - 28px,1180px)}.nav{height:66px}.nav-cta{padding:.55rem .75rem;border:1px solid var(--line-dark);border-radius:999px;font-size:.76rem}.page-head{padding:6.6rem 0 2rem}.counters{grid-template-columns:1fr}.counter,.counter:first-child,.counter:last-child{padding:1.1rem 0;border-right:0;border-top:1px solid var(--line)}.counter:first-child{border-top:0}.signature{gap:.9rem}.portrait{width:84px;height:84px}.footer-grid{grid-template-columns:1fr}.footer-links{grid-column:auto;flex-direction:column}}
     @media(prefers-reduced-motion:reduce){html{scroll-behavior:auto}*,*::before,*::after{animation:none!important;transition:none!important}}
   </style>
@@ -228,6 +240,7 @@
         <div class="counter"><b>4142</b><span>автотеста в трёх системах<br>(3758 · 289 · 95)</span></div>
         <div class="counter"><b>24/7</b><span>аптайм боевых сервисов<br>на своём VPS</span></div>
       </div>
+      <p class="method"><b>Как сняты эти цифры.</b> Брак — это документ, который заказчик вернул на переделку; считаю по всем прогонам конвейера, а держится ноль не на аккуратности, а на приёмочных гейтах: не сошлось с первоисточником требований — фаза не отдаёт результат дальше. Автотесты — прогон pytest в трёх репозиториях, релиз с красным прогоном не уходит; их задача не «быть в количестве», а ловить расхождение структуры документа, обрыв внешнего API и молчаливое обнуление расчёта. Аптайм — по журналам systemd и собственному супервизору, который до починки умирал примерно каждые 72 часа. Любую цифру показываю живьём: прогон тестов, боевые логи, историю коммитов.</p>
     </div></section>
 
     <section class="cases" aria-labelledby="cases-title"><div class="wrap">
@@ -464,6 +477,34 @@
 
     </div></section>
 
+    <section class="verify" aria-labelledby="verify-title">
+      <div class="wrap">
+        <div class="verify-head">
+          <div class="eyebrow">Проверка</div>
+          <h2 id="verify-title">Как проверить всё, что написано выше.</h2>
+        </div>
+        <div class="verify-grid">
+          <div class="vitem">
+            <h3>Разбор на экране, 40–60 минут</h3>
+            <p>Любая система на ваш выбор: архитектура, код, история коммитов, обработка ошибок, боевые логи. Открываю файлы и отвечаю на неудобные вопросы — по тому, как человек отвечает про свой код, всё видно быстро.</p>
+          </div>
+          <div class="vitem">
+            <h3>Прогон тестов при вас</h3>
+            <p>Запускаю pytest в выбранном репозитории на созвоне. Видно и число, и что именно проверяется, и сколько идёт прогон — это сильнее, чем цифра на сайте.</p>
+          </div>
+          <div class="vitem">
+            <h3>Журналы, а не слайды</h3>
+            <p>Разбор стоимости прогона — 172 хода, 51,8 минуты, $32,48, около 78% на перечитывание контекста — это выгрузка из журнала. Её можно открыть и посмотреть построчно.</p>
+          </div>
+          <div class="vitem">
+            <h3>Пилот вместо обещаний</h3>
+            <p>Один процесс, критерий успеха записан до начала работы. Не достигнут — не масштабируем, и я скажу это первым. Проверка делом стоит дешевле, чем доверие на слово.</p>
+          </div>
+        </div>
+        <p class="verify-note">Чего у меня нет: публичных отзывов и открытых исходников боевых систем. Исходники закрыты, заказчиков я не называю — то же самое я буду делать и с вашей системой. Поэтому проверять предлагаю не словами, а экраном и пилотом.</p>
+      </div>
+    </section>
+
     <section class="stack">
       <div class="wrap">
         <div class="stack-head"><div class="eyebrow">Инструменты</div><h2>Стек — честно, без списка из сорока логотипов.</h2></div>
@@ -474,6 +515,10 @@
         <div class="stack-row">
           <div class="stack-key">Есть рабочий опыт</div>
           <div class="stack-val">JavaScript и фронтенд в объёме собственной платформы · SQL · PowerShell · Blender Python API · Unreal Engine 5 · Tilda · сбор и разбор данных из открытых источников</div>
+        </div>
+        <div class="stack-row">
+          <div class="stack-key warn">Размер систем</div>
+          <div class="stack-val">Всё перечисленное выше держит <b>один сервер</b>: SQLite как база, вертикальное масштабирование, без кластеров и шардирования. Для внутренних процессов компании этого хватает с большим запасом, и на этом классе задач я знаю, где у него предел и по какому признаку пора переезжать на Postgres. Распределённых систем и нагрузки на миллионы пользователей я не строил — если задача такая, честнее сказать сразу.</div>
         </div>
         <div class="stack-row">
           <div class="stack-key warn">Скажу прямо</div>
