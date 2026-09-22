@@ -6,9 +6,9 @@
   <meta name="description" content="Системы, которые Вячеслав Ваньков спроектировал и написал сам: конвейер генерации документов, боты с изоляцией исполнения, платформа управления агентом, пайплайн квалификации клиентов.">
   <meta name="theme-color" content="#f1f0ea">
   <title>Работы — Деплоид</title>
-  <link rel="canonical" href="https://deploid.ru/portfolio.html">
+  <link rel="canonical" href="https://deploid.ru/portfolio">
   <meta property="og:type" content="website">
-  <meta property="og:url" content="https://deploid.ru/portfolio.html">
+  <meta property="og:url" content="https://deploid.ru/portfolio">
   <meta property="og:site_name" content="Деплоид">
   <meta property="og:locale" content="ru_RU">
   <meta property="og:title" content="Работы — Деплоид">
@@ -22,7 +22,127 @@
   <meta name="twitter:title" content="Работы — Деплоид">
   <meta name="twitter:description" content="Шесть систем: что было, что сделано, на чём и что изменилось в цифрах.">
   <meta name="twitter:image" content="https://deploid.ru/og.jpg">
+  <link rel="alternate" type="text/markdown" href="/llms.txt" title="Выжимка сайта для языковых моделей">
+  <meta name="author" content="Вячеслав Ваньков">
   <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='14' fill='%23101715'/%3E%3Cpath d='M17 20h18c9 0 15 5 15 12s-6 12-15 12H17V20Zm10 8v8h8c3 0 5-1 5-4s-2-4-5-4h-8Z' fill='%23b9f37b'/%3E%3C/svg%3E">
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@graph": [
+      {
+        "@type": "ProfilePage",
+        "@id": "https://deploid.ru/portfolio",
+        "url": "https://deploid.ru/portfolio",
+        "name": "Работы — Деплоид",
+        "inLanguage": "ru-RU",
+        "isPartOf": { "@id": "https://deploid.ru/#site" },
+        "about": { "@id": "https://deploid.ru/#vankov" },
+        "mainEntity": { "@id": "https://deploid.ru/#vankov" },
+        "significantLink": "https://deploid.ru/"
+      },
+      {
+        "@type": "Person",
+        "@id": "https://deploid.ru/#vankov",
+        "name": "Вячеслав Ваньков",
+        "jobTitle": "Инженер автоматизации бизнес-процессов и ИИ-агентов",
+        "description": "Проектирует и пишет системы автоматизации: конвейеры обработки документов, боты и ИИ-агенты с детерминированными проверками, интеграции между системами. Шесть систем в продакшене или в активной сборке, все спроектированы и написаны в одиночку — от постановки задачи до поддержки.",
+        "email": "mailto:vankov@deploid.ru",
+        "url": "https://deploid.ru/",
+        "image": "https://deploid.ru/vankov.jpg",
+        "taxID": "540700478835",
+        "brand": { "@type": "Brand", "name": "Деплоид" },
+        "knowsAbout": [
+          "проектирование ИИ-агентов и промптов",
+          "многоагентная оркестрация",
+          "детерминированные проверки на стыках агентных фаз",
+          "Python", "asyncio", "pytest",
+          "Telegram Bot API", "aiogram 3", "Telegram Mini Apps",
+          "Node.js", "Express", "WebSocket",
+          "SQLite", "полнотекстовый поиск FTS5", "SQL",
+          "Notion API", "Google Calendar API", "REST и вебхуки",
+          "Linux", "systemd", "nginx", "VPS", "TLS", "git",
+          "шифрование конфигов AES-256-GCM", "двухфакторная аутентификация", "изоляция исполнения", "защита агента от инъекций",
+          "Unreal Engine 5", "Blender Python API", "процедурная генерация"
+        ]
+      },
+      {
+        "@type": "ItemList",
+        "@id": "https://deploid.ru/portfolio#works",
+        "name": "Шесть систем",
+        "numberOfItems": 6,
+        "itemListOrder": "https://schema.org/ItemListUnordered",
+        "itemListElement": [
+          { "@type": "ListItem", "position": 1, "item": {
+            "@type": "SoftwareApplication",
+            "name": "Конвейер автогенерации технических документов",
+            "url": "https://deploid.ru/portfolio#doc-pipeline",
+            "applicationCategory": "BusinessApplication",
+            "creativeWorkStatus": "в продакшене",
+            "temporalCoverage": "2025/2026",
+            "creator": { "@id": "https://deploid.ru/#vankov" },
+            "description": "Многофазный агентный конвейер производства документов по формальным требованиям: разбор требований, выполнение, сборка, приёмка. На стыках фаз — программные гейты, а не самопроверка модели. Ноль брака, ушедшего заказчику; 3758 автотестов; экономика прогона замерена по логам (172 хода, 51,8 минуты, $32,48, около 78% стоимости — перечитывание контекста).",
+            "keywords": "Python, Claude Agent SDK, многоагентная оркестрация, хуки, docx, pdf, pytest, git"
+          }},
+          { "@type": "ListItem", "position": 2, "item": {
+            "@type": "SoftwareApplication",
+            "name": "Бот для подрядчика: доступ к результату без доступа к системе",
+            "url": "https://deploid.ru/portfolio#bot",
+            "applicationCategory": "BusinessApplication",
+            "creativeWorkStatus": "в продакшене",
+            "temporalCoverage": "2026",
+            "creator": { "@id": "https://deploid.ru/#vankov" },
+            "description": "Телеграм-бот как единственный интерфейс к закрытой системе: задача уходит в изолированную виртуальную машину через файлы с проверкой, текст пользователя не попадает в аргументы команды. Учёт заказов, платежей и начислений; Notion как витрина, а не как база.",
+            "keywords": "Python 3.11, aiogram 3, SQLite, Notion API, asyncio, изоляция исполнения, pytest"
+          }},
+          { "@type": "ListItem", "position": 3, "item": {
+            "@type": "SoftwareApplication",
+            "name": "Платформа управления ИИ-агентом с телефона",
+            "url": "https://deploid.ru/portfolio#platform",
+            "applicationCategory": "DeveloperApplication",
+            "creativeWorkStatus": "в продакшене",
+            "temporalCoverage": "2025/2026",
+            "creator": { "@id": "https://deploid.ru/#vankov" },
+            "description": "Веб-платформа поверх долгоживущей сессии агента: проекты, git-диффы, терминал, полнотекстовый поиск по истории. Сервер слушает только loopback, наружу — обратный туннель через VPS с TLS; шифрованные конфиги, двухфакторная аутентификация. 95 автотестов; защитное код-ревью роем субагентов закрыло около 40 находок.",
+            "keywords": "Node.js, Express, WebSocket, Agent SDK, SQLite FTS5, ConPTY, AES-256-GCM, nginx, TLS"
+          }},
+          { "@type": "ListItem", "position": 4, "item": {
+            "@type": "SoftwareApplication",
+            "name": "Пайплайн поиска и квалификации клиентов",
+            "url": "https://deploid.ru/portfolio#outreach",
+            "applicationCategory": "BusinessApplication",
+            "creativeWorkStatus": "в продакшене",
+            "temporalCoverage": "2026",
+            "creator": { "@id": "https://deploid.ru/#vankov" },
+            "description": "Конвейер со стадиями от поиска до ответа: отбор по наблюдаемым признакам ручной работы вместо отрасли, досье с привязкой каждого факта к источнику, предохранители против спама в архитектуре, персональные данные не хранятся. 289 автотестов.",
+            "keywords": "Python 3.11, SQLite, LLM-пайплайн, hh.ru API, 2ГИС, SMTP, DKIM, pytest"
+          }},
+          { "@type": "ListItem", "position": 5, "item": {
+            "@type": "SoftwareApplication",
+            "name": "ИИ-ассистент с памятью, которая живёт месяцами",
+            "url": "https://deploid.ru/portfolio#assistant",
+            "applicationCategory": "BusinessApplication",
+            "creativeWorkStatus": "в продакшене",
+            "temporalCoverage": "2026",
+            "creator": { "@id": "https://deploid.ru/#vankov" },
+            "description": "Память агента как обычный текст в git: компактное ядро, зоны проектов, журналы на дозапись, датирование изменяемых фактов и контрольные вопросы против протухания. Контекст переживает смену модели и пересоздание окружения.",
+            "keywords": "MCP, Notion API, Google Calendar API, Telegram Bot API, git как база, Python"
+          }},
+          { "@type": "ListItem", "position": 6, "item": {
+            "@type": "SoftwareApplication",
+            "name": "Конвейер сборки игровых уровней",
+            "url": "https://deploid.ru/portfolio#content-pipeline",
+            "applicationCategory": "DeveloperApplication",
+            "creativeWorkStatus": "в разработке",
+            "temporalCoverage": "2026",
+            "creator": { "@id": "https://deploid.ru/#vankov" },
+            "description": "Уровень описывается структурой данных и собирается автоматически: трёхмерные объекты и текстуры делает ИИ, скрипты в Blender доводят их до пригодного для движка вида. Автопрогон сам снимает кадры и замеряет время кадра при бюджете 16,7 мс.",
+            "keywords": "Unreal Engine 5, Blender Python API, генеративные модели, процедурная генерация, профилирование"
+          }}
+        ]
+      }
+    ]
+  }
+  </script>
   <style>
     @font-face{font-family:'Golos Text';font-style:normal;font-weight:400 800;font-display:swap;src:url(fonts/golos-text-cyrillic.woff2) format('woff2');unicode-range:U+0301,U+0400-045F,U+0490-0491,U+04B0-04B1,U+2116}
     @font-face{font-family:'Golos Text';font-style:normal;font-weight:400 800;font-display:swap;src:url(fonts/golos-text-latin.woff2) format('woff2');unicode-range:U+0000-00FF,U+0131,U+0152-0153,U+02BB-02BC,U+02C6,U+02DA,U+02DC,U+0304,U+0308,U+0329,U+2000-206F,U+20AC,U+2122,U+2191,U+2193,U+2212,U+2215,U+FEFF,U+FFFD}
@@ -82,8 +202,9 @@
     .cta-section{background:var(--green-dark);color:#f7faf7;padding:clamp(4.5rem,9vw,7.5rem) 0;position:relative;overflow:hidden}
     .cta-section::before{content:"";position:absolute;width:36rem;height:36rem;border-radius:50%;right:-8rem;top:-14rem;border:1px solid rgba(185,243,123,.22);box-shadow:0 0 0 80px rgba(185,243,123,.035),0 0 0 160px rgba(185,243,123,.025)}
     .cta-grid{display:grid;grid-template-columns:1.4fr .6fr;gap:3rem;align-items:end;position:relative}.cta-grid h2{max-width:20ch}.cta-grid .eyebrow{color:var(--acid);margin-bottom:1.3rem}
-    .cta-copy{display:flex;flex-direction:column;align-items:flex-start;gap:1.25rem}.cta-copy p{color:#c1d1c8;max-width:35rem}
-    .cta-side{display:flex;flex-direction:column;align-items:flex-start;gap:1rem}.cta-side small{color:#9eb3a7;font-size:.78rem}
+    .cta-side{display:flex;flex-direction:column;align-items:flex-start;gap:.9rem}
+    .back-btn{display:inline-flex;align-items:center;gap:.6rem;min-height:48px;padding:.7rem 1.15rem;border-radius:999px;border:1px solid rgba(185,243,123,.4);color:#f7faf7;text-decoration:none;font-weight:600;font-size:.92rem;transition:background .2s,border-color .2s}.back-btn:hover{background:rgba(185,243,123,.12);border-color:var(--acid)}
+    .sr-only{position:absolute;width:1px;height:1px;padding:0;margin:-1px;overflow:hidden;clip:rect(0 0 0 0);white-space:nowrap;border:0}
     .signature{display:flex;align-items:center;gap:1.15rem;margin-top:2.4rem}
     .portrait{display:block;width:96px;height:96px;border-radius:16px;object-fit:cover;border:1px solid rgba(185,243,123,.3);box-shadow:0 14px 30px rgba(9,28,20,.3)}
     .signature b{display:block;font-size:1rem}.signature p{margin-top:.3rem;font-size:.85rem;color:#c1d1c8;max-width:25rem}
@@ -95,7 +216,7 @@
   </style>
 </head>
 <body>
-  <header id="header"><nav class="wrap nav" aria-label="Основная навигация"><a class="brand" href="index.html">деплоид<span>.</span></a><div class="nav-links"><a href="index.html#solutions">Задачи</a><a href="index.html#method">Подход</a><a href="portfolio.html" aria-current="page">Работы</a></div><a class="nav-cta" href="mailto:vankov@deploid.ru?subject=Разбор%20процесса">Обсудить задачу ↗</a></nav></header>
+  <header id="header"><nav class="wrap nav" aria-label="Основная навигация"><a class="brand" href="/">деплоид<span>.</span></a><div class="nav-links"><a href="/#solutions">Задачи</a><a href="/#method">Подход</a><a href="/portfolio" aria-current="page">Работы</a></div><a class="nav-cta" href="mailto:vankov@deploid.ru?subject=Разбор%20процесса">Обсудить задачу ↗</a></nav></header>
   <main id="top">
     <section class="page-head"><div class="wrap">
       <div class="eyebrow">Работы</div>
@@ -109,7 +230,8 @@
       </div>
     </div></section>
 
-    <section class="cases"><div class="wrap">
+    <section class="cases" aria-labelledby="cases-title"><div class="wrap">
+      <h2 class="sr-only" id="cases-title">Кейсы: шесть систем</h2>
 
       <article class="case" id="doc-pipeline">
         <div class="case-head"><h3>Конвейер автогенерации технических документов</h3><span class="tag live">в проде</span><span class="tag">2025—2026</span></div>
@@ -362,20 +484,17 @@
 
     <section class="cta-section"><div class="wrap cta-grid">
       <div>
-        <div class="eyebrow">Первый шаг</div>
-        <h2>Разберём один ваш процесс — без презентации на 40 слайдов.</h2>
-        <div class="signature"><img class="portrait" src="vankov.jpg" width="96" height="96" loading="lazy" decoding="async" alt="Вячеслав Ваньков"><div><b>Вячеслав Ваньков</b><p>Всё выше спроектировано и написано мной — от постановки задачи до поддержки в продакшене.</p></div></div>
+        <div class="eyebrow">Дальше</div>
+        <h2>Похожая задача — у вас?</h2>
+        <div class="signature"><img class="portrait" src="vankov.jpg" width="96" height="96" loading="lazy" decoding="async" alt="Вячеслав Ваньков"><div><b>Вячеслав Ваньков</b></div></div>
       </div>
       <div class="cta-side">
-        <div class="cta-copy">
-          <p>Опишите в двух–трёх абзацах, что сотрудники повторяют каждый день и где теряется время. Задам уточняющие вопросы и скажу, есть ли здесь задача для автоматизации.</p>
-          <a class="btn light" href="mailto:vankov@deploid.ru?subject=Разбор%20процесса">Написать на vankov@deploid.ru <span aria-hidden="true">↗</span></a>
-        </div>
-        <small>Если автоматизировать нечего — скажу прямо.</small>
+        <a class="btn light" href="mailto:vankov@deploid.ru?subject=Разбор%20процесса">Написать на vankov@deploid.ru <span aria-hidden="true">↗</span></a>
+        <a class="back-btn" href="/"><span aria-hidden="true">←</span> На главную: задачи и подход</a>
       </div>
     </div></section>
   </main>
-  <footer><div class="wrap footer-grid"><div><div class="footer-brand">Вячеслав Ваньков · Деплоид</div><div class="footer-meta">Автоматизация бизнес-процессов</div></div><div class="footer-meta">Самозанятый · ИНН 540700478835<br>vankov@deploid.ru</div><div class="footer-links"><a href="index.html">Главная</a><a href="privacy.html">Персональные данные</a><a href="mailto:abuse@deploid.ru">Пожаловаться на письмо</a></div></div></footer>
+  <footer><div class="wrap footer-grid"><div><div class="footer-brand">Вячеслав Ваньков · Деплоид</div><div class="footer-meta">Автоматизация бизнес-процессов</div></div><div class="footer-meta">Самозанятый · ИНН 540700478835<br>vankov@deploid.ru</div><div class="footer-links"><a href="/">Главная</a><a href="/privacy">Персональные данные</a><a href="mailto:abuse@deploid.ru">Пожаловаться на письмо</a></div></div></footer>
   <script>
     (function(){
       var header=document.getElementById('header');

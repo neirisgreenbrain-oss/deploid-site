@@ -1,0 +1,23 @@
+# Сайт открыт целиком, включая краулеры ИИ: страницы написаны затем, чтобы их читали.
+User-agent: *
+Allow: /
+
+User-agent: GPTBot
+Allow: /
+
+User-agent: ClaudeBot
+Allow: /
+
+User-agent: Claude-Web
+Allow: /
+
+User-agent: PerplexityBot
+Allow: /
+
+User-agent: Google-Extended
+Allow: /
+
+User-agent: YandexBot
+Allow: /
+
+Sitemap: https://deploid.ru/sitemap.xml
