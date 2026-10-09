@@ -3,24 +3,24 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <meta name="description" content="Проекты Вячеслава Ванькова, созданные с помощью AI-агентов: документы, Telegram-боты, управление агентами и поиск клиентов.">
+  <meta name="description" content="Примеры решений Вячеслава Ванькова: учёт заказов в Telegram, подготовка документов, управление AI-агентами и исследование компаний.">
   <meta name="theme-color" content="#f1f0ea">
-  <title>Работы — Деплоид</title>
+  <title>Проекты — Деплоид | Боты, документы и AI-автоматизация</title>
   <link rel="canonical" href="https://deploid.ru/portfolio">
   <meta property="og:type" content="website">
   <meta property="og:url" content="https://deploid.ru/portfolio">
   <meta property="og:site_name" content="Деплоид">
   <meta property="og:locale" content="ru_RU">
-  <meta property="og:title" content="Работы — Деплоид">
-  <meta property="og:description" content="Шесть проектов: задачи, работа AI-агентов, результаты и способы проверки.">
+  <meta property="og:title" content="Проекты — Деплоид | Боты, документы и AI-автоматизация">
+  <meta property="og:description" content="Примеры решений Вячеслава Ванькова: учёт заказов в Telegram, подготовка документов, управление AI-агентами и исследование компаний.">
   <meta property="og:image" content="https://deploid.ru/og.jpg">
   <meta property="og:image:type" content="image/jpeg">
   <meta property="og:image:width" content="1200">
   <meta property="og:image:height" content="630">
   <meta property="og:image:alt" content="Деплоид — автоматизация бизнес-процессов">
   <meta name="twitter:card" content="summary_large_image">
-  <meta name="twitter:title" content="Работы — Деплоид">
-  <meta name="twitter:description" content="Шесть проектов: задачи, работа AI-агентов, результаты и способы проверки.">
+  <meta name="twitter:title" content="Проекты — Деплоид | Боты, документы и AI-автоматизация">
+  <meta name="twitter:description" content="Примеры решений Вячеслава Ванькова: учёт заказов в Telegram, подготовка документов, управление AI-агентами и исследование компаний.">
   <meta name="twitter:image" content="https://deploid.ru/og.jpg">
   <link rel="alternate" type="text/markdown" href="/llms.txt" title="Выжимка сайта для языковых моделей">
   <meta name="author" content="Вячеслав Ваньков">
@@ -30,147 +30,91 @@
   "@context": "https://schema.org",
   "@graph": [
     {
-      "@type": "ProfilePage",
-      "@id": "https://deploid.ru/portfolio",
-      "url": "https://deploid.ru/portfolio",
-      "name": "Работы — Деплоид",
+      "@type": "WebSite",
+      "@id": "https://deploid.ru/#site",
+      "url": "https://deploid.ru/",
+      "name": "Деплоид",
       "inLanguage": "ru-RU",
-      "isPartOf": {
-        "@id": "https://deploid.ru/#site"
-      },
-      "about": {
+      "publisher": {
         "@id": "https://deploid.ru/#vankov"
-      },
-      "mainEntity": {
-        "@id": "https://deploid.ru/#vankov"
-      },
-      "significantLink": "https://deploid.ru/"
+      }
     },
     {
       "@type": "Person",
       "@id": "https://deploid.ru/#vankov",
       "name": "Вячеслав Ваньков",
-      "jobTitle": "Инженер автоматизации бизнес-процессов и ИИ-агентов",
-      "description": "Создаёт системы автоматизации с помощью AI-агентов: организует работу над задачей, задаёт требования и проверяет результат. Собственные проекты — документы, Telegram-боты, управление агентами и поиск клиентов.",
+      "jobTitle": "Специалист по AI-автоматизации",
+      "description": "Создаёт инструменты для работы с заказами, документами и данными. Организует разработку с AI-агентами и проверяет результат.",
       "email": "mailto:vankov@deploid.ru",
       "url": "https://deploid.ru/",
-      "image": "https://deploid.ru/vankov.jpg",
-      "taxID": "540700478835",
-      "brand": {
-        "@type": "Brand",
-        "name": "Деплоид"
+      "image": "https://deploid.ru/vankov.jpg"
+    },
+    {
+      "@type": "CollectionPage",
+      "@id": "https://deploid.ru/portfolio",
+      "url": "https://deploid.ru/portfolio",
+      "name": "Проекты — Деплоид",
+      "description": "Примеры систем для учёта заказов, подготовки документов и работы с AI-агентами.",
+      "isPartOf": {
+        "@id": "https://deploid.ru/#site"
       },
-      "knowsAbout": [
-        "работа с Claude Code и Codex",
-        "постановка задач AI-агентам",
-        "организация многоэтапных процессов",
-        "проверка результатов",
-        "автоматизация документов",
-        "Telegram-боты и API-интеграции",
-        "управление контекстом и памятью"
-      ]
+      "author": {
+        "@id": "https://deploid.ru/#vankov"
+      }
     },
     {
       "@type": "ItemList",
-      "@id": "https://deploid.ru/portfolio#works",
-      "name": "Шесть систем",
-      "numberOfItems": 6,
-      "itemListOrder": "https://schema.org/ItemListUnordered",
       "itemListElement": [
         {
           "@type": "ListItem",
           "position": 1,
           "item": {
-            "@type": "SoftwareApplication",
-            "name": "Платформа управления ИИ-агентом с телефона",
-            "url": "https://deploid.ru/portfolio#platform",
-            "applicationCategory": "DeveloperApplication",
-            "creativeWorkStatus": "собственный проект",
-            "creator": {
+            "@type": "CreativeWork",
+            "name": "Заказы и расчёты в Telegram",
+            "description": "Telegram-бот объединяет заказы, исполнителей, статусы и расчёты. Есть синхронизация с Notion.",
+            "url": "https://deploid.ru/portfolio#bot",
+            "author": {
               "@id": "https://deploid.ru/#vankov"
-            },
-            "description": "Собственный интерфейс к AI-агентам с телефона: проекты, история, Git, терминал, разрешения и защищённый доступ.",
-            "keywords": "Node.js, Express, WebSocket, Agent SDK, SQLite FTS5, ConPTY, AES-256-GCM, nginx, TLS"
+            }
           }
         },
         {
           "@type": "ListItem",
           "position": 2,
           "item": {
-            "@type": "SoftwareApplication",
-            "name": "Бот для подрядчика: доступ к результату без доступа к системе",
-            "url": "https://deploid.ru/portfolio#bot",
-            "applicationCategory": "BusinessApplication",
-            "creativeWorkStatus": "собственный проект",
-            "creator": {
+            "@type": "CreativeWork",
+            "name": "Подготовка документов с проверкой требований",
+            "description": "Агентный процесс разбирает требования, готовит материалы, собирает файлы и проверяет результат.",
+            "url": "https://deploid.ru/portfolio#doc-pipeline",
+            "author": {
               "@id": "https://deploid.ru/#vankov"
-            },
-            "description": "Telegram-интерфейс для заказов, исполнителей и учёта. Передача задачи файлом, проверка возвращаемых путей, SQLite и витрина Notion.",
-            "keywords": "Python 3.11, aiogram 3, SQLite, Notion API, asyncio, изоляция исполнения, pytest"
+            }
           }
         },
         {
           "@type": "ListItem",
           "position": 3,
           "item": {
-            "@type": "SoftwareApplication",
-            "name": "Конвейер автогенерации технических документов",
-            "url": "https://deploid.ru/portfolio#doc-pipeline",
-            "applicationCategory": "BusinessApplication",
-            "creativeWorkStatus": "собственный проект",
-            "creator": {
+            "@type": "CreativeWork",
+            "name": "Управление AI-агентами с телефона",
+            "description": "Веб-интерфейс для работы с AI-агентами: проекты, история, просмотр изменений и управление с телефона.",
+            "url": "https://deploid.ru/portfolio#platform",
+            "author": {
               "@id": "https://deploid.ru/#vankov"
-            },
-            "description": "Многофазный процесс обработки документов с приёмкой и восстановлением. Сохранённый прогон 7 октября 2026: 4818 тестов и 18 под-тестов без ошибок.",
-            "keywords": "Python, Claude Agent SDK, многоагентная оркестрация, хуки, docx, pdf, pytest, git"
+            }
           }
         },
         {
           "@type": "ListItem",
           "position": 4,
           "item": {
-            "@type": "SoftwareApplication",
-            "name": "Пайплайн поиска и квалификации клиентов",
+            "@type": "CreativeWork",
+            "name": "Исследование компаний и подготовка предложений",
+            "description": "Инструмент собирает сведения о компаниях со ссылками на источники и готовит предложения для проверки человеком.",
             "url": "https://deploid.ru/portfolio#outreach",
-            "applicationCategory": "BusinessApplication",
-            "creativeWorkStatus": "собственный проект",
-            "creator": {
+            "author": {
               "@id": "https://deploid.ru/#vankov"
-            },
-            "description": "Поиск компаний, квалификация по источникам, подготовка писем и контроль одобрения перед отправкой. Отдельный слой обработки личных данных с ограничениями автоматического распознавания.",
-            "keywords": "Python 3.11, SQLite, LLM-пайплайн, hh.ru API, 2ГИС, SMTP, DKIM, pytest"
-          }
-        },
-        {
-          "@type": "ListItem",
-          "position": 5,
-          "item": {
-            "@type": "SoftwareApplication",
-            "name": "ИИ-ассистент с памятью, которая живёт месяцами",
-            "url": "https://deploid.ru/portfolio#assistant",
-            "applicationCategory": "BusinessApplication",
-            "creativeWorkStatus": "собственный проект",
-            "creator": {
-              "@id": "https://deploid.ru/#vankov"
-            },
-            "description": "Текстовая память в Git: ядро, зоны проектов и журналы. Рабочий контекст хранится отдельно от сессии модели.",
-            "keywords": "MCP, Notion API, Google Calendar API, Telegram Bot API, git как база, Python"
-          }
-        },
-        {
-          "@type": "ListItem",
-          "position": 6,
-          "item": {
-            "@type": "SoftwareApplication",
-            "name": "Конвейер сборки игровых уровней",
-            "url": "https://deploid.ru/portfolio#content-pipeline",
-            "applicationCategory": "DeveloperApplication",
-            "creativeWorkStatus": "в разработке",
-            "creator": {
-              "@id": "https://deploid.ru/#vankov"
-            },
-            "description": "Сборка уровня из спецификации через Blender и Unreal Engine; автоматические снимки и отчёт времени кадра.",
-            "keywords": "Unreal Engine 5, Blender Python API, генеративные модели, процедурная генерация, профилирование"
+            }
           }
         }
       ]
@@ -260,323 +204,66 @@
     @media(max-width:900px){.verify-grid{grid-template-columns:1fr}.vitem,.vitem:nth-child(2n){padding:1.3rem 0;border-left:0}.nav{grid-template-columns:1fr auto}.nav-links{display:none}.page-head{padding:7.5rem 0 2.5rem}.counters{grid-template-columns:repeat(2,1fr)}.counter{padding:1.3rem 1.2rem}.counter:nth-child(2n){border-right:0;padding-right:0}.counter:nth-child(2n+1){padding-left:0}.counter:nth-child(n+3){border-top:1px solid var(--line)}.case-body{grid-template-columns:1fr;gap:1.8rem}.stack-row{grid-template-columns:1fr;gap:.5rem}.cta-grid{grid-template-columns:1fr}.footer-grid{grid-template-columns:1fr 1fr}.footer-links{grid-column:1/-1}}
     @media(max-width:620px){body{font-size:16px}.wrap{width:min(100% - 28px,1180px)}.nav{height:66px}.nav-cta{padding:.55rem .75rem;border:1px solid var(--line-dark);border-radius:999px;font-size:.76rem}.page-head{padding:6.6rem 0 2rem}.counters{grid-template-columns:1fr}.counter,.counter:first-child,.counter:last-child{padding:1.1rem 0;border-right:0;border-top:1px solid var(--line)}.counter:first-child{border-top:0}.signature{gap:.9rem}.portrait{width:84px;height:84px}.footer-grid{grid-template-columns:1fr}.footer-links{grid-column:auto;flex-direction:column}}
     @media(prefers-reduced-motion:reduce){html{scroll-behavior:auto}*,*::before,*::after{animation:none!important;transition:none!important}}
+  
+    section[id],article[id]{scroll-margin-top:100px}
+    .hero-copy h1{max-width:15ch;font-size:clamp(2.8rem,5.45vw,5.2rem);line-height:1.04}
+    .hero-person{display:flex;align-items:center;gap:.85rem;font-size:.88rem;color:var(--ink-2)}
+    .hero-person img{width:46px;height:46px;border-radius:50%;object-fit:cover}
+    .hero-person b{display:block}.hero-person span{display:block;color:var(--muted);font-size:.77rem}
+    .project-grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:1rem}
+    .project-card{display:flex;flex-direction:column;gap:1.15rem;background:var(--surface);border:1px solid var(--line);border-radius:20px;padding:2rem;text-decoration:none;transition:border-color .2s,transform .2s}
+    .project-card:hover{border-color:var(--green);transform:translateY(-3px)}
+    .project-card p{font-size:.96rem;color:var(--ink-2);max-width:48ch}
+    .project-card .card-link{color:var(--green-dark);font-size:.88rem;font-weight:650;margin-top:auto}
+    .project-card .project-type{font:400 .7rem/1.4 var(--mono);color:var(--muted)}
+    .section-note{margin-top:1.5rem;max-width:65ch;color:var(--ink-2);font-size:.95rem}
+    .project-flow{display:flex;gap:.5rem;align-items:center;flex-wrap:wrap;padding:1.25rem;background:var(--paper-2);border-radius:12px;border:1px solid var(--line);font-size:.84rem;color:var(--green-dark)}
+    .project-flow span{background:var(--surface);padding:.55rem .75rem;border-radius:8px}
+    .flow-title{font:500 .67rem/1.4 var(--mono);text-transform:uppercase;letter-spacing:.08em;color:var(--muted);margin-bottom:.6rem}
+    .case-jump{display:flex;flex-wrap:wrap;gap:.65rem;margin-top:2rem}
+    .case-jump a{padding:.6rem .9rem;border:1px solid var(--line-dark);border-radius:999px;text-decoration:none;font-size:.85rem;color:var(--green-dark)}
+    .case-jump a:hover{background:var(--surface);border-color:var(--green)}
+    .case-head h3{font-size:clamp(1.7rem,3vw,2.4rem)}
+    .project-name{display:block;font:400 .75rem/1.4 var(--mono);color:var(--muted);margin-bottom:.85rem}
+    .case-task{max-width:68ch;font-size:1.06rem}
+    .case-body{grid-template-columns:minmax(0,1.25fr) minmax(0,1fr)}
+    .case-foot{margin-top:1.5rem;color:var(--ink-2);font-size:.95rem;max-width:70ch}
+    .mini-projects{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:1rem;margin-top:2rem}
+    .mini-project{background:var(--surface);border:1px solid var(--line);border-radius:18px;padding:1.5rem}
+    .mini-project h3{margin-bottom:.8rem}.mini-project p{font-size:.96rem;color:var(--ink-2)}
+    .cta-copy{display:flex;flex-direction:column;align-items:flex-start;gap:1.25rem}
+    .cta-copy p{color:#d2dfd6;max-width:42ch}
+    .cta-copy .contact-hint{font-size:.88rem;color:#b9cec1}
+    .email-link{font-size:1.03rem;color:#f7faf7;overflow-wrap:anywhere;text-underline-offset:5px}
+    .copy-email{font:500 .85rem var(--sans);padding:.3rem 0;color:#d2dfd6;border:0;border-bottom:1px solid #b9cec170;background:transparent;cursor:pointer}
+    .copy-status{font-size:.84rem;color:var(--acid);min-height:1.3em}
+    .cta-grid{grid-template-columns:1.1fr .9fr}.cta-grid h2{max-width:17ch}
+    .flow-only{margin-top:2rem}.verify-grid{grid-template-columns:repeat(2,minmax(0,1fr))}
+    @media(max-width:900px){.case-body,.cta-grid{grid-template-columns:1fr}.hero-copy h1{max-width:16ch}}
+    @media(max-width:620px){.project-grid,.mini-projects,.verify-grid{grid-template-columns:1fr}.project-card{padding:1.5rem}.hero-copy h1{font-size:clamp(2.7rem,11vw,3.4rem)}.machine-wrap{margin-top:0}.case-jump{gap:.5rem}.case-jump a{font-size:.8rem}.hero{padding-top:6.2rem}.hero-copy .lede{font-size:1.05rem}.hero-copy{gap:1rem}.hero-actions{gap:.8rem}.trustline{font-size:.78rem;padding-top:.8rem}.vitem:nth-child(2n){padding:1.3rem 0;border-left:0}.cta-copy .btn{font-size:.93rem}}
+
   </style>
 </head>
-<body>
-  <header id="header"><nav class="wrap nav" aria-label="Основная навигация"><a class="brand" href="/">деплоид<span>.</span></a><div class="nav-links"><a href="/#solutions">Задачи</a><a href="/#method">Подход</a><a href="/portfolio" aria-current="page">Работы</a><a href="/#faq">Вопросы</a></div><a class="nav-cta" href="mailto:vankov@deploid.ru?subject=Разбор%20процесса">Обсудить задачу ↗</a></nav></header>
-  <main id="top">
-    <section class="page-head"><div class="wrap">
-      <div class="eyebrow">Работы</div>
-      <h1>Шесть проектов, собранных с помощью ИИ.</h1>
-      <p class="lede">Собрал инструменты для своей работы: управление агентами, подготовка документов, учёт заказов и поиск клиентов. От меня — задача, требования, организация работы ИИ и проверка результата. Ниже показываю, что получилось и как устроен каждый проект.</p>
-      <div class="counters">
-        <div class="counter"><b>6</b><span>проектов<br>для собственных задач</span></div>
-        <div class="counter"><b>4818</b><span>прошедших тестов Lab Worker<br>в прогоне 7 октября 2026</span></div>
-        <div class="counter"><b>AI</b><span>Claude Code и Codex<br>в рабочем процессе</span></div>
-        <div class="counter"><b>API</b><span>Telegram, Notion<br>и другие интеграции</span></div>
-      </div>
-      <p class="method"><b>Что стоит за результатами.</b> Проекты можно разобрать по исходникам, истории изменений и рабочим сценариям. Для Lab Worker сохранён отчёт прогона от 7 октября 2026: 4818 тестов и 18 под-тестов прошли без ошибок. Новые функции проходят отдельную проверку.</p>
-    </div></section>
-
-    <section class="cases" aria-labelledby="cases-title"><div class="wrap">
-      <h2 class="sr-only" id="cases-title">Кейсы: шесть систем</h2>
-
-      <article class="case" id="platform">
-        <div class="case-head"><h3>Платформа управления ИИ-агентом с телефона</h3><span class="tag live">собственный проект</span><span class="tag">2026</span></div>
-        <p class="case-task">Мощный ИИ-агент живёт на домашней машине, а владелец — нет. Нужен был полноценный рабочий интерфейс к нему с телефона: не «чатик», а среда, где видно проекты, диффы, терминал и историю. Требование сформулировано жёстко: работать должно всегда.</p>
-        <div class="case-body">
-          <div>
-            <p class="label">Что сделал</p>
-            <ul class="did">
-              <li><b>Веб-платформа поверх агента:</b> долгоживущая сессия на Agent SDK, настоящая система разрешений (а не «разрешить всё»), стрим по WebSocket.</li>
-              <li><b>Рабочее пространство:</b> проекты, git-панель, unified-диффы, полноценный терминал через ConPTY, полнотекстовый поиск по всей истории работы (SQLite FTS5).</li>
-              <li><b>Безопасность как инвариант:</b> сервер слушает только loopback, наружу — обратный туннель через VPS с TLS; конфиги шифрованы AES-256-GCM, двухфакторная аутентификация, CSRF на всех изменяющих ручках. До восьми авторизованных устройств одновременно.</li>
-              <li><b>Проверка с помощью AI-агентов:</b> отдельные проходы по обработке ошибок, доступам и сохранению состояния. Найденные проблемы разбираются и получают проверки на повторение.</li>
-              <li><b>Эксплуатация:</b> супервизор, восстановление соединения и проверки основных функций.</li>
-            </ul>
-          </div>
-          <div class="case-aside">
-            <div class="chips"><span class="chip">Node 22</span><span class="chip">Express</span><span class="chip">WebSocket</span><span class="chip">Agent SDK</span><span class="chip">SQLite FTS5</span><span class="chip">ConPTY</span><span class="chip">AES-256-GCM</span><span class="chip">nginx</span><span class="chip">TLS</span></div>
-            <div class="effect"><p class="label">Эффект</p><p>С телефона доступны проекты, история, терминал и работа с агентами на домашнем ПК. Для сбоев предусмотрены перезапуск и диагностика. Отдельно исправлен установщик планировщика Windows, возвращавший лимит работы в 72 часа.</p></div>
-          </div>
-        </div>
-        <figure>
-          <div class="scroller">
-            <svg viewBox="0 0 760 216" role="img" aria-label="Топология: телефон и ноутбук через TLS-туннель на VPS попадают на локальный порт домашней машины, где живёт агент">
-              <defs><marker id="ar3" markerWidth="8" markerHeight="8" refX="7" refY="4" orient="auto"><path d="M0 0 L8 4 L0 8 z" fill="#aeb5ae"/></marker></defs>
-              <g font-family="JetBrains Mono, monospace" font-size="11">
-                <rect x="12" y="24" width="104" height="40" fill="#e7e8e1" stroke="#aeb5ae"/>
-                <text x="64" y="49" fill="#101715" text-anchor="middle">Телефон</text>
-                <rect x="12" y="84" width="104" height="40" fill="#e7e8e1" stroke="#aeb5ae"/>
-                <text x="64" y="109" fill="#101715" text-anchor="middle">Ноутбук</text>
-                <rect x="12" y="144" width="104" height="40" fill="#e7e8e1" stroke="#aeb5ae"/>
-                <text x="64" y="169" fill="#101715" text-anchor="middle">ПК</text>
-                <text x="64" y="204" fill="#69716d" font-size="10" text-anchor="middle">до 8 устройств, 2FA</text>
-                <line x1="118" y1="44" x2="196" y2="94" stroke="#2f7659" marker-end="url(#ar3)"/>
-                <line x1="118" y1="104" x2="196" y2="104" stroke="#2f7659" marker-end="url(#ar3)"/>
-                <line x1="118" y1="164" x2="196" y2="114" stroke="#2f7659" marker-end="url(#ar3)"/>
-                <text x="157" y="74" fill="#2f7659" font-size="10" text-anchor="middle">HTTPS</text>
-                <rect x="200" y="74" width="132" height="62" fill="#faf9f5" stroke="#2f7659" stroke-width="1.5"/>
-                <text x="266" y="99" fill="#101715" text-anchor="middle">VPS · nginx</text>
-                <text x="266" y="117" fill="#69716d" text-anchor="middle">TLS, публичный вход</text>
-                <line x1="334" y1="105" x2="418" y2="105" stroke="#c9864a" stroke-width="1.5" marker-end="url(#ar3)"/>
-                <text x="376" y="94" fill="#c9864a" font-size="10" text-anchor="middle">обратный туннель</text>
-                <text x="376" y="126" fill="#c9864a" font-size="10" text-anchor="middle">исходящий с ПК</text>
-                <rect x="422" y="30" width="326" height="150" fill="none" stroke="#aeb5ae" stroke-dasharray="4 4"/>
-                <text x="585" y="50" fill="#69716d" font-size="10" text-anchor="middle">домашняя машина — портов наружу нет</text>
-                <rect x="442" y="64" width="128" height="52" fill="#faf9f5" stroke="#2f7659"/>
-                <text x="506" y="86" fill="#101715" text-anchor="middle">Платформа</text>
-                <text x="506" y="103" fill="#69716d" text-anchor="middle">127.0.0.1:3000</text>
-                <line x1="572" y1="90" x2="604" y2="90" stroke="#aeb5ae" marker-end="url(#ar3)"/>
-                <rect x="608" y="64" width="124" height="52" fill="#faf9f5" stroke="#2f7659"/>
-                <text x="670" y="86" fill="#101715" text-anchor="middle">ИИ-агент</text>
-                <text x="670" y="103" fill="#69716d" text-anchor="middle">Agent SDK</text>
-                <rect x="442" y="130" width="290" height="34" fill="#e7e8e1" stroke="#aeb5ae"/>
-                <text x="587" y="152" fill="#69716d" text-anchor="middle">проекты · git · терминал · поиск</text>
-              </g>
-            </svg>
-          </div>
-          <figcaption>Ни одного открытого порта на домашней машине: туннель поднимает сама платформа изнутри, наружу торчит только VPS.</figcaption>
-        </figure>
-      </article>
-
-      <article class="case" id="bot">
-        <div class="case-head"><h3>Бот для подрядчика: доступ к результату без доступа к системе</h3><span class="tag live">собственный проект</span><span class="tag">2026</span></div>
-        <p class="case-task">Нужно было подключить подрядчика к моему производственному конвейеру документов, но не показывать ему саму архитектуру — она и есть актив. И заодно снять с себя учёт: заказы, сроки, платежи, долги, проценты исполнителю.</p>
-        <div class="case-body">
-          <div>
-            <p class="label">Что сделал</p>
-            <ul class="did">
-              <li><b>Бот как единственный интерфейс.</b> Исполнитель работает с кнопками и формой заказа, без настройки внутреннего процесса. Один экран: навигация переписывает то же сообщение, новым приходят только события. Есть тест, который проверяет, что ни одна кнопка не ведёт в пустоту.</li>
-              <li><b>Мост в изолированную виртуалку.</b> Бот кладёт задачу в <code>task.json</code>, запускает команду из конфига, ждёт <code>result.json</code>. Текст задачи передаётся файлом, путь возвращаемого архива проверяется. Мост поддерживает запуск в VM и отдельный хостовый режим; границы доступа зависят от выбранной конфигурации.</li>
-              <li><b>Учёт и деньги.</b> Заказы, платежи, начисления по матрице процентов. Незаполненный процент не равен нулю: бот отказывается провести начисление с внятной ошибкой, а не молча проводит работу на 0 ₽.</li>
-              <li><b>Notion как витрина, а не как база.</b> Запись односторонняя, очередь событий лежит в SQLite. Notion упал — учёт продолжает работать, неотправленное догоняет следующим тиком.</li>
-              <li><b>Алерты, которые не задалбывают.</b> Повод помечается в базе ключом, то же обстоятельство второй раз не поднимается. Алерт, приходящий каждые 15 минут, перестают читать через день — это дороже пропущенного алерта.</li>
-            </ul>
-          </div>
-          <div class="case-aside">
-            <div class="chips"><span class="chip">Python 3.11</span><span class="chip">aiogram 3</span><span class="chip">SQLite</span><span class="chip">Notion API</span><span class="chip">asyncio-планировщик</span><span class="chip">TOML</span><span class="chip">pytest</span></div>
-            <div class="effect"><p class="label">Эффект</p><p>Заказы, платежи и начисления собраны в одном интерфейсе. База учёта работает отдельно от Notion; витрина обновляется через очередь. Доступ исполнителя ограничен его задачами.</p></div>
-          </div>
-        </div>
-        <figure>
-          <div class="scroller">
-            <svg viewBox="0 0 760 210" role="img" aria-label="Схема: исполнитель и владелец в Telegram, бот с базой SQLite, изолированная виртуальная машина, витрина в Notion">
-              <defs><marker id="ar2" markerWidth="8" markerHeight="8" refX="7" refY="4" orient="auto"><path d="M0 0 L8 4 L0 8 z" fill="#aeb5ae"/></marker></defs>
-              <g font-family="JetBrains Mono, monospace" font-size="11">
-                <rect x="12" y="20" width="118" height="44" fill="#e7e8e1" stroke="#aeb5ae"/>
-                <text x="71" y="47" fill="#101715" text-anchor="middle">Исполнитель</text>
-                <rect x="12" y="132" width="118" height="44" fill="#e7e8e1" stroke="#aeb5ae"/>
-                <text x="71" y="159" fill="#101715" text-anchor="middle">Владелец</text>
-                <line x1="132" y1="42" x2="228" y2="80" stroke="#aeb5ae" marker-end="url(#ar2)"/>
-                <line x1="132" y1="154" x2="228" y2="116" stroke="#aeb5ae" marker-end="url(#ar2)"/>
-                <rect x="232" y="62" width="150" height="72" fill="#faf9f5" stroke="#2f7659" stroke-width="1.5"/>
-                <text x="307" y="88" fill="#101715" text-anchor="middle">Бот</text>
-                <text x="307" y="106" fill="#69716d" text-anchor="middle">aiogram 3</text>
-                <text x="307" y="122" fill="#69716d" text-anchor="middle">SQLite · планировщик</text>
-                <line x1="384" y1="80" x2="470" y2="58" stroke="#c9864a" marker-end="url(#ar2)"/>
-                <text x="428" y="44" fill="#c9864a" font-size="10" text-anchor="middle">task.json</text>
-                <line x1="470" y1="96" x2="384" y2="116" stroke="#c9864a" marker-end="url(#ar2)"/>
-                <text x="428" y="132" fill="#c9864a" font-size="10" text-anchor="middle">result.json</text>
-                <rect x="474" y="30" width="146" height="82" fill="#faf9f5" stroke="#c9864a" stroke-dasharray="5 3"/>
-                <text x="547" y="58" fill="#101715" text-anchor="middle">Изолированная ВМ</text>
-                <text x="547" y="76" fill="#69716d" text-anchor="middle">агент-исполнитель</text>
-                <text x="547" y="94" fill="#69716d" text-anchor="middle">сеть и диск урезаны</text>
-                <line x1="307" y1="136" x2="307" y2="168" stroke="#aeb5ae" marker-end="url(#ar2)"/>
-                <rect x="232" y="170" width="150" height="34" fill="#e7e8e1" stroke="#aeb5ae"/>
-                <text x="307" y="192" fill="#101715" text-anchor="middle">Notion — витрина</text>
-                <text x="668" y="150" fill="#69716d" font-size="10" text-anchor="middle">архитектура</text>
-                <text x="668" y="165" fill="#69716d" font-size="10" text-anchor="middle">наружу не выходит</text>
-                <path d="M620 71 L700 71" stroke="#aeb5ae" stroke-dasharray="3 3"/>
-              </g>
-            </svg>
-          </div>
-          <figcaption>Подрядчик получает результат работы системы, но не саму систему. Задача и результат передаются через файлы с проверкой путей.</figcaption>
-        </figure>
-      </article>
-
-      <article class="case" id="doc-pipeline">
-        <div class="case-head"><h3>Конвейер автогенерации технических документов</h3><span class="tag live">собственный проект</span><span class="tag">2026</span></div>
-        <p class="case-task">Производство объёмных технических документов по формальным требованиям: оформление по стандарту, расчёты, код, графики, выгрузка в docx/pdf/zip. Задача — передать повторяющиеся этапы агентам, сохранить требования к результату и вовремя остановить процесс, если данных не хватает.</p>
-        <div class="case-body">
-          <div>
-            <p class="label">Что сделал</p>
-            <ul class="did">
-              <li><b>Многофазный конвейер:</b> разбор требований → выполнение → сборка → приёмка. У каждой фазы свой контекст и письменная передача следующей — один агент не тащит на себе весь объём.</li>
-              <li><b>Детерминированные гейты вместо надежды на модель.</b> На стыках фаз не «проверь себя, пожалуйста», а программные проверки: структура документа сверяется с первоисточником требований, скан на утечку секретов, отказ отдать результат при несовпадении.</li>
-              <li><b>Возобновление после сбоя.</b> Состояние заказа и бюджет сохраняются. Если нужен ответ владельца, он связывается с конкретным заказом; после ответа работа продолжается с сохранённого этапа.</li>
-              <li><b>Учёт работы агентов.</b> Сохраняются события, расход и результаты этапов. По ним можно разобрать причину остановки и затраты на конкретный прогон.</li>
-              <li><b>Проверки архитектуры.</b> В сохранённом прогоне от 7 октября 2026 прошли 4818 тестов и 18 под-тестов. Проверяются приёмка, восстановление, учёт и передача результатов.</li>
-            </ul>
-          </div>
-          <div class="case-aside">
-            <div class="chips"><span class="chip">Python</span><span class="chip">Claude Agent SDK</span><span class="chip">хуки PreToolUse</span><span class="chip">многоагентная оркестрация</span><span class="chip">docx / pdf</span><span class="chip">pytest</span><span class="chip">git</span></div>
-            <div class="effect"><p class="label">Эффект</p><p>Требования проходят через отдельные этапы подготовки, выполнения, сборки и приёмки. Ошибка или нехватка данных сохраняется как состояние задачи, а готовность результата проверяется перед выдачей.</p></div>
-          </div>
-        </div>
-        <figure>
-          <div class="scroller">
-            <svg viewBox="0 0 760 188" role="img" aria-label="Схема конвейера: требования, четыре фазы с гейтами между ними, готовый документ">
-              <defs><marker id="ar" markerWidth="8" markerHeight="8" refX="7" refY="4" orient="auto"><path d="M0 0 L8 4 L0 8 z" fill="#aeb5ae"/></marker></defs>
-              <g font-family="JetBrains Mono, monospace" font-size="11">
-                <rect x="12" y="62" width="96" height="46" fill="#e7e8e1" stroke="#aeb5ae"/>
-                <text x="60" y="80" fill="#101715" text-anchor="middle">Требования</text>
-                <text x="60" y="95" fill="#69716d" text-anchor="middle">+ исходники</text>
-                <line x1="110" y1="85" x2="136" y2="85" stroke="#aeb5ae" marker-end="url(#ar)"/>
-                <rect x="140" y="62" width="104" height="46" fill="#faf9f5" stroke="#2f7659"/>
-                <text x="192" y="86" fill="#101715" text-anchor="middle">1 · Разбор</text>
-                <line x1="246" y1="85" x2="272" y2="85" stroke="#aeb5ae" marker-end="url(#ar)"/>
-                <rect x="276" y="62" width="104" height="46" fill="#faf9f5" stroke="#2f7659"/>
-                <text x="328" y="86" fill="#101715" text-anchor="middle">2 · Выполнение</text>
-                <line x1="382" y1="85" x2="408" y2="85" stroke="#aeb5ae" marker-end="url(#ar)"/>
-                <rect x="412" y="62" width="104" height="46" fill="#faf9f5" stroke="#2f7659"/>
-                <text x="464" y="86" fill="#101715" text-anchor="middle">3 · Сборка</text>
-                <line x1="518" y1="85" x2="544" y2="85" stroke="#aeb5ae" marker-end="url(#ar)"/>
-                <rect x="548" y="62" width="104" height="46" fill="#faf9f5" stroke="#2f7659"/>
-                <text x="600" y="86" fill="#101715" text-anchor="middle">4 · Приёмка</text>
-                <line x1="654" y1="85" x2="680" y2="85" stroke="#aeb5ae" marker-end="url(#ar)"/>
-                <rect x="684" y="62" width="64" height="46" fill="#e7e8e1" stroke="#aeb5ae"/>
-                <text x="716" y="80" fill="#101715" text-anchor="middle">docx</text>
-                <text x="716" y="95" fill="#101715" text-anchor="middle">pdf · zip</text>
-                <g fill="#c9864a" font-size="10" text-anchor="middle"><text x="260" y="40">◆ гейт</text><text x="396" y="40">◆ гейт</text><text x="532" y="40">◆ гейт</text></g>
-                <g stroke="#c9864a" stroke-dasharray="3 3"><line x1="260" y1="46" x2="260" y2="60"/><line x1="396" y1="46" x2="396" y2="60"/><line x1="532" y1="46" x2="532" y2="60"/></g>
-                <path d="M600 112 L600 146 L192 146 L192 114" fill="none" stroke="#c9864a" stroke-dasharray="4 4" marker-end="url(#ar)"/>
-                <text x="396" y="164" fill="#c9864a" font-size="10" text-anchor="middle">не прошло приёмку — работа выбрасывается, чинится причина, прогон заново</text>
-              </g>
-            </svg>
-          </div>
-          <figcaption>Гейт — программная проверка, а не просьба к модели проверить себя. Не прошёл — фаза не отдаёт результат дальше.</figcaption>
-        </figure>
-      </article>
-
-      <article class="case" id="outreach">
-        <div class="case-head"><h3>Пайплайн поиска и квалификации клиентов</h3><span class="tag live">собственный проект</span><span class="tag">2026</span></div>
-        <p class="case-task">Найти бизнесы, которым автоматизация действительно нужна, без ниши и без спама. Главная идея: раз ниши нет — отбирать не по отрасли, а по наблюдаемым признакам ручной работы. Это мой инструмент для поиска и подготовки адресных предложений.</p>
-        <div class="case-body">
-          <div>
-            <p class="label">Что сделал</p>
-            <ul class="did">
-              <li><b>Конвейер со стадиями:</b> <code>поиск → отбор → досье → письмо → проверка человеком → отправка → ответ</code>. Каждая стадия — отдельная команда со состоянием в базе: можно остановиться и продолжить.</li>
-              <li><b>Самый сильный признак — открытая вакансия на рутинную роль:</b> боль названа словами самого бизнеса, а зарплата задаёт верхнюю границу разумного бюджета. Дальше — отзывы «не дозвониться», приём заявок руками в личные сообщения, однотипные документы.</li>
-              <li><b>Досье с источниками:</b> каждый факт о компании привязан к ссылке, откуда он взят. Письмо не опирается на выдумку модели — непроверенная строка до письма не доходит.</li>
-              <li><b>Предохранители против спама встроены в архитектуру:</b> письмо уходит по одному, с потолком в сутки и случайными промежутками; ни одно не уходит без одобрения человеком; в каждом письме — источник адреса и способ отказаться; стоп-лист проверяется перед отправкой.</li>
-              <li><b>Отдельная обработка личных данных.</b> Перед моделью стоит слой очистки текста и замены контактов их ролями. У автоматического распознавания есть ограничения, поэтому правила передачи данных проверяются отдельно.</li>
-              <li><b>Проверки перед отправкой:</b> статус одобрения, соответствие одобренному тексту, лимиты и стоп-лист.</li>
-            </ul>
-          </div>
-          <div class="case-aside">
-            <div class="chips"><span class="chip">Python 3.11</span><span class="chip">SQLite</span><span class="chip">LLM-пайплайн</span><span class="chip">hh.ru API</span><span class="chip">2ГИС</span><span class="chip">SMTP · DKIM</span><span class="chip">pytest</span></div>
-            <div class="effect"><p class="label">Эффект</p><p>Ценность конструкции — в критерии отбора: письмо готовится по найденным признакам задачи и проверенным источникам. Тот же подход переносится на квалификацию входящих заявок.</p></div>
-          </div>
-        </div>
-      </article>
-
-      <article class="case" id="assistant">
-        <div class="case-head"><h3>ИИ-ассистент с памятью, которая живёт месяцами</h3><span class="tag live">собственный проект</span><span class="tag">2026</span></div>
-        <p class="case-task">Болезнь всех ассистентов на языковых моделях: каждая сессия начинается с нуля. Нужно было, чтобы ручной запуск, запуск по расписанию и облачная сессия ощущались как один и тот же агент с одним контекстом — и чтобы контекст пережил смену модели.</p>
-        <div class="case-body">
-          <div>
-            <p class="label">Что сделал</p>
-            <ul class="did">
-              <li><b>Память как обычный текст в приватном репозитории:</b> компактное ядро, зоны проектов, журналы только на дозапись. Текст можно сравнить по версиям, откатить и использовать с разными моделями.</li>
-              <li><b>Автозагрузка на старте:</b> ядро печатается в порядке «стабильное первым, волатильное последним» — это помогает повторно использовать стабильную часть контекста.</li>
-              <li><b>Дисциплина против протухания:</b> изменяемые факты датируются, при смене состояния старое помечается устаревшим, а не удаляется молча. Отдельный набор контрольных вопросов — детектор того, что важный факт «утонул» под массой истории.</li>
-              <li><b>Интеграции:</b> задачи и клиенты в Notion, события и дедлайны в календаре, уведомления и готовые файлы в Telegram.</li>
-            </ul>
-          </div>
-          <div class="case-aside">
-            <div class="chips"><span class="chip">MCP</span><span class="chip">Notion API</span><span class="chip">Google Calendar API</span><span class="chip">Telegram Bot API</span><span class="chip">git как база</span><span class="chip">Python</span></div>
-            <div class="effect"><p class="label">Эффект</p><p>Контекст живёт месяцами и переживает пересоздание окружения. Это же решение переносится в любой продукт, где ассистент должен помнить клиента между обращениями, а не переспрашивать заново.</p></div>
-          </div>
-        </div>
-      </article>
-
-      <article class="case" id="content-pipeline">
-        <div class="case-head"><h3>Конвейер сборки игровых уровней</h3><span class="tag wip">в разработке</span><span class="tag">2026</span></div>
-        <p class="case-task">Свой проект на Unreal Engine 5. Уровни не лепятся руками: они описываются правилами и собираются конвейером, а трёхмерные объекты и текстуры к ним делаются с помощью ИИ.</p>
-        <div class="case-body">
-          <div>
-            <p class="label">Что сделал</p>
-            <ul class="did">
-              <li><b>Конвейер «описание → Blender → движок»:</b> уровень задаётся структурой данных, дальше собирается автоматически. В проекте есть спецификации уровней и единая команда сборки.</li>
-              <li><b>Трёхмерный контент делает ИИ,</b> а не ручной моделлинг: модели и текстуры генерируются и дальше доводятся скриптами в Blender до вида, пригодного для движка.</li>
-              <li><b>Автопрогон с приёмкой:</b> сборка запускается одной командой, сама делает снимки и замеряет кадр — есть цифры по стоимости тумана, света и геометрии в миллисекундах при бюджете 16,7 мс. Решения принимаются по замеру, а не по ощущению.</li>
-              <li><b>Проектная дисциплина:</b> четыре документа-истины и отдельно зафиксированные отвергнутые решения — чтобы не переспорить самого себя через месяц.</li>
-            </ul>
-          </div>
-          <div class="case-aside">
-            <div class="chips"><span class="chip">Unreal Engine 5</span><span class="chip">Blender Python API</span><span class="chip">генеративные модели</span><span class="chip">процедурная генерация</span><span class="chip">профилирование</span></div>
-          </div>
-        </div>
-      </article>
-
-    </div></section>
-
-    <section class="verify" aria-labelledby="verify-title">
-      <div class="wrap">
-        <div class="verify-head">
-          <div class="eyebrow">Проверка</div>
-          <h2 id="verify-title">Как проверить всё, что написано выше.</h2>
-        </div>
-        <div class="verify-grid">
-          <div class="vitem">
-            <h3>Разбор на экране, 40–60 минут</h3>
-            <p>Выбираем один проект и рабочий сценарий. Показываю задачу, этапы работы агентов, результат и разбор ошибок. Материалы для показа готовим без чужих данных и секретов.</p>
-          </div>
-          <div class="vitem">
-            <h3>Прогон тестов при вас</h3>
-            <p>Можно посмотреть сохранённый отчёт или запустить согласованный набор проверок. Обсудим, что они проверяют и какие сценарии требуют отдельной проверки вживую.</p>
-          </div>
-          <div class="vitem">
-            <h3>Журналы, а не слайды</h3>
-            <p>История изменений, события этапов и отчёты помогают понять, что было исправлено и на чём основан результат. Для показа выбираем материалы без личных данных.</p>
-          </div>
-          <div class="vitem">
-            <h3>Пилот вместо обещаний</h3>
-            <p>Один процесс, критерий успеха записан до начала работы. Не достигнут — не масштабируем, и я скажу это первым. Проверка делом стоит дешевле, чем доверие на слово.</p>
-          </div>
-        </div>
-        <p class="verify-note">Показываю свои проекты и объясняю решения на конкретных примерах. Для демонстрации выбираем материалы без секретов и чужих данных. Объём доступа к исходникам согласуем отдельно.</p>
-      </div>
-    </section>
-
-    <section class="stack">
-      <div class="wrap">
-        <div class="stack-head"><div class="eyebrow">Инструменты</div><h2>Как я работаю и что используется в проектах.</h2></div>
-        <div class="stack-row">
-          <div class="stack-key">Моя работа</div><div class="stack-val">Разбираю задачу, задаю требования AI-агентам, организую этапы, проверяю результат и возвращаю ошибки в работу. Использую Claude Code, Codex, инструкции, память и отдельные проверки.</div>
-        </div>
-        <div class="stack-row">
-          <div class="stack-key">Стек проектов</div><div class="stack-val">Python · Node.js · SQLite · Telegram / aiogram · REST API · Notion · WebSocket · инструменты проверки и развёртывания. Это технологии созданных систем, а основной способ разработки — работа с AI-агентами.</div>
-        </div>
-        <div class="stack-row">
-          <div class="stack-key warn">Подходящие задачи</div><div class="stack-val">Внутренние инструменты, обработка документов, Telegram-боты, интеграции, сбор данных и агентные процессы. Начинаем с одного сценария и проверяем его на реальных входных данных.</div>
-        </div>
-        <div class="stack-row">
-          <div class="stack-key warn">Выбор инструментов</div><div class="stack-val">Мои проекты собраны с помощью AI-агентов и кода. Если задача требует конкретного конструктора — n8n, Make или другого — сначала проверяем небольшой сценарий в нём и согласуем подход.</div>
-        </div>
-      </div>
-    </section>
-
-    <section class="cta-section"><div class="wrap cta-grid">
-      <div>
-        <div class="eyebrow">Дальше</div>
-        <h2>Похожая задача — у вас?</h2>
-        <div class="signature"><img class="portrait" src="vankov.jpg" width="96" height="96" loading="lazy" decoding="async" alt="Вячеслав Ваньков"><div><b>Вячеслав Ваньков</b></div></div>
-      </div>
-      <div class="cta-side">
-        <a class="btn light" href="mailto:vankov@deploid.ru?subject=Разбор%20процесса">Написать на vankov@deploid.ru <span aria-hidden="true">↗</span></a>
-        <a class="back-btn" href="/"><span aria-hidden="true">←</span> На главную: задачи и подход</a>
-      </div>
-    </div></section>
-  </main>
-  <footer><div class="wrap footer-grid"><div><div class="footer-brand">Вячеслав Ваньков · Деплоид</div><div class="footer-meta">Автоматизация бизнес-процессов</div></div><div class="footer-meta">Самозанятый · ИНН 540700478835<br>vankov@deploid.ru</div><div class="footer-links"><a href="/">Главная</a><a href="mailto:abuse@deploid.ru">Пожаловаться на письмо</a></div></div></footer>
+<body id="top">
+<header id="header"><nav class="wrap nav" aria-label="Основная навигация"><a class="brand" href="/">деплоид<span>.</span></a><div class="nav-links"><a href="/#solutions">Задачи</a><a href="/portfolio">Проекты</a><a href="/#method">Как работаем</a><a href="/#faq">Вопросы</a></div><a class="nav-cta" href="#contact">Обсудить задачу ↗</a></nav></header>
+<main><section class="page-head"><div class="wrap"><div class="eyebrow">Проекты</div><h1>От повторяющейся задачи — к рабочей системе.</h1><p class="lede">Учёт заказов, подготовка документов и инструменты для работы с ИИ. Здесь собраны системы, которые я создаю для собственных процессов. Каждый пример показывает конкретную задачу и способ её решения.</p><nav class="case-jump" aria-label="Выбрать проект"><a href="#bot">Заказы и учёт</a><a href="#doc-pipeline">Документы</a><a href="#platform">AI-агенты</a><a href="#outreach">Исследование компаний</a><a href="#assistant">Другие проекты</a></nav></div></section><section class="cases" aria-labelledby="cases-title"><div class="wrap"><h2 class="sr-only" id="cases-title">Примеры решений</h2><article class="case" id="bot"><span class="project-name">Lab Manager Bot</span><div class="case-head"><h3>Заказы и расчёты в Telegram</h3></div><p class="case-task">Когда заказ, срок и расчёты с исполнителем живут в разных переписках, владельцу приходится собирать картину вручную.</p><div class="case-body"><div><p class="label">Что собрано</p><ul class="did"><li><b>Единый учёт.</b> Заказы, исполнители, статусы, платежи и начисления собраны в боте.</li><li><b>Работа по ролям.</b> Исполнитель получает свои задачи, владелец управляет заказами и расчётами.</li><li><b>Связь с Notion.</b> Данные для просмотра передаются в Notion; основной учёт хранится отдельно.</li></ul></div><div class="case-aside"><div class="effect"><p class="label">Результат</p><p>В одном интерфейсе можно посмотреть состояние заказа и связанные с ним расчёты.</p></div><div><p class="label">Где пригодится</p><p>Команды с заказами, подрядчиками и регулярными выплатами исполнителям.</p></div></div></div><div class="flow-only"><p class="flow-title">Схема работы</p><div class="project-flow" aria-label="Заказ → Исполнитель → Статус и расчёты"><span>Заказ</span><b aria-hidden="true">→</b><span>Исполнитель</span><b aria-hidden="true">→</b><span>Статус и расчёты</span></div></div></article><article class="case" id="doc-pipeline"><span class="project-name">Lab Worker</span><div class="case-head"><h3>Подготовка документов с проверкой требований</h3></div><p class="case-task">Сложный документ нужно не только подготовить: важно соблюсти требования, собрать материалы и проверить итог перед выдачей.</p><div class="case-body"><div><p class="label">Что собрано</p><ul class="did"><li><b>Понятные этапы.</b> Система разбирает требования, выполняет задачу, собирает файлы и проверяет результат.</li><li><b>Продолжение работы.</b> Состояние сохраняется, чтобы после остановки вернуться к нужному этапу.</li><li><b>Уточнение вместо догадки.</b> Если данных не хватает, вопрос передаётся владельцу задачи.</li></ul></div><div class="case-aside"><div class="effect"><p class="label">Результат</p><p>Подготовка и проверка связаны в один процесс: требования остаются ориентиром до готового комплекта файлов.</p></div><div><p class="label">Где пригодится</p><p>Повторяющиеся документы, отчёты и комплекты материалов с заданными требованиями.</p></div></div></div><div class="flow-only"><p class="flow-title">Схема работы</p><div class="project-flow" aria-label="Требования → Подготовка и проверка → Комплект файлов"><span>Требования</span><b aria-hidden="true">→</b><span>Подготовка и проверка</span><b aria-hidden="true">→</b><span>Комплект файлов</span></div></div></article><article class="case" id="platform"><span class="project-name">AI Manager</span><div class="case-head"><h3>Управление AI-агентами с телефона</h3></div><p class="case-task">Работа агентов идёт на компьютере, но следить за ней, давать задачи и принимать решения нужно и за его пределами.</p><div class="case-body"><div><p class="label">Что собрано</p><ul class="did"><li><b>Рабочее пространство.</b> Проекты, задачи и история собраны в веб-интерфейсе.</li><li><b>Контроль действий.</b> В интерфейсе можно просматривать изменения и подтверждать действия агента.</li><li><b>Удалённый доступ.</b> С телефона доступны работа с агентом и инструменты на домашнем компьютере.</li></ul></div><div class="case-aside"><div class="effect"><p class="label">Результат</p><p>Управление задачами и просмотр результатов доступны через браузер, в том числе с телефона.</p></div><div><p class="label">Где пригодится</p><p>Команды и специалисты, которые используют AI-агентов и хотят управлять их работой из одного места.</p></div></div></div><div class="flow-only"><p class="flow-title">Схема работы</p><div class="project-flow" aria-label="Задача с телефона → Агент на компьютере → Результат и проверка"><span>Задача с телефона</span><b aria-hidden="true">→</b><span>Агент на компьютере</span><b aria-hidden="true">→</b><span>Результат и проверка</span></div></div></article><article class="case" id="outreach"><span class="project-name">ClientUltraSearch</span><div class="case-head"><h3>Исследование компаний и подготовка предложений</h3></div><p class="case-task">Чтобы подготовить предметное предложение, нужно найти информацию о компании, разобраться в её задачах и проверить факты.</p><div class="case-body"><div><p class="label">Что собрано</p><ul class="did"><li><b>Сбор по критериям.</b> Информация из открытых источников проходит отбор по заданным признакам.</li><li><b>Факты со ссылками.</b> Материалы о компании сохраняются вместе с источниками для проверки.</li><li><b>Подготовка письма.</b> Система собирает черновик; отправка предусмотрена после одобрения человеком.</li></ul></div><div class="case-aside"><div class="effect"><p class="label">Результат</p><p>Сбор информации, досье и черновик предложения объединены в последовательный процесс.</p></div><div><p class="label">Где пригодится</p><p>Исследование рынка, подготовка к переговорам и предварительный отбор компаний.</p></div></div></div><div class="flow-only"><p class="flow-title">Схема работы</p><div class="project-flow" aria-label="Открытые источники → Досье с фактами → Черновик на проверку"><span>Открытые источники</span><b aria-hidden="true">→</b><span>Досье с фактами</span><b aria-hidden="true">→</b><span>Черновик на проверку</span></div></div></article><article class="case" id="assistant"><div class="eyebrow">Другие проекты</div><h2 style="margin-top:1rem">Память для ИИ и сборка контента.</h2><div class="mini-projects"><div class="mini-project"><h3>Ассистент с рабочей памятью</h3><p>Контекст проектов, решения и задачи хранятся отдельно от чата. Ассистент может получать их в новой сессии; предусмотрены интеграции с Notion, календарём и Telegram.</p><p style="margin-top:.8rem">Подход для работы, где важно возвращаться к задачам и сохранять договорённости.</p></div><div class="mini-project" id="content-pipeline"><h3>Конвейер игровых уровней</h3><p>Уровень задаётся описанием и собирается через Blender и Unreal Engine. В проекте предусмотрены генерация материалов, снимки и проверка сборки.</p><p style="margin-top:.8rem">Исследовательский проект в разработке: автоматизация повторяющихся операций с контентом.</p></div></div></article></div></section><section class="verify"><div class="wrap"><div class="verify-head"><div class="eyebrow">Обсудить похожее решение</div><h2>Пример — отправная точка для вашей задачи.</h2></div><div class="verify-grid"><div class="vitem"><h3>Разберём нужный сценарий</h3><p>Можно обсудить подходящий проект и выбрать материалы для демонстрации. В центре разговора — что получает система, что выдаёт и как это соотносится с вашей работой.</p></div><div class="vitem"><h3>Определим первый этап</h3><p>Выберем участок, который можно запустить отдельно. Согласуем исходные данные, результат и условия приёмки, прежде чем расширять систему.</p></div></div></div></section><section class="cta-section" id="contact"><div class="wrap cta-grid"><div><div class="eyebrow">Обсудим вашу задачу</div><h2>Что вы хотите перестать делать вручную?</h2><div class="signature"><img class="portrait" src="/vankov.jpg" width="112" height="112" loading="lazy" decoding="async" alt="Вячеслав Ваньков"><div><b>Вячеслав Ваньков</b><p>Со мной вы обсуждаете задачу, смотрите результат и принимаете работу.</p></div></div></div><div class="cta-side"><div class="cta-copy"><p>Напишите, как устроен процесс сейчас и что хотите изменить. Я уточню детали и предложу первый этап — с понятным результатом, сроком и стоимостью.</p><p class="contact-hint">Готовое техническое задание не нужно. Достаточно описания задачи своими словами.</p><a class="btn light" href="mailto:vankov@deploid.ru?subject=%D0%97%D0%B0%D0%B4%D0%B0%D1%87%D0%B0%20%D0%BF%D0%BE%20%D0%B0%D0%B2%D1%82%D0%BE%D0%BC%D0%B0%D1%82%D0%B8%D0%B7%D0%B0%D1%86%D0%B8%D0%B8&amp;body=%D0%97%D0%B4%D1%80%D0%B0%D0%B2%D1%81%D1%82%D0%B2%D1%83%D0%B9%D1%82%D0%B5%2C%20%D0%92%D1%8F%D1%87%D0%B5%D1%81%D0%BB%D0%B0%D0%B2%21%0A%0A%D0%A5%D0%BE%D1%87%D1%83%20%D0%BE%D0%B1%D1%81%D1%83%D0%B4%D0%B8%D1%82%D1%8C%20%D1%82%D0%B0%D0%BA%D1%83%D1%8E%20%D0%B7%D0%B0%D0%B4%D0%B0%D1%87%D1%83%3A%0A%0A%D0%A1%D0%B5%D0%B9%D1%87%D0%B0%D1%81%20%D1%8D%D1%82%D0%BE%20%D1%80%D0%B0%D0%B1%D0%BE%D1%82%D0%B0%D0%B5%D1%82%20%D1%82%D0%B0%D0%BA%3A%0A%0A%D0%92%20%D1%80%D0%B5%D0%B7%D1%83%D0%BB%D1%8C%D1%82%D0%B0%D1%82%D0%B5%20%D1%85%D0%BE%D1%82%D0%B5%D0%BB%D0%BE%D1%81%D1%8C%20%D0%B1%D1%8B%3A%0A">Написать о задаче <span aria-hidden="true">↗</span></a><a class="email-link" href="mailto:vankov@deploid.ru">vankov@deploid.ru</a><button class="copy-email" type="button" data-copy-email>Скопировать email</button><span class="copy-status" role="status" aria-live="polite"></span></div></div></div></section></main>
+<footer><div class="wrap footer-grid"><div><div class="footer-brand">Вячеслав Ваньков · Деплоид</div><div class="footer-meta">Автоматизация для бизнеса</div></div><div class="footer-meta">Самозанятый · ИНН 540700478835<br><a href="mailto:vankov@deploid.ru">vankov@deploid.ru</a></div><div class="footer-links"><a href="/portfolio">Проекты</a><a href="/#contact">Связаться</a></div></div></footer>
   <script>
     (function(){
       var header=document.getElementById('header');
       function onScroll(){header.classList.toggle('scrolled',window.scrollY>20)}
       onScroll();window.addEventListener('scroll',onScroll,{passive:true});
     })();
+
+    document.querySelectorAll('[data-copy-email]').forEach(function(button){
+      button.addEventListener('click',async function(){
+        var status=button.parentElement.querySelector('.copy-status');
+        try{await navigator.clipboard.writeText('vankov@deploid.ru');status.textContent='Email скопирован';}
+        catch(error){status.textContent='Адрес для копирования: vankov@deploid.ru';}
+      });
+    });
+
   </script>
 </body>
 </html>
+
