@@ -1,23 +1,39 @@
-# Сайт открыт целиком, включая краулеры ИИ: страницы написаны затем, чтобы их читали.
+# Public content: search and user-directed retrieval are allowed.
 User-agent: *
 Allow: /
 
+User-agent: OAI-SearchBot
+Allow: /
+
+User-agent: ChatGPT-User
+Allow: /
+
+User-agent: Claude-SearchBot
+Allow: /
+
+User-agent: Claude-User
+Allow: /
+
+User-agent: PerplexityBot
+Allow: /
+
+User-agent: Googlebot
+Allow: /
+
+User-agent: bingbot
+Allow: /
+
+User-agent: YandexBot
+Allow: /
+
+# Preserve the site's existing training-crawler preference, independent of search.
 User-agent: GPTBot
 Allow: /
 
 User-agent: ClaudeBot
 Allow: /
 
-User-agent: Claude-Web
-Allow: /
-
-User-agent: PerplexityBot
-Allow: /
-
 User-agent: Google-Extended
-Allow: /
-
-User-agent: YandexBot
 Allow: /
 
 Sitemap: https://deploid.ru/sitemap.xml
