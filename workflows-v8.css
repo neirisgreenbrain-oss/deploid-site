@@ -1,0 +1,41 @@
+/* The diagram structure varies with the actual process, not a card template. */
+.free-review-note{font-size:12px;line-height:1.7;max-width:440px;margin-top:20px;padding-left:12px;border-left:2px solid var(--accent);color:var(--muted)}
+.free-review-note strong{display:block;color:var(--ink);font-size:13px;font-weight:550}
+.case-task strong{font-weight:500;color:var(--ink)}
+.catalog-copy>.case-task{margin-top:16px;color:var(--muted);font-size:14px;line-height:1.65}
+.experience{padding-block:55px}.experience h2{font-size:36px}
+.workflow{border:1px solid var(--line);border-radius:7px;background:#f2f5f8;overflow:hidden;color:var(--ink)}
+.workflow-heading{padding:17px 20px;display:flex;gap:20px;justify-content:space-between;align-items:center;border-bottom:1px solid var(--line);background:white}
+.workflow-heading strong{font-size:14px;font-weight:500;line-height:1.45;max-width:460px}.workflow-heading>span{font-size:10px;color:var(--muted);white-space:nowrap}
+.workflow-canvas{padding:18px;display:flex;flex-direction:column;gap:14px;position:relative;isolation:isolate}
+.workflow-canvas.is-laid-out{display:block;padding:0}
+.workflow-node{display:flex;flex-direction:column;justify-content:center;gap:5px;border:1px solid #bfccdd;border-radius:6px;padding:12px 10px;background:white;min-height:64px;box-shadow:0 3px 10px #19334706;color:var(--ink);text-align:center;min-width:0;line-height:1.35}
+.workflow-node strong{font-weight:500;font-size:13px;line-height:1.4;letter-spacing:-.02em;overflow-wrap:normal}
+.workflow-node .node-kind{font-size:10px;line-height:1.2;color:var(--muted)}
+.is-laid-out>.workflow-node{position:absolute;left:50%;width:42%;transform:translate(-50%,-50%);z-index:1}
+.is-laid-out.is-wide>.workflow-node{width:25%}
+.workflow-node.kind-check{border-color:#90a9de;background:#eaf0ff;border-radius:15px 4px 15px 4px}
+.workflow-node.kind-result{border-color:#b4cec6;background:#f2f8f5}
+.workflow-edges{display:none;position:absolute;inset:0;width:100%;height:100%;overflow:visible;pointer-events:none;z-index:0}
+.is-laid-out>.workflow-edges{display:block}
+.workflow-edge{fill:none;stroke:#879bb5;stroke-width:1.5;stroke-linecap:round;stroke-linejoin:round;transition:stroke .15s,stroke-width .15s}
+.workflow-edge.is-return{stroke-dasharray:5 4;stroke:#708abf}
+.workflow-edge.is-connected{stroke:var(--accent);stroke-width:2}
+.workflow-edges .edge-label{font:10px Golos,Arial,sans-serif;fill:#526172;paint-order:stroke;stroke:#f2f5f8;stroke-width:5px;stroke-linejoin:round}
+.catalog-visual .workflow-node{min-height:56px;padding:10px 8px}.catalog-visual .node-kind{display:none}
+.catalog-visual:hover .workflow-heading,.catalog-visual:focus-visible .workflow-heading{background:#eaf0ff}
+.catalog-visual .workflow-heading{min-height:69px;transition:background .18s}.catalog-visual .workflow-heading strong{font-size:14px}.catalog-visual .workflow-heading>span{display:none}
+.case-flow .workflow-heading{padding:20px 28px}.case-flow .workflow-heading strong{font-size:18px;max-width:none}
+.case-flow .workflow-node{min-height:72px;padding:12px 10px}.case-flow .workflow-node strong{font-size:15px}
+.case-flow .workflow-node .node-kind{font-size:11px}
+button.workflow-node{font-family:inherit;cursor:pointer;transition:background .15s,border-color .15s,box-shadow .15s}
+button.workflow-node:hover,button.workflow-node:focus-visible{border-color:var(--accent);box-shadow:0 0 0 2px #2455ef18}
+button.workflow-node.is-selected{border-color:var(--accent);box-shadow:0 0 0 1px var(--accent);background:#eaf0ff}
+.workflow-detail{padding:20px 28px 24px;background:white;border-top:1px solid var(--line)}
+.workflow-hint{font-size:11px;color:var(--muted);margin:0 0 12px}
+.workflow-explanation{font-size:14px;line-height:1.7;color:var(--ink);min-height:48px;max-width:840px}
+.case-story h2{font-size:29px}.case-heading>p:not(.case-kind){max-width:800px}
+@media(max-width:1050px){.workflow-heading{padding-inline:16px}.workflow-heading strong{font-size:13px}.workflow-heading>span{display:none}.case-flow .workflow-heading strong{font-size:17px}}
+@media(max-width:680px){.free-review-note{margin:0;font-size:11px;order:5;padding-left:12px}.free-review-note strong{font-size:12px}.introduction .free-review-note{margin-top:0}.experience{padding-block:38px}.experience h2{font-size:29px}.workflow-heading{padding:15px 16px}.workflow-heading strong{font-size:14px}.catalog-visual .workflow-node strong{font-size:12px}.case-flow .workflow-heading{padding:17px 18px}.case-flow .workflow-heading strong{font-size:16px}.case-flow .workflow-node{min-height:68px}.case-flow .workflow-node strong{font-size:13px}.case-flow .node-kind{font-size:10px}.workflow-detail{padding:18px}.workflow-explanation{font-size:13px;min-height:69px}.workflow-hint{font-size:10px;line-height:1.6}.case-story h2{font-size:26px}}
+@media(max-width:360px){.catalog-visual .workflow-node strong{font-size:12px}.case-flow .workflow-node strong{font-size:13px}.workflow-heading strong{font-size:13px}.is-laid-out>.workflow-node{width:43%}.workflow-node{padding-inline:8px}.case-flow .workflow-node{padding-inline:7px}.case-flow .node-kind{font-size:9px}.workflow-edges .edge-label{font-size:10px}.introduction .primary{font-size:11px;padding-inline:14px}.introduction .secondary{font-size:11px}.case-story h2{font-size:24px}}
+@media(prefers-reduced-motion:reduce){.workflow-edge,button.workflow-node{transition:none}}
