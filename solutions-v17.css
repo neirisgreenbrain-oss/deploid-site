@@ -1,0 +1,33 @@
+/* Follow an actual statement into a checked CRM record, rather than a generic flow. */
+.conversation-proof{display:grid;grid-template-columns:1fr 1fr;gap:20px;padding:26px}
+.conversation-source,.conversation-draft,.conversation-review,.conversation-save{min-width:0;background:white;border:1px solid var(--line);border-radius:8px;padding:24px}
+.conversation-source>span{display:block;font-size:13px;color:var(--muted);margin-bottom:18px}
+.conversation-source blockquote{margin:0;font-size:24px;font-weight:500;line-height:1.45;letter-spacing:-.02em;color:var(--ink)}
+.conversation-draft{background:var(--blue-soft);border-color:#b7c9ed}
+.conversation-draft dl{margin:18px 0 0}
+.conversation-draft dl>div{display:grid;grid-template-columns:110px 1fr;gap:15px;padding:12px 0;border-top:1px solid #c9d7ef;font-size:15px;line-height:1.5}
+.conversation-draft dt{color:var(--muted)}.conversation-draft dd{margin:0;font-weight:500;color:var(--ink)}
+.conversation-review>strong,.conversation-save>strong{display:block;font-size:18px;line-height:1.4;font-weight:500}
+.conversation-review p,.conversation-save p{font-size:15px;line-height:1.65;color:var(--muted);margin-top:12px}
+.conversation-save{border-left:3px solid var(--accent)}
+.catalog-visual .conversation-proof{gap:14px;padding:18px;grid-template-columns:1fr}
+.catalog-visual .conversation-source,.catalog-visual .conversation-draft{padding:18px}
+.catalog-visual .conversation-source>span{font-size:12px;margin-bottom:12px}
+.catalog-visual .conversation-source blockquote{font-size:19px;line-height:1.45}
+.catalog-visual .conversation-draft dl>div{font-size:13px;grid-template-columns:100px 1fr;gap:10px;padding:10px 0}
+.catalog-visual .conversation-draft dl{margin-top:14px}
+.catalog-visual .conversation-review,.catalog-visual .conversation-save{display:none}
+@media(max-width:680px){
+ .conversation-proof{grid-template-columns:1fr;padding:16px;gap:14px}
+ .conversation-source,.conversation-draft,.conversation-review,.conversation-save{padding:19px}
+ .conversation-source>span{font-size:12px;margin-bottom:14px}
+ .conversation-source blockquote{font-size:22px;line-height:1.4}
+ .conversation-draft dl>div{grid-template-columns:90px 1fr;gap:12px;font-size:14px}
+ .conversation-draft .ai-tag{font-size:12px}
+ .conversation-review>strong,.conversation-save>strong{font-size:17px}
+ .conversation-review p,.conversation-save p{font-size:14px;line-height:1.6;margin-top:10px}
+ .catalog-visual .conversation-proof{padding:14px}
+ .catalog-visual .conversation-source,.catalog-visual .conversation-draft{padding:16px}
+ .catalog-visual .conversation-source blockquote{font-size:18px}
+}
+@media(max-width:360px){.conversation-proof{padding:12px}.conversation-source,.conversation-draft,.conversation-review,.conversation-save{padding:16px}.conversation-draft dl>div{grid-template-columns:80px 1fr;gap:10px;font-size:13px}.conversation-source blockquote{font-size:20px}.catalog-visual .conversation-draft dl>div{grid-template-columns:80px 1fr;font-size:12px}}
