@@ -136,7 +136,7 @@ button.workflow-node.is-selected.uses-ai{background:#eaf0ff}
  .steps{display:block;margin-top:30px}.steps li,.steps li:last-child{padding:22px 0 25px 52px;border-top:1px solid #cbd6e2}
  .steps li:last-child{padding-bottom:0}.steps li:before{position:absolute;left:0;top:22px;width:30px;height:30px;line-height:28px;font-size:12px}
  .steps h3{font-size:23px;max-width:400px;margin-bottom:12px}.steps p{font-size:15px;max-width:450px}
- .questions{grid-template-columns:1fr;gap:26px}.questions h2{font-size:35px}.questions h2 br{display:none}
+ .questions{grid-template-columns:1fr;gap:26px}.questions h2{font-size:35px}
  .questions summary{font-size:17px;gap:20px;padding:22px 0}.questions details p{font-size:15px;padding-right:8px}
  .contact-inner{grid-template-columns:1fr;gap:28px}.contact h2{font-size:38px}.contact .email{font-size:25px}.contact p{font-size:14px}
  footer{font-size:11px;gap:14px}footer>a{margin-left:0}footer span:nth-child(2){font-size:10px;order:4}
