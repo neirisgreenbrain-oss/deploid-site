@@ -32,10 +32,11 @@
       const wide = width >= 640;
       canvas.classList.toggle('is-wide', wide);
       canvas.classList.add('is-laid-out');
-      canvas.style.height = graph.height[wide ? 1 : 0] + 'px';
+      const scale = detail ? 1 : .82;
+      canvas.style.height = graph.height[wide ? 1 : 0] * scale + 'px';
       graph.nodes.forEach((entry, i) => {
         const [x, y] = entry[wide ? 'wide' : 'small'];
-        nodes[i].style.left = x + '%'; nodes[i].style.top = y + 'px';
+        nodes[i].style.left = x + '%'; nodes[i].style.top = y * scale + 'px';
       });
       const bounds = canvas.getBoundingClientRect();
       const rects = {};
@@ -99,6 +100,10 @@
         nodes.forEach(entry => entry.setAttribute('aria-pressed', String(entry === node)));
         const explanation = diagram.querySelector('.workflow-explanation');
         explanation.textContent = item.detail;
+        const title = diagram.querySelector('.workflow-detail-title');
+        const role = diagram.querySelector('.workflow-detail-role');
+        if (title) title.textContent = item.title;
+        if (role) { role.textContent = item.kind; role.classList.toggle('is-ai', item.kind.includes('ИИ')); }
         if (!reduced.matches && explanation.animate) explanation.animate([{opacity:.45},{opacity:1}],{duration:160});
         highlight(selected);
       });
