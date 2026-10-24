@@ -21,7 +21,7 @@ filters.forEach(button => button.addEventListener('click', () => {
     row.hidden = !show; if (show) visible++;
   });
   const status = document.querySelector('.filter-status');
-  status.textContent = button.dataset.filter === 'all' ? 'Показаны все избранные проекты' : 'Найдено по фильтру: ' + visible;
+  status.textContent = button.dataset.filter === 'all' ? 'Показаны все кейсы и примеры' : 'Найдено по фильтру: ' + visible;
   changed(document.querySelector('.catalog-grid'));
 }));
 // Content stays readable without JS. Filters and stage controls enhance it only.
