@@ -6,6 +6,13 @@ function changed(element) {
   if (!motion.matches && element.animate) element.animate([{opacity:.4},{opacity:1}],{duration:180});
 }
 const filters = [...document.querySelectorAll('[data-filter]')];
+const previews = [...document.querySelectorAll('.case-preview')];
+const phone = window.matchMedia('(max-width: 680px)');
+function setPreviewLayout() {
+  previews.forEach(preview => { preview.open = !phone.matches; });
+}
+setPreviewLayout();
+phone.addEventListener('change', setPreviewLayout);
 filters.forEach(button => button.addEventListener('click', () => {
   filters.forEach(item => item.setAttribute('aria-pressed', String(item === button)));
   let visible = 0;

@@ -113,6 +113,8 @@
       node.addEventListener('blur', () => highlight(selected));
     });
     new ResizeObserver(schedule).observe(canvas);
+    const preview = diagram.closest('.case-preview');
+    if (preview) preview.addEventListener('toggle', schedule);
     schedule();
     if (document.fonts) document.fonts.ready.then(schedule);
   });
