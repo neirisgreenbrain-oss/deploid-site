@@ -1,0 +1,29 @@
+/* Keep the process in sight while a person reads the explanation of a step. */
+.step-reader-hint{padding:15px 24px 0;margin:0;font-size:13px;line-height:1.6;color:var(--muted);grid-column:1/-1;background:#f7f9fc}
+.case-flow .workflow[data-detail=true]:has(.step-reader){display:block}
+.step-reader[popover]{position:fixed;inset:auto 16px max(16px,env(safe-area-inset-bottom)) 16px;margin:0 auto;width:min(480px,calc(100vw - 32px));max-height:min(70dvh,520px);overflow:auto;min-height:0;border:1px solid #c4d0de;border-radius:12px;padding:26px 24px 24px;background:white;color:var(--ink);box-shadow:0 12px 60px #14223026}
+.step-reader[popover]::backdrop{background:transparent}
+.step-reader[popover] .workflow-detail-role{float:none;margin:0 48px 14px 0}
+.step-reader[popover] .workflow-detail-title,.step-reader[popover]>strong{display:block;margin:0 44px 14px 0;font-size:23px;line-height:1.25;font-weight:500;letter-spacing:-.025em}
+.step-reader[popover] .workflow-explanation,.step-reader[popover]>p{font-size:16px;line-height:1.65;margin:0;min-height:0;max-width:none}
+.step-reader-close{position:absolute;top:12px;right:12px;width:44px;height:44px;display:flex;align-items:center;justify-content:center;border:0;border-radius:7px;background:var(--ground);font-family:inherit;font-size:28px;line-height:1;color:var(--ink);cursor:pointer}
+.step-reader-close[hidden]{display:none}.step-reader-close:hover{background:var(--blue-soft);color:var(--accent)}
+.step-reader-close:focus-visible{outline:2px solid var(--accent);outline-offset:2px}
+.case-related{border-top:1px solid var(--line);margin-top:42px;padding-top:32px}
+.case-related h2{font-size:26px;line-height:1.2;margin:0 0 20px;font-weight:500;letter-spacing:-.035em}
+.case-related>div{display:grid;grid-template-columns:1fr 1fr;gap:24px}
+.related-link{display:flex;flex-direction:column;gap:9px;min-height:96px;padding:18px 20px;background:var(--ground);border:1px solid transparent;border-radius:7px;text-decoration:none;color:var(--ink)}
+.related-link>span{font-size:12px;line-height:1.5;color:var(--muted)}.related-link>strong{font-size:20px;line-height:1.3;font-weight:500;letter-spacing:-.025em}
+.related-link:hover{border-color:#9cb1df;background:var(--blue-soft)}.related-link:focus-visible{outline:2px solid var(--accent);outline-offset:3px}
+.contact .copy-email{display:inline-flex;align-items:center;justify-content:center;min-height:44px;margin-top:8px;padding:8px 12px;border:1px solid #aebfff;border-radius:5px;background:transparent;font:inherit;font-size:13px;color:white;cursor:pointer}
+.contact .copy-email:hover{background:#ffffff18}.contact .copy-email:focus-visible{outline:2px solid white;outline-offset:3px}
+.copy-status{position:absolute;width:1px;height:1px;padding:0;margin:-1px;overflow:hidden;clip-path:inset(50%);white-space:nowrap}
+@media(max-width:680px){
+ .step-reader-hint{padding:14px 16px 0;font-size:13px;line-height:1.5}
+ .step-reader[popover]{padding:24px 20px 22px;max-height:65dvh}
+ .step-reader[popover] .workflow-detail-title,.step-reader[popover]>strong{font-size:22px;margin-right:42px}
+ .step-reader[popover] .workflow-explanation,.step-reader[popover]>p{font-size:16px;line-height:1.6}
+ .case-related{margin-top:28px;padding-top:26px}.case-related h2{font-size:24px;margin-bottom:18px}
+ .case-related>div{grid-template-columns:1fr;gap:10px}.related-link{min-height:88px;padding:16px 18px;gap:7px}.related-link>strong{font-size:20px}.related-link>span{font-size:12px}
+ .contact .copy-email{font-size:14px;min-height:44px;margin-top:6px}
+}
