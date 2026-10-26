@@ -3,7 +3,7 @@
 ::selection{background:#dce5ff;color:var(--ink)}
 .masthead{height:100px;border-bottom:1px solid var(--line)}
 .brand{display:flex;align-items:center;gap:11px;letter-spacing:-1.4px;font-weight:650}.brand img{display:block}
-nav a{padding-block:12px}nav a:hover,nav a[aria-current]{text-decoration:underline;text-underline-offset:7px}
+nav a{padding-block:12px}.masthead nav a:hover,.masthead nav a[aria-current]{text-decoration:underline;text-underline-offset:7px}
 .introduction{padding-top:52px;gap:65px;grid-template-columns:1.3fr .85fr;align-items:center}
 .intro-copy{padding:0}.hero-service{font-size:15px;font-weight:500;color:var(--muted);margin-bottom:22px}
 .introduction h1{font-size:clamp(47px,5.1vw,73px);font-weight:550;letter-spacing:-.055em;line-height:1.06}
