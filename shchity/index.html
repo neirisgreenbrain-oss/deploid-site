@@ -1,0 +1,511 @@
+<!doctype html>
+<html lang="ru">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>ТКП по однолинейке в день запроса — ИИ-ассистент для щитового производства</title>
+<meta name="description" content="ИИ-ассистент собирает черновик ТКП по однолинейке и вашему прайсу, расчётчик проверяет. Вдвое больше ТКП тем же человеком. Не станет вдвое быстрее — верну 100% оплаты.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Sans+Condensed:wght@500;600;700&family=Golos+Text:wght@400;500;600&family=Marck+Script&display=swap" rel="stylesheet">
+<style>
+  :root{
+    /* RAL 7035 — цвет корпуса щита, от него вся палитра */
+    --cabinet:#E3E5E0;
+    --paper:#F8F8F4;
+    --ink:#1D2226;
+    --graphite:#3E444A;
+    --wire:#8E9590;
+    --rule:#C9CCC6;
+    --signal:#F2B200;   /* RAL 1003 */
+    --fault:#B4261D;
+    --display:"IBM Plex Sans Condensed","Arial Narrow",sans-serif;
+    --body:"Golos Text",system-ui,sans-serif;
+    --wrap:1160px;
+  }
+  *{box-sizing:border-box}
+  html{scroll-behavior:smooth}
+  body{margin:0;background:var(--cabinet);color:var(--ink);font:400 17px/1.6 var(--body);-webkit-font-smoothing:antialiased}
+  img,svg{display:block;max-width:100%}
+  a{color:inherit}
+  :focus-visible{outline:3px solid var(--signal);outline-offset:3px}
+  .wrap{max-width:var(--wrap);margin:0 auto;padding:0 24px}
+  h1,h2,h3{font-family:var(--display);line-height:1.05;margin:0;letter-spacing:-.01em}
+  h2{font-size:clamp(32px,4.2vw,50px);font-weight:700;max-width:20ch}
+  h3{font-size:22px;font-weight:600;line-height:1.2}
+  p{margin:0 0 1em;max-width:60ch}
+  .lead{font-size:19px;color:var(--graphite)}
+
+  /* кнопки связи */
+  .btn{display:inline-flex;align-items:center;gap:10px;font:600 17px/1 var(--body);padding:16px 22px;border-radius:3px;text-decoration:none;border:2px solid var(--ink);transition:background .15s,color .15s}
+  .btn svg{width:20px;height:20px;flex:none}
+  .btn-main{background:var(--signal);border-color:var(--signal);color:var(--ink)}
+  .btn-main:hover{background:#FFC61A;border-color:#FFC61A}
+  .btn-line{background:transparent;color:var(--ink)}
+  .btn-line:hover{background:var(--ink);color:var(--paper)}
+  .actions{display:flex;flex-wrap:wrap;gap:12px}
+
+  /* шапка */
+  .top{display:flex;justify-content:space-between;align-items:center;padding:18px 0}
+  .mark{display:flex;align-items:center;gap:10px;font:600 16px/1.2 var(--display);text-decoration:none}
+  .mark svg{width:30px;height:30px}
+  .tel{font:600 17px/1 var(--display);text-decoration:none;font-variant-numeric:tabular-nums;border-bottom:1px solid var(--wire);padding-bottom:2px}
+  .tel:hover{border-color:var(--ink)}
+
+  /* первый экран */
+  .hero{padding:32px 0 80px}
+  .hero-grid{display:grid;grid-template-columns:1.02fr 1fr;gap:56px;align-items:center}
+  .hero-grid>*,.pain-grid>*,.me-grid>*,.end-grid>*{min-width:0}
+  .hero h1{font-size:clamp(40px,3.9vw,56px);font-weight:700;max-width:17ch}
+  .hero .lead{margin:22px 0 26px;max-width:44ch}
+  /* гарантия — сразу под обещанием */
+  .pledge{display:grid;grid-template-columns:auto 1fr;gap:14px;align-items:start;background:var(--paper);border:1.5px solid var(--ink);border-left:8px solid var(--signal);padding:16px 18px;margin:0 0 26px;max-width:520px}
+  .pledge svg{width:34px;height:34px;margin-top:2px}
+  .pledge b{display:block;font:700 20px/1.2 var(--display);margin-bottom:4px}
+  .pledge span{font-size:15.5px;line-height:1.5;color:var(--graphite)}
+  .reply{margin:16px 0 0;font-size:15px;color:var(--graphite)}
+  .reply a,.tel,.foot-stamp a{font-variant-numeric:tabular-nums;white-space:nowrap}
+
+  /* лист чертежа с анимацией — главный образ страницы */
+  .sheet{margin:0;background:var(--paper);border:1.5px solid var(--ink);padding:10px;position:relative;box-shadow:10px 10px 0 rgba(29,34,38,.07)}
+  .sheet-inner{border:1px solid var(--ink);padding:16px 16px 0}
+  .sheet-cap{display:flex;justify-content:space-between;font:500 13px/1.3 var(--display);color:var(--graphite);margin-bottom:6px}
+  .sld{width:100%;height:auto}
+  .sld .w{fill:none;stroke:var(--ink);stroke-width:1.6;stroke-linecap:round}
+  .sld .bus{stroke-width:4}
+  .sld .t{font:500 11px var(--display);fill:var(--graphite)}
+  .sld .tb{font:600 12px var(--display);fill:var(--ink)}
+  .sld .hl{fill:var(--signal);opacity:0}
+  .spec{width:100%;border-collapse:collapse;font:500 13.5px/1.35 var(--display);font-variant-numeric:tabular-nums;margin-top:8px}
+  .spec td{padding:7px 6px;border-top:1px solid var(--rule);vertical-align:top}
+  .spec td:first-child{font-weight:600;white-space:nowrap;width:68px}
+  .spec td:last-child{text-align:right;white-space:nowrap}
+  .spec tr.total td{border-top:1.5px solid var(--ink);font-weight:600;font-size:15px;padding:10px 6px}
+  .stamp{display:grid;grid-template-columns:1fr auto auto;border-top:1px solid var(--ink);margin:10px -16px 0;font:500 12px/1.2 var(--display)}
+  .stamp span{padding:7px 10px;border-left:1px solid var(--ink)}
+  .stamp span:first-child{border-left:0}
+  .example{position:absolute;top:-13px;right:18px;background:var(--ink);color:var(--paper);font:500 12px/1 var(--display);padding:6px 10px}
+  .draw{stroke-dasharray:var(--len,400);stroke-dashoffset:var(--len,400);animation:draw .7s ease-out forwards;animation-delay:var(--d,0s)}
+  @keyframes draw{to{stroke-dashoffset:0}}
+  .appear{opacity:0;animation:appear .35s ease-out forwards;animation-delay:var(--d,0s)}
+  @keyframes appear{to{opacity:1}}
+  .sld .hl{animation:flash 1s ease-out forwards;animation-delay:var(--d,0s)}
+  @keyframes flash{0%{opacity:0}25%{opacity:.55}100%{opacity:0}}
+  @media (prefers-reduced-motion:reduce){
+    .draw,.appear{animation:none;stroke-dashoffset:0;opacity:1}
+    .sld .hl{animation:none;opacity:0}
+  }
+
+
+  /* я за чертежом */
+  .hero-visual{position:relative;max-width:560px;width:100%;justify-self:end}
+  .hero-me{position:absolute;right:-30px;top:0;height:600px;width:auto;max-width:none;z-index:1;
+    -webkit-mask-image:linear-gradient(#000 70%,transparent 96%);mask-image:linear-gradient(#000 70%,transparent 96%)}
+  .hero-visual .sheet{z-index:2;margin-top:330px;width:86%}
+  .callout{position:absolute;left:0;top:118px;z-index:3;width:190px;font:500 14px/1.3 var(--display);color:var(--graphite)}
+  .callout b{display:block;font:700 19px/1.15 var(--display);color:var(--ink)}
+  .callout::after{content:"";position:absolute;top:11px;left:100%;width:34px;border-top:1.5px solid var(--ink)}
+  .callout::before{content:"";position:absolute;top:7px;left:calc(100% + 32px);width:9px;height:9px;border-radius:50%;background:var(--ink)}
+  /* гарантийный лист */
+  .warrant{background:var(--paper);border:1.5px solid var(--ink);padding:10px;box-shadow:10px 10px 0 rgba(29,34,38,.07)}
+  .warrant-in{border:1px solid var(--ink)}
+  .w-head{display:flex;justify-content:space-between;gap:12px;padding:12px 16px;border-bottom:1px solid var(--ink);font:600 17px/1.2 var(--display)}
+  .w-head small{font:500 12px/1.6 var(--display);color:var(--graphite);white-space:nowrap}
+  .warrant dl{margin:0}
+  .warrant dl div{padding:14px 16px;border-bottom:1px solid var(--rule)}
+  .warrant dt{font:500 12.5px/1.3 var(--display);color:var(--graphite);margin-bottom:4px}
+  .warrant dd{margin:0;font:600 18px/1.3 var(--display)}
+  .warrant dd.ret{font-size:24px;background:linear-gradient(transparent 58%,rgba(242,178,0,.55) 58%);display:inline}
+  .sign{display:flex;align-items:flex-end;justify-content:space-between;gap:12px;padding:18px 16px 14px;border-top:1px solid var(--ink)}
+  .sig{font:400 40px/1 "Marck Script",cursive;color:#23408E;transform:rotate(-4deg);margin-bottom:-4px}
+  .sig-l{font:500 12px/1.3 var(--display);color:var(--graphite);text-align:right}
+
+  section{padding:96px 0}
+
+  /* боль — тёмная секция, «внутри шкафа» */
+  .pain{background:var(--ink);color:#E8EAE6}
+  .pain h2{color:#fff;max-width:22ch}
+  .pain-grid{display:grid;grid-template-columns:1.35fr 1fr;gap:72px;margin-top:56px;align-items:start}
+  .hurts{list-style:none;margin:0;padding:0}
+  .hurts li{padding:26px 0;border-top:1px solid #3A4045}
+  .hurts li:first-child{border-top:0;padding-top:0}
+  .hurts h3{color:#fff;margin-bottom:8px}
+  .hurts p{color:#B9BEBA;margin:0;font-size:16.5px}
+  .hurts li.loss h3::before{content:"";display:inline-block;width:10px;height:10px;background:var(--fault);margin-right:12px;vertical-align:3px}
+  .quote{margin:0;border:1.5px solid #5A6066;padding:30px}
+  .quote blockquote{margin:0;font:600 clamp(22px,2.3vw,27px)/1.3 var(--display);color:#fff}
+  .quote figcaption{margin-top:18px;font-size:14.5px;color:#9AA09C}
+  .quote figcaption a{color:var(--signal)}
+  .quote hr{border:0;border-top:1px solid #3A4045;margin:26px 0}
+  .quote .big{font:700 clamp(48px,5.5vw,72px)/1 var(--display);color:#fff;font-variant-numeric:tabular-nums}
+  .quote .big small{font-size:.38em;color:var(--signal);margin-left:8px}
+  .quote p{color:#C9CDC9;font-size:15.5px;margin:8px 0 0}
+
+  /* как будет — три шага */
+  .steps{display:grid;grid-template-columns:repeat(3,1fr);list-style:none;margin:56px 0 0;padding:0;counter-reset:s}
+  .steps li{position:relative;padding:64px 36px 0 0}
+  .steps li::before{counter-increment:s;content:counter(s);position:absolute;top:0;left:0;width:42px;height:42px;border:2px solid var(--ink);border-radius:50%;display:grid;place-items:center;font:700 19px var(--display);background:var(--cabinet)}
+  .steps li::after{content:"";position:absolute;top:21px;left:46px;right:6px;height:2px;background:var(--ink)}
+  .steps li:last-child::after{display:none}
+  .steps li.human::before{background:var(--signal);border-color:var(--signal)}
+  .steps h3{margin-bottom:10px}
+  .steps p{font-size:16.5px;color:var(--graphite);margin:0}
+
+  /* гарантия и я */
+  .me{background:var(--paper);border-top:1.5px solid var(--ink);border-bottom:1.5px solid var(--ink)}
+  .me-grid{display:grid;grid-template-columns:400px 1fr;gap:72px;align-items:start}
+  .portrait{margin:0;border:1.5px solid var(--ink);padding:10px;background:var(--paper)}
+  .portrait .frame{position:relative;aspect-ratio:4/5;background:var(--cabinet);border:1px solid var(--ink);overflow:hidden}
+  .portrait .frame img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;object-position:50% 20%}
+  .ph{position:absolute;inset:0;display:grid;place-items:end center}
+  .ph svg{width:78%;height:auto;color:#C6CAC3}
+  .portrait figcaption{display:grid;grid-template-columns:1fr 1fr;border:1px solid var(--ink);border-top:0;font:500 13px/1.25 var(--display)}
+  .portrait figcaption div{padding:8px 10px}
+  .portrait figcaption div+div{border-left:1px solid var(--ink)}
+  .portrait figcaption b{display:block;font-size:11.5px;font-weight:500;color:var(--graphite)}
+  .portrait figcaption span{font-size:15px;font-weight:600}
+  .me h2{max-width:16ch}
+  .me .lead{margin:22px 0 30px}
+  .terms{list-style:none;margin:0 0 30px;padding:0;counter-reset:t}
+  .terms li{display:grid;grid-template-columns:40px 1fr;gap:16px;padding:16px 0;border-top:1px solid var(--rule)}
+  .terms li:last-child{border-bottom:1px solid var(--rule)}
+  .terms li::before{counter-increment:t;content:counter(t);font:700 20px/1.3 var(--display)}
+  .terms p{margin:0;font-size:16.5px}
+  .terms b{font-weight:600}
+  .honest{font-size:16px;color:var(--graphite);border-left:3px solid var(--ink);padding-left:16px;margin:0}
+
+  /* возражения */
+  .faq{max-width:860px;margin-top:48px}
+  .faq details{border-top:1.5px solid var(--ink)}
+  .faq details:last-child{border-bottom:1.5px solid var(--ink)}
+  .faq summary{list-style:none;cursor:pointer;padding:22px 56px 22px 0;font:600 clamp(20px,2.3vw,25px)/1.25 var(--display);position:relative}
+  .faq summary::-webkit-details-marker{display:none}
+  .faq summary::after{content:"";position:absolute;right:8px;top:50%;width:18px;height:18px;margin-top:-9px;
+    background:linear-gradient(var(--ink),var(--ink)) center/18px 2px no-repeat,linear-gradient(var(--ink),var(--ink)) center/2px 18px no-repeat;transition:transform .2s}
+  .faq details[open] summary::after{transform:rotate(45deg)}
+  .faq .ans{padding:0 0 24px}
+  .faq .ans p{color:var(--graphite);margin:0}
+  .faq .ans p+ul,.faq .ans ul+p{margin-top:12px}
+  .faq .ans ul{margin:0;padding-left:20px;color:var(--graphite);max-width:60ch}
+  .faq .ans li{margin:8px 0}
+  .faq .ans li b{color:var(--ink)}
+
+  /* финальный призыв */
+  .end{background:var(--ink);color:#E8EAE6}
+  .end-grid{display:grid;grid-template-columns:1fr auto;gap:56px;align-items:center}
+  .end h2{color:#fff;max-width:18ch}
+  .end .lead{color:#B9BEBA;margin:20px 0 30px;max-width:48ch}
+  .end .btn-line{color:#fff;border-color:#fff}
+  .end .btn-line:hover{background:#fff;color:var(--ink)}
+  .mail{margin:20px 0 0;color:#B9BEBA;font-size:15.5px}
+  .mail a{color:#fff}
+  .card{display:grid;justify-items:center;text-align:center;gap:14px;padding:28px 34px;border:1.5px solid #5A6066}
+  .ava{width:148px;height:148px;border-radius:50%;overflow:hidden;background:var(--cabinet);border:3px solid var(--signal);position:relative}
+  .ava img{width:100%;height:100%;object-fit:cover;position:relative;z-index:1}
+  .ava .ph svg{width:84%;color:#C6CAC3}
+  .card b{font:600 21px/1.2 var(--display);color:#fff}
+  .card span{font-size:14.5px;color:#9AA09C;max-width:22ch}
+
+  /* подвал-штамп */
+  .foot{padding:36px 0 40px}
+  .foot-stamp{display:grid;grid-template-columns:2fr 1fr 1.2fr 1fr;border:1.5px solid var(--ink);font:500 14px/1.35 var(--display)}
+  .foot-stamp div{padding:12px 14px;border-left:1px solid var(--ink)}
+  .foot-stamp div:first-child{border-left:0}
+  .foot-stamp b{display:block;font-weight:500;font-size:12px;color:var(--graphite);margin-bottom:2px}
+
+  /* плавающие кнопки на телефоне */
+  .dock{display:none}
+
+  @media (max-width:980px){
+    .hero-grid,.pain-grid,.me-grid,.end-grid{grid-template-columns:1fr;gap:44px}
+    .me-grid{justify-items:start}
+    .portrait{max-width:380px;width:100%}
+    .steps{grid-template-columns:1fr;row-gap:0}
+    .steps li{padding:0 0 34px 64px}
+    .steps li::after{top:46px;left:20px;right:auto;bottom:6px;width:2px;height:auto}
+    .card{justify-self:start}
+  }
+  @media (max-width:640px){
+    body{font-size:16px;padding-bottom:76px}
+    .wrap{padding:0 18px}
+    .top .tel{display:none}
+    .hero{padding:12px 0 60px}
+    .hero h1{font-size:40px}
+    .hero-visual{justify-self:start}
+    .hero-me{height:380px;right:-10px}
+    .hero-visual .sheet{margin-top:205px;width:90%}
+    .callout{top:58px;width:140px;font-size:13px}
+    .callout b{font-size:17px}
+    .callout::after{width:18px}.callout::before{left:calc(100% + 16px)}
+    .lead{font-size:17px}
+    .pledge{padding:14px}
+    .actions .btn{width:100%;justify-content:center}
+    section{padding:64px 0}
+    .pain-grid{margin-top:36px}
+    .quote{padding:22px}
+    .spec{font-size:12.5px}
+    .sheet-inner{padding:12px 10px 0}
+    .stamp{margin:10px -10px 0}
+    .sld .t{font-size:13px}
+    .sld .tb{font-size:14px}
+    .spec td:first-child{width:auto}
+    .foot-stamp{grid-template-columns:1fr 1fr}
+    .foot-stamp div:first-child{grid-column:1/-1;border-bottom:1px solid var(--ink)}
+    .foot-stamp div:nth-child(2){border-left:0}
+    .foot-stamp div:nth-child(4){grid-column:1/-1;border-left:0;border-top:1px solid var(--ink)}
+    .dock{display:grid;transform:translateY(110%);transition:transform .25s;grid-template-columns:1fr 1fr;gap:8px;position:fixed;left:0;right:0;bottom:0;padding:10px 12px calc(10px + env(safe-area-inset-bottom));background:var(--ink);z-index:10}
+    .dock .btn{justify-content:center;padding:13px 10px;font-size:16px}
+    .dock .btn-line{color:#fff;border-color:#fff}
+    .dock.on{transform:none}
+  }
+</style>
+</head>
+<body>
+
+<!-- Иконки -->
+<svg width="0" height="0" style="position:absolute" aria-hidden="true">
+  <symbol id="i-tg" viewBox="0 0 24 24"><path fill="currentColor" d="M21.4 3.6 2.9 10.7c-1.2.5-1.2 1.2-.2 1.5l4.7 1.5 1.8 5.6c.2.6.4.8.9.8.4 0 .6-.2.8-.4l2.3-2.2 4.7 3.5c.9.5 1.5.2 1.7-.8l3.1-14.6c.3-1.3-.5-1.8-1.3-1.5zM8.9 13.4l9.3-5.9c.4-.3.8-.1.5.2l-7.6 6.9-.3 3.2-1.9-4.4z"/></symbol>
+  <symbol id="i-wa" viewBox="0 0 24 24"><path fill="currentColor" d="M12 2a10 10 0 0 0-8.6 15.1L2 22l5-1.3A10 10 0 1 0 12 2zm0 18.2c-1.5 0-3-.4-4.3-1.2l-.3-.2-3 .8.8-2.9-.2-.3A8.2 8.2 0 1 1 12 20.2zm4.5-6.1c-.2-.1-1.5-.7-1.7-.8-.2-.1-.4-.1-.6.1l-.8 1c-.1.2-.3.2-.5.1-.7-.3-1.4-.7-2-1.2-.5-.5-1-1.1-1.3-1.7-.1-.2 0-.4.1-.5l.4-.5.3-.4v-.5l-.8-1.9c-.2-.5-.4-.4-.6-.4h-.5c-.2 0-.5.1-.7.3-.6.6-.9 1.4-.9 2.2.1 1 .5 1.9 1.1 2.7 1.1 1.6 2.5 2.9 4.2 3.7.5.2.9.4 1.4.5.6.2 1.1.1 1.6.1.6-.1 1.4-.6 1.6-1.1.2-.4.2-.9.1-1.1l-.4-.1z"/></symbol>
+  <symbol id="i-person" viewBox="0 0 100 110"><circle cx="50" cy="34" r="20" fill="currentColor"/><path d="M8 110c0-26 19-42 42-42s42 16 42 42z" fill="currentColor"/></symbol>
+</svg>
+
+<div class="wrap">
+  <header class="top">
+    <a class="mark" href="#top" aria-label="В начало">
+      <svg viewBox="0 0 30 30" aria-hidden="true"><rect x="1" y="1" width="28" height="28" fill="none" stroke="#1D2226" stroke-width="2"/><path d="M15 5v7M15 18v7M15 12l-5 6" stroke="#1D2226" stroke-width="2" fill="none" stroke-linecap="round"/></svg>
+      Расчёт ТКП для щитовых производств
+    </a>
+    <a class="tel" href="tel:+79139849877">+7 913 984-98-77</a>
+  </header>
+</div>
+
+<main id="top">
+
+<!-- 1. Обещание и гарантия -->
+<section class="hero" aria-labelledby="h1">
+  <div class="wrap hero-grid">
+    <div>
+      <h1 id="h1">Вдвое больше ТКП тем же расчётчиком</h1>
+      <p class="lead">ИИ-ассистент читает однолинейку или опросный лист, собирает спецификацию по вашему прайсу, подбирает аналоги и оформляет ТКП в вашем шаблоне. Расчётчик проверяет и отправляет заказчику в день запроса, пока конкуренты ещё считают.</p>
+      <div class="pledge">
+        <svg viewBox="0 0 34 34" aria-hidden="true"><circle cx="17" cy="17" r="16" fill="#F2B200"/><path d="M10 17.5l5 5 9-10" fill="none" stroke="#1D2226" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"/></svg>
+        <div><b>Расчёт ТКП на типовые щиты не станет вдвое быстрее — верну 100% оплаты</b><span>Замеряем на ваших заявках: сколько времени уходило до и сколько уходит после. А до оплаты бесплатно покажу результат на одной вашей схеме.</span></div>
+      </div>
+      <div class="actions">
+        <a class="btn btn-main" href="https://t.me/+79139849877" target="_blank" rel="noopener"><svg aria-hidden="true"><use href="#i-tg"/></svg>Написать в Telegram</a>
+        <a class="btn btn-line" href="https://wa.me/79139849877?text=%D0%97%D0%B4%D1%80%D0%B0%D0%B2%D1%81%D1%82%D0%B2%D1%83%D0%B9%D1%82%D0%B5!%20%D0%9F%D0%BE%20%D0%BF%D0%BE%D0%B2%D0%BE%D0%B4%D1%83%20%D1%80%D0%B0%D1%81%D1%87%D1%91%D1%82%D0%B0%20%D0%A2%D0%9A%D0%9F%20%D0%BD%D0%B0%20%D1%89%D0%B8%D1%82%D1%8B." target="_blank" rel="noopener"><svg aria-hidden="true"><use href="#i-wa"/></svg>WhatsApp</a>
+      </div>
+      <p class="reply">Отвечаю сам в течение рабочего дня. Можно позвонить: <a href="tel:+79139849877">+7 913 984-98-77</a></p>
+    </div>
+
+    <div class="hero-visual">
+      <img class="hero-me" src="me.webp" alt="Вячеслав" width="824" height="1000">
+      <p class="callout"><b>Вячеслав</b>Настраиваю расчёт под ваш прайс и отвечаю за результат лично</p>
+    <figure class="sheet" aria-label="Пример: однолинейная схема превращается в спецификацию">
+      <span class="example">Пример, позиции условные</span>
+      <div class="sheet-inner">
+        <div class="sheet-cap"><span>Схема заказчика: ВРУ, ввод 0,4 кВ</span><span>Лист 1</span></div>
+        <svg class="sld" viewBox="0 0 520 250" role="img" aria-label="Однолинейная схема: вводной автомат, сборная шина и пять отходящих линий">
+          <rect class="hl" x="236" y="38" width="64" height="42" style="--d:2.3s"/>
+          <rect class="hl" x="56" y="128" width="420" height="44" style="--d:2.7s"/>
+          <path class="w draw" style="--len:40;--d:.2s" d="M260 10v38"/>
+          <text class="t appear" style="--d:.2s" x="270" y="22">Ввод 1, 0,4 кВ</text>
+          <path class="w draw" style="--len:60;--d:.5s" d="M256 44l8 8M264 44l-8 8M260 78v-8L250 52"/>
+          <text class="tb appear" style="--d:.7s" x="274" y="66">QF1 400 А</text>
+          <path class="w draw" style="--len:40;--d:.8s" d="M260 78v32"/>
+          <path class="w bus draw" style="--len:400;--d:1s" d="M60 110h400"/>
+          <text class="t appear" style="--d:1.2s" x="466" y="114">Ш1</text>
+          <g>
+            <path class="w draw" style="--len:120;--d:1.4s" d="M80 110v24M76 134l8 8M84 134l-8 8M80 170v-8L70 142M80 170v30"/>
+            <path class="w draw" style="--len:120;--d:1.5s" d="M170 110v24M166 134l8 8M174 134l-8 8M170 170v-8L160 142M170 170v30"/>
+            <path class="w draw" style="--len:120;--d:1.6s" d="M260 110v24M256 134l8 8M264 134l-8 8M260 170v-8L250 142M260 170v30"/>
+            <path class="w draw" style="--len:120;--d:1.7s" d="M350 110v24M346 134l8 8M354 134l-8 8M350 170v-8L340 142M350 170v30"/>
+            <path class="w draw" style="--len:120;--d:1.8s" d="M440 110v24M436 134l8 8M444 134l-8 8M440 170v-8L430 142M440 170v30"/>
+          </g>
+          <g class="appear" style="--d:2s">
+            <text class="tb" x="88" y="160">QF2</text><text class="t" x="88" y="173">160 А</text>
+            <text class="tb" x="178" y="160">QF3</text><text class="t" x="178" y="173">100 А</text>
+            <text class="tb" x="268" y="160">QF4</text><text class="t" x="268" y="173">63 А</text>
+            <text class="tb" x="358" y="160">QF5</text><text class="t" x="358" y="173">63 А</text>
+            <text class="tb" x="448" y="160">QF6</text><text class="t" x="448" y="173">25 А</text>
+            <text class="t" x="80" y="218" text-anchor="middle">Лифты</text>
+            <text class="t" x="170" y="218" text-anchor="middle">ИТП</text>
+            <text class="t" x="260" y="218" text-anchor="middle">Освещение</text>
+            <text class="t" x="350" y="218" text-anchor="middle">Розетки</text>
+            <text class="t" x="440" y="218" text-anchor="middle">Резерв</text>
+            <path class="w" d="M74 200h12M164 200h12M254 200h12M344 200h12M434 200h12"/>
+          </g>
+        </svg>
+        <table class="spec" aria-label="Пример спецификации, собранной по схеме">
+          <tr class="appear" style="--d:2.6s"><td>QF1</td><td>Выключатель автоматический 3P, 400 А, литой корпус</td><td>1 шт.</td></tr>
+          <tr class="appear" style="--d:2.9s"><td>QF2–QF6</td><td>Выключатели автоматические 3P, 25–160 А</td><td>5 шт.</td></tr>
+          <tr class="appear" style="--d:3.2s"><td>Ш1</td><td>Шина медная 40×5 с изоляторами</td><td>1 компл.</td></tr>
+          <tr class="appear" style="--d:3.5s"><td>Корпус</td><td>Шкаф напольный IP31, 2000×800×600</td><td>1 шт.</td></tr>
+          <tr class="total appear" style="--d:3.9s"><td colspan="2">Итого по вашему прайсу</td><td>— ₽</td></tr>
+        </table>
+        <div class="stamp appear" style="--d:4.2s"><span>Черновик ТКП, ждёт проверки инженера</span><span>Ред. 1</span><span>Лист 1</span></div>
+      </div>
+    </figure>
+    </div>
+  </div>
+</section>
+
+<!-- 2. Боль -->
+<section class="pain" aria-labelledby="h-pain">
+  <div class="wrap">
+    <h2 id="h-pain">Инженер полдня сидит над одной однолинейкой, а заказ уходит другому</h2>
+    <div class="pain-grid">
+      <ul class="hurts">
+        <li><h3>Схему переписывают руками</h3><p>Скан или PDF, иногда фото. Аппараты, токи, линии инженер переносит в Excel по одной позиции, а очередь заявок тем временем растёт.</p></li>
+        <li><h3>Schneider в схеме, а ставить IEK или EKF</h3><p>Подбор замен, согласование, новые цены. Поменялся прайс или ТЗ — ТКП считают заново.</p></li>
+        <li class="loss"><h3>Большая часть расчётов не становится заказом</h3><p>Часы инженера уходят на ТКП, которые не купят. А кто ответил первым, тот чаще и получает заказ.</p></li>
+      </ul>
+      <figure class="quote">
+        <blockquote>«Щитовики очень не любят считать, потому что загружены и тратят на это много времени. А больше расчётов — больше продаж».</blockquote>
+        <figcaption>Владелец щитового производства, интервью на <a href="https://habr.com/ru/articles/908700/" target="_blank" rel="noopener">Хабре</a>, 2025</figcaption>
+        <hr>
+        <div class="big">82<small>вакансии</small></div>
+        <p>расчётчиков НКУ на hh.ru в ноябре 2026, медиана зарплаты 110 тыс. ₽. Опытного расчётчика найти трудно, а заявок меньше не становится.</p>
+      </figure>
+    </div>
+  </div>
+</section>
+
+<!-- 3. Решение -->
+<section aria-labelledby="h-how">
+  <div class="wrap">
+    <h2 id="h-how">Инженер проверяет, а не набирает</h2>
+    <ol class="steps">
+      <li><h3>Присылаете схему как есть</h3><p>Однолинейка, опросный лист, ТЗ: PDF, скан, Excel, письмо. Ничего переделывать не нужно.</p></li>
+      <li><h3>ИИ-ассистент собирает черновик</h3><p>Позиции и цены берёт только из вашего прайса, по вашим правилам замен и наценки. Чего нет в прайсе или что неясно на схеме, помечает, а не придумывает.</p></li>
+      <li class="human"><h3>Инженер проверяет и отправляет</h3><p>Решение и подпись остаются за ним. Время уходит на сложные щиты, а не на набивку позиций.</p></li>
+    </ol>
+  </div>
+</section>
+
+<!-- 4. Гарантия и кто отвечает -->
+<section class="me" id="guarantee" aria-labelledby="h-me">
+  <div class="wrap me-grid">
+    <div class="warrant" aria-label="Гарантийное обязательство">
+      <div class="warrant-in">
+        <div class="w-head"><span>Гарантийное обязательство</span><small>приложение к договору</small></div>
+        <dl>
+          <div><dt>Цель</dt><dd>Расчёт ТКП на типовые щиты (распределительные, освещения, силовые) минимум вдвое быстрее</dd></div>
+          <div><dt>Как проверяем</dt><dd>Замер на ваших заявках: до старта и после</dd></div>
+          <div><dt>Если цель не достигнута</dt><dd class="ret">Возврат 100% оплаты</dd></div>
+        </dl>
+        <div class="sign"><span class="sig">Вячеслав</span><span class="sig-l">Исполнитель,<br>подпись</span></div>
+      </div>
+    </div>
+    <div>
+      <h2 id="h-me">Не сэкономите время — работа бесплатная</h2>
+      <p class="lead">Я не продаю программу или подписку. Беру один процесс, расчёт ТКП, и настраиваю его под ваше производство. Риск беру на себя.</p>
+      <ol class="terms">
+        <li><p><b>Разбор, 30 минут, бесплатно.</b> Смотрим, как вы считаете сейчас и где теряется время.</p></li>
+        <li><p><b>Пробный расчёт, бесплатно.</b> Берём одну вашу прошлую заявку и сравниваем черновик с вашим ТКП.</p></li>
+        <li><p><b>Пилот с оплатой и замером.</b> Работаем на ваших заявках. Расчёт типовых щитов не стал вдвое быстрее — возвращаю всё.</p></li>
+      </ol>
+      <p class="honest">Отзывов пока не покажу: с щитовыми производствами я начинаю работать сейчас. Поэтому и гарантия такая.</p>
+    </div>
+  </div>
+</section>
+
+<!-- 5. Возражения -->
+<section id="faq" aria-labelledby="h-faq">
+  <div class="wrap">
+    <h2 id="h-faq">Что обычно спрашивают</h2>
+    <div class="faq">
+      <details open>
+        <summary>У нас есть расчётчик. Зачем платить ещё и вам?</summary>
+        <div class="ans">
+          <p>Расчётчик остаётся, и платите вы ему столько же. Меняется то, сколько он успевает и как быстро вы отвечаете.</p>
+          <ul>
+            <li><b>Больше ТКП тем же человеком.</b> Набивку позиций и поиск цен делает ассистент, расчётчик проверяет. Заявки, которые сейчас ждут очереди, уходят в тот же день.</li>
+            <li><b>Вы отвечаете первыми.</b> Монтажник рассылает схему нескольким щитовикам, и заказ чаще забирает тот, кто прислал цену раньше.</li>
+            <li><b>Не нужен второй расчётчик.</b> Вырос поток, ушёл человек в отпуск или уволился — расчёт не встаёт. Опытного расчётчика сейчас трудно найти.</li>
+          </ul>
+          <p>Сколько приносит вам один заказ, вы знаете лучше меня. Прикиньте, сколько их уходит, пока заявка ждёт очереди.</p>
+        </div>
+      </details>
+      <details>
+        <summary>А если заявок у нас немного?</summary>
+        <div class="ans"><p>Тогда выгода в скорости: отвечаете в день запроса и чаще выигрываете то, что приходит. А инженер тратит время на сборку и сложные щиты, а не на Excel. Если на разборе увижу, что выгоды для вас нет, так и скажу и браться не буду.</p></div>
+      </details>
+      <details>
+        <summary>Это нейросеть? Она же ошибается</summary>
+        <div class="ans"><p>Да, схему читает ИИ. Поэтому он не решает и не отправляет сам: артикулы и цены берёт только из вашего прайса, сомнительные места помечает, а ТКП подписывает ваш инженер. Ошибку проще найти в готовом черновике, чем не сделать её, набивая сорок позиций вручную.</p></div>
+      </details>
+      <details>
+        <summary>А ВРУ, ГРЩ и шкафы автоматики?</summary>
+        <div class="ans"><p>Аппараты по их схемам ассистент выписывает так же. Но корпус и компоновку большого щита всё равно продумывает инженер, поэтому «вдвое быстрее» с гарантией обещаю на типовых щитах: распределительных, освещения, силовых. По ВРУ и ГРЩ скажу честно после пробного расчёта, сколько времени экономится у вас.</p></div>
+      </details>
+      <details>
+        <summary>Схемы у всех разные, сканы плохие — разберёт ли?</summary>
+        <div class="ans"><p>Проверяем на вашей прошлой заявке бесплатно, до любой оплаты. Что не разобралось, ассистент помечает, а не додумывает. Черновик в любом случае смотрит инженер.</p></div>
+      </details>
+      <details>
+        <summary>Есть конфигураторы IEK, EKF, ДКС и свой прайс со скидками</summary>
+        <div class="ans"><p>Конфигураторы считают аппараты своего бренда. Ассистент считает по вашему прайсу и скидкам, с вашей наценкой, работами и корпусами любых производителей, в вашем шаблоне ТКП.</p></div>
+      </details>
+      <details>
+        <summary>Схемы и наценки не должны уйти на сторону</summary>
+        <div class="ans"><p>До старта подписываем соглашение о неразглашении. Доступ только к тому, что нужно для расчёта, и закрыть его можно в любой момент.</p></div>
+      </details>
+      <details>
+        <summary>Сколько это стоит?</summary>
+        <!-- ЗАГЛУШКА: вилку цены добавить, когда Слава определит -->
+        <div class="ans"><p>Цену называю после разбора: она зависит от типов щитов, формата схем и прайсов. Ориентир для сравнения: расчётчик обходится около 140 тыс. ₽ в месяц вместе с налогами. Оплата с гарантией возврата.</p></div>
+      </details>
+    </div>
+  </div>
+</section>
+
+<!-- 6. Связь -->
+<section class="end" id="contact" aria-labelledby="h-end">
+  <div class="wrap end-grid">
+    <div>
+      <h2 id="h-end">Пришлите одну схему — скажу, сколько займёт черновик</h2>
+      <p class="lead">Посмотрю вашу однолинейку или опросный лист и честно скажу, получится ли у вас автоматизировать расчёт. Ни к чему не обязывает.</p>
+      <div class="actions">
+        <a class="btn btn-main" href="https://t.me/+79139849877" target="_blank" rel="noopener"><svg aria-hidden="true"><use href="#i-tg"/></svg>Написать в Telegram</a>
+        <a class="btn btn-line" href="https://wa.me/79139849877?text=%D0%97%D0%B4%D1%80%D0%B0%D0%B2%D1%81%D1%82%D0%B2%D1%83%D0%B9%D1%82%D0%B5!%20%D0%9F%D0%BE%20%D0%BF%D0%BE%D0%B2%D0%BE%D0%B4%D1%83%20%D1%80%D0%B0%D1%81%D1%87%D1%91%D1%82%D0%B0%20%D0%A2%D0%9A%D0%9F%20%D0%BD%D0%B0%20%D1%89%D0%B8%D1%82%D1%8B." target="_blank" rel="noopener"><svg aria-hidden="true"><use href="#i-wa"/></svg>WhatsApp</a>
+      </div>
+      <p class="mail">Или на почту: <a href="mailto:vankov@deploid.ru?subject=%D0%A0%D0%B0%D1%81%D1%87%D1%91%D1%82%20%D0%A2%D0%9A%D0%9F">vankov@deploid.ru</a></p>
+    </div>
+    <div class="card">
+      <div class="ava">
+        <div class="ph" aria-hidden="true"><svg><use href="#i-person"/></svg></div>
+        <!-- ФОТО: avatar.jpg (1:1) -->
+        <img src="avatar.jpg" alt="Вячеслав" onerror="this.remove()">
+      </div>
+      <b>Вячеслав</b>
+      <span>Отвечаю сам, в течение рабочего дня</span>
+    </div>
+  </div>
+</section>
+
+</main>
+
+<footer class="foot">
+  <div class="wrap">
+    <div class="foot-stamp">
+      <div><b>Наименование</b>ИИ-ассистент расчёта НКУ и ТКП для щитовых производств</div>
+      <div><b>Исполнитель</b>Вячеслав</div>
+      <div><b>Телефон, WhatsApp</b><a href="tel:+79139849877">+7 913 984-98-77</a></div>
+      <div><b>Telegram</b><a href="https://t.me/+79139849877" target="_blank" rel="noopener">написать</a></div>
+    </div>
+  </div>
+</footer>
+
+<nav class="dock" aria-label="Связаться">
+  <a class="btn btn-main" href="https://t.me/+79139849877" target="_blank" rel="noopener"><svg aria-hidden="true"><use href="#i-tg"/></svg>Telegram</a>
+  <a class="btn btn-line" href="https://wa.me/79139849877" target="_blank" rel="noopener"><svg aria-hidden="true"><use href="#i-wa"/></svg>WhatsApp</a>
+</nav>
+
+<script>
+  // плавающие кнопки появляются, когда кнопки первого экрана ушли из вида
+  var dock=document.querySelector('.dock'),first=document.querySelector('.hero .actions');
+  if('IntersectionObserver' in window){new IntersectionObserver(function(e){dock.classList.toggle('on',!e[0].isIntersecting)}).observe(first)}else{dock.classList.add('on')}
+</script>
+</body>
+</html>
