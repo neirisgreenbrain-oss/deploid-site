@@ -44,6 +44,8 @@
   .btn-line{background:transparent;color:var(--ink)}
   .btn-line:hover{background:var(--ink);color:var(--paper)}
   .actions{display:flex;flex-wrap:wrap;gap:12px}
+  .alt{margin:14px 0 0;font-size:16px}
+  .alt a{color:inherit;font-weight:600}
 
   /* шапка */
   .top{display:flex;justify-content:space-between;align-items:center;padding:18px 0}
@@ -264,6 +266,7 @@
 
 <!-- Иконки -->
 <svg width="0" height="0" style="position:absolute" aria-hidden="true">
+  <symbol id="i-mail" viewBox="0 0 24 24"><path fill="currentColor" d="M3 5h18a1 1 0 0 1 1 1v12a1 1 0 0 1-1 1H3a1 1 0 0 1-1-1V6a1 1 0 0 1 1-1zm1 2.4V17h16V7.4l-8 5.3-8-5.3zM5.6 7l6.4 4.2L18.4 7H5.6z"/></symbol>
   <symbol id="i-tg" viewBox="0 0 24 24"><path fill="currentColor" d="M21.4 3.6 2.9 10.7c-1.2.5-1.2 1.2-.2 1.5l4.7 1.5 1.8 5.6c.2.6.4.8.9.8.4 0 .6-.2.8-.4l2.3-2.2 4.7 3.5c.9.5 1.5.2 1.7-.8l3.1-14.6c.3-1.3-.5-1.8-1.3-1.5zM8.9 13.4l9.3-5.9c.4-.3.8-.1.5.2l-7.6 6.9-.3 3.2-1.9-4.4z"/></symbol>
   <symbol id="i-wa" viewBox="0 0 24 24"><path fill="currentColor" d="M12 2a10 10 0 0 0-8.6 15.1L2 22l5-1.3A10 10 0 1 0 12 2zm0 18.2c-1.5 0-3-.4-4.3-1.2l-.3-.2-3 .8.8-2.9-.2-.3A8.2 8.2 0 1 1 12 20.2zm4.5-6.1c-.2-.1-1.5-.7-1.7-.8-.2-.1-.4-.1-.6.1l-.8 1c-.1.2-.3.2-.5.1-.7-.3-1.4-.7-2-1.2-.5-.5-1-1.1-1.3-1.7-.1-.2 0-.4.1-.5l.4-.5.3-.4v-.5l-.8-1.9c-.2-.5-.4-.4-.6-.4h-.5c-.2 0-.5.1-.7.3-.6.6-.9 1.4-.9 2.2.1 1 .5 1.9 1.1 2.7 1.1 1.6 2.5 2.9 4.2 3.7.5.2.9.4 1.4.5.6.2 1.1.1 1.6.1.6-.1 1.4-.6 1.6-1.1.2-.4.2-.9.1-1.1l-.4-.1z"/></symbol>
   <symbol id="i-person" viewBox="0 0 100 110"><circle cx="50" cy="34" r="20" fill="currentColor"/><path d="M8 110c0-26 19-42 42-42s42 16 42 42z" fill="currentColor"/></symbol>
@@ -292,10 +295,10 @@
         <div><b>Расчёт ТКП на типовые щиты не станет вдвое быстрее, возвращаю деньги за работу</b><span>Замеряем на ваших заявках: сколько времени уходило до и сколько уходит после. А до оплаты бесплатно покажу результат на одной вашей схеме.</span></div>
       </div>
       <div class="actions">
-        <a class="btn btn-main" href="https://t.me/+79139849877" target="_blank" rel="noopener"><svg aria-hidden="true"><use href="#i-tg"/></svg>Написать в Telegram</a>
-        <a class="btn btn-line" href="https://wa.me/79139849877?text=%D0%97%D0%B4%D1%80%D0%B0%D0%B2%D1%81%D1%82%D0%B2%D1%83%D0%B9%D1%82%D0%B5!%20%D0%9F%D0%BE%20%D0%BF%D0%BE%D0%B2%D0%BE%D0%B4%D1%83%20%D1%80%D0%B0%D1%81%D1%87%D1%91%D1%82%D0%B0%20%D0%A2%D0%9A%D0%9F%20%D0%BD%D0%B0%20%D1%89%D0%B8%D1%82%D1%8B." target="_blank" rel="noopener"><svg aria-hidden="true"><use href="#i-wa"/></svg>WhatsApp</a>
+        <a class="btn btn-main" href="mailto:vankov@deploid.ru?subject=%D0%A1%D1%85%D0%B5%D0%BC%D0%B0%20%D0%BD%D0%B0%20%D1%80%D0%B0%D1%81%D1%87%D1%91%D1%82%20%D0%A2%D0%9A%D0%9F"><svg aria-hidden="true"><use href="#i-mail"/></svg>Прислать схему на почту</a>
       </div>
-      <p class="reply">Отвечаю сам в течение рабочего дня</p>
+      <p class="alt">Или напишите в <a href="https://t.me/+79139849877" target="_blank" rel="noopener">Telegram</a> или <a href="https://wa.me/79139849877?text=%D0%97%D0%B4%D1%80%D0%B0%D0%B2%D1%81%D1%82%D0%B2%D1%83%D0%B9%D1%82%D0%B5!%20%D0%9F%D0%BE%20%D0%BF%D0%BE%D0%B2%D0%BE%D0%B4%D1%83%20%D1%80%D0%B0%D1%81%D1%87%D1%91%D1%82%D0%B0%20%D0%A2%D0%9A%D0%9F%20%D0%BD%D0%B0%20%D1%89%D0%B8%D1%82%D1%8B." target="_blank" rel="noopener">WhatsApp</a></p>
+      <p class="reply">vankov@deploid.ru, отвечаю сам в течение рабочего дня</p>
     </div>
 
     <div class="hero-visual">
@@ -446,10 +449,10 @@
       <h2 id="h-end">Пришлите одну схему, скажу, сколько займёт черновик</h2>
       <p class="lead">Посмотрю вашу однолинейку или опросный лист и честно скажу, получится ли у вас автоматизировать расчёт. Ни к чему не обязывает.</p>
       <div class="actions">
-        <a class="btn btn-main" href="https://t.me/+79139849877" target="_blank" rel="noopener"><svg aria-hidden="true"><use href="#i-tg"/></svg>Написать в Telegram</a>
-        <a class="btn btn-line" href="https://wa.me/79139849877?text=%D0%97%D0%B4%D1%80%D0%B0%D0%B2%D1%81%D1%82%D0%B2%D1%83%D0%B9%D1%82%D0%B5!%20%D0%9F%D0%BE%20%D0%BF%D0%BE%D0%B2%D0%BE%D0%B4%D1%83%20%D1%80%D0%B0%D1%81%D1%87%D1%91%D1%82%D0%B0%20%D0%A2%D0%9A%D0%9F%20%D0%BD%D0%B0%20%D1%89%D0%B8%D1%82%D1%8B." target="_blank" rel="noopener"><svg aria-hidden="true"><use href="#i-wa"/></svg>WhatsApp</a>
+        <a class="btn btn-main" href="mailto:vankov@deploid.ru?subject=%D0%A1%D1%85%D0%B5%D0%BC%D0%B0%20%D0%BD%D0%B0%20%D1%80%D0%B0%D1%81%D1%87%D1%91%D1%82%20%D0%A2%D0%9A%D0%9F"><svg aria-hidden="true"><use href="#i-mail"/></svg>Прислать схему на почту</a>
       </div>
-      <p class="mail">Или на почту: <a href="mailto:vankov@deploid.ru?subject=%D0%A0%D0%B0%D1%81%D1%87%D1%91%D1%82%20%D0%A2%D0%9A%D0%9F">vankov@deploid.ru</a></p>
+      <p class="alt">Или напишите в <a href="https://t.me/+79139849877" target="_blank" rel="noopener">Telegram</a> или <a href="https://wa.me/79139849877?text=%D0%97%D0%B4%D1%80%D0%B0%D0%B2%D1%81%D1%82%D0%B2%D1%83%D0%B9%D1%82%D0%B5!%20%D0%9F%D0%BE%20%D0%BF%D0%BE%D0%B2%D0%BE%D0%B4%D1%83%20%D1%80%D0%B0%D1%81%D1%87%D1%91%D1%82%D0%B0%20%D0%A2%D0%9A%D0%9F%20%D0%BD%D0%B0%20%D1%89%D0%B8%D1%82%D1%8B." target="_blank" rel="noopener">WhatsApp</a></p>
+      <p class="mail">Адрес для схем: vankov@deploid.ru</p>
     </div>
     <div class="card">
       <div class="ava">
@@ -469,16 +472,16 @@
   <div class="wrap">
     <div class="foot-stamp">
       <div><b>Наименование</b>ИИ-ассистент расчёта НКУ и ТКП для щитовых производств</div>
-      <div><b>Исполнитель</b>Вячеслав</div>
-      <div><b>Телефон, WhatsApp</b><a href="tel:+79139849877">+7 913 984-98-77</a></div>
-      <div><b>Telegram</b><a href="https://t.me/+79139849877" target="_blank" rel="noopener">написать</a></div>
+      <div><b>Исполнитель</b>Вячеслав Ваньков, самозанятый, ИНН 540700478835</div>
+      <div><b>Почта</b><a href="mailto:vankov@deploid.ru?subject=%D0%A1%D1%85%D0%B5%D0%BC%D0%B0%20%D0%BD%D0%B0%20%D1%80%D0%B0%D1%81%D1%87%D1%91%D1%82%20%D0%A2%D0%9A%D0%9F">vankov@deploid.ru</a></div>
+      <div><b>Телефон, WhatsApp, Telegram</b><a href="tel:+79139849877">+7 913 984-98-77</a></div>
     </div>
   </div>
 </footer>
 
 <nav class="dock" aria-label="Связаться">
-  <a class="btn btn-main" href="https://t.me/+79139849877" target="_blank" rel="noopener"><svg aria-hidden="true"><use href="#i-tg"/></svg>Telegram</a>
-  <a class="btn btn-line" href="https://wa.me/79139849877" target="_blank" rel="noopener"><svg aria-hidden="true"><use href="#i-wa"/></svg>WhatsApp</a>
+  <a class="btn btn-main" href="mailto:vankov@deploid.ru?subject=%D0%A1%D1%85%D0%B5%D0%BC%D0%B0%20%D0%BD%D0%B0%20%D1%80%D0%B0%D1%81%D1%87%D1%91%D1%82%20%D0%A2%D0%9A%D0%9F"><svg aria-hidden="true"><use href="#i-mail"/></svg>Почта</a>
+  <a class="btn btn-line" href="https://t.me/+79139849877" target="_blank" rel="noopener"><svg aria-hidden="true"><use href="#i-tg"/></svg>Telegram</a>
 </nav>
 
 <script>
