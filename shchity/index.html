@@ -208,6 +208,19 @@
   .tkp tr.total td:first-child{text-align:left}
   .demo-note{font:500 13px/1.3 var(--display);color:var(--graphite);margin:8px 0 14px}
   .demo-check{max-width:760px;margin:22px auto 0}
+  .menu{display:flex;gap:22px;font:500 15px/1 var(--display)}
+  .menu a{text-decoration:none;color:var(--graphite);padding:4px 0;border-bottom:1px solid transparent}
+  .menu a:hover{color:var(--ink);border-color:var(--ink)}
+  .sld .gk{fill:var(--wire);opacity:.55}
+  .sld .gkb{fill:var(--graphite);opacity:.7}
+  .sheet-cap i{display:block;height:6px;border-radius:3px;background:var(--wire);opacity:.55;margin:4px 0 8px}
+  .zoom{display:block;cursor:zoom-in}
+  .lb{border:0;padding:0;background:transparent;max-width:100vw;max-height:100vh;width:100vw;height:100vh}
+  .lb::backdrop{background:rgba(29,34,38,.88)}
+  .lb-in{width:100%;height:100%;overflow:auto;display:flex;align-items:center;justify-content:safe center;cursor:zoom-out}
+  .lb img{display:block;width:auto;max-width:96vw;height:auto;max-height:96vh;background:#fff}
+  .lb-x{position:fixed;top:12px;right:14px;width:44px;height:44px;border:0;border-radius:50%;background:var(--paper);font:600 26px/1 var(--display);cursor:pointer}
+  @media (max-width:640px){.lb img{max-width:none;max-height:none;height:88vh}}
   @media (max-width:980px){.plans{grid-template-columns:1fr;max-width:520px}}
 
   /* возражения */
@@ -265,6 +278,8 @@
     body{font-size:16px;padding-bottom:76px}
     .wrap{padding:0 18px}
     .top .tel{display:none}
+    .top{flex-wrap:wrap;row-gap:12px}
+    .menu{width:100%;gap:18px;font-size:15px}
     .hero{padding:12px 0 60px}
     .hero h1{font-size:40px}
     .hero-visual{justify-self:start}
@@ -313,6 +328,7 @@
       <svg viewBox="0 0 30 30" aria-hidden="true"><rect x="1" y="1" width="28" height="28" fill="none" stroke="#1D2226" stroke-width="2"/><path d="M15 5v7M15 18v7M15 12l-5 6" stroke="#1D2226" stroke-width="2" fill="none" stroke-linecap="round"/></svg>
       Расчёт ТКП для щитовых производств
     </a>
+    <nav class="menu" aria-label="Разделы"><a href="#demo">Пример</a><a href="#price">Тарифы</a><a href="#faq">Вопросы</a><a href="#contact">Контакты</a></nav>
     <a class="tel" href="tel:+79139849877">+7 913 984-98-77</a>
   </header>
 </div>
@@ -339,20 +355,19 @@
     <div class="hero-visual">
       <img class="hero-me" src="me.webp" alt="Вячеслав" width="824" height="1000">
       <p class="callout"><b>Вячеслав</b>Лично ручаюсь за результат</p>
-    <figure class="sheet" aria-label="Пример: однолинейная схема превращается в спецификацию">
-      <span class="example">Пример, позиции условные</span>
+    <figure class="sheet" aria-hidden="true">
       <div class="sheet-inner">
-        <div class="sheet-cap"><span>Схема заказчика: ВРУ, ввод 0,4 кВ</span><span>Лист 1</span></div>
+        <div class="sheet-cap" aria-hidden="true"><i style="width:46%"></i><i style="width:12%"></i></div>
         <svg class="sld" viewBox="0 0 520 250" role="img" aria-label="Однолинейная схема: вводной автомат, сборная шина и пять отходящих линий">
           <rect class="hl" x="236" y="38" width="64" height="42" style="--d:2.3s"/>
           <rect class="hl" x="56" y="128" width="420" height="44" style="--d:2.7s"/>
           <path class="w draw" style="--len:40;--d:.2s" d="M260 10v38"/>
-          <text class="t appear" style="--d:.2s" x="270" y="22">Ввод 1, 0,4 кВ</text>
+          <rect class="gk appear" style="--d:.2s" x="270" y="15" width="73" height="6" rx="3"/>
           <path class="w draw" style="--len:60;--d:.5s" d="M256 44l8 8M264 44l-8 8M260 78v-8L250 52"/>
-          <text class="tb appear" style="--d:.7s" x="274" y="66">QF1 400 А</text>
+          <rect class="gk gkb appear" style="--d:.7s" x="274" y="59" width="47" height="6" rx="3"/>
           <path class="w draw" style="--len:40;--d:.8s" d="M260 78v32"/>
           <path class="w bus draw" style="--len:400;--d:1s" d="M60 110h400"/>
-          <text class="t appear" style="--d:1.2s" x="466" y="114">Ш1</text>
+          <rect class="gk appear" style="--d:1.2s" x="466" y="107" width="14" height="6" rx="3"/>
           <g>
             <path class="w draw" style="--len:120;--d:1.4s" d="M80 110v24M76 134l8 8M84 134l-8 8M80 170v-8L70 142M80 170v30"/>
             <path class="w draw" style="--len:120;--d:1.5s" d="M170 110v24M166 134l8 8M174 134l-8 8M170 170v-8L160 142M170 170v30"/>
@@ -361,27 +376,19 @@
             <path class="w draw" style="--len:120;--d:1.8s" d="M440 110v24M436 134l8 8M444 134l-8 8M440 170v-8L430 142M440 170v30"/>
           </g>
           <g class="appear" style="--d:2s">
-            <text class="tb" x="88" y="160">QF2</text><text class="t" x="88" y="173">160 А</text>
-            <text class="tb" x="178" y="160">QF3</text><text class="t" x="178" y="173">100 А</text>
-            <text class="tb" x="268" y="160">QF4</text><text class="t" x="268" y="173">63 А</text>
-            <text class="tb" x="358" y="160">QF5</text><text class="t" x="358" y="173">63 А</text>
-            <text class="tb" x="448" y="160">QF6</text><text class="t" x="448" y="173">25 А</text>
-            <text class="t" x="80" y="218" text-anchor="middle">Лифты</text>
-            <text class="t" x="170" y="218" text-anchor="middle">ИТП</text>
-            <text class="t" x="260" y="218" text-anchor="middle">Освещение</text>
-            <text class="t" x="350" y="218" text-anchor="middle">Розетки</text>
-            <text class="t" x="440" y="218" text-anchor="middle">Резерв</text>
+            <rect class="gk gkb" x="88" y="153" width="16" height="6" rx="3"/><rect class="gk" x="88" y="166" width="26" height="6" rx="3"/>
+            <rect class="gk gkb" x="178" y="153" width="16" height="6" rx="3"/><rect class="gk" x="178" y="166" width="26" height="6" rx="3"/>
+            <rect class="gk gkb" x="268" y="153" width="16" height="6" rx="3"/><rect class="gk" x="268" y="166" width="21" height="6" rx="3"/>
+            <rect class="gk gkb" x="358" y="153" width="16" height="6" rx="3"/><rect class="gk" x="358" y="166" width="21" height="6" rx="3"/>
+            <rect class="gk gkb" x="448" y="153" width="16" height="6" rx="3"/><rect class="gk" x="448" y="166" width="21" height="6" rx="3"/>
+            <rect class="gk" x="67" y="211" width="26" height="6" rx="3"/>
+            <rect class="gk" x="162.2" y="211" width="16" height="6" rx="3"/>
+            <rect class="gk" x="236.6" y="211" width="47" height="6" rx="3"/>
+            <rect class="gk" x="331.8" y="211" width="36" height="6" rx="3"/>
+            <rect class="gk" x="424.4" y="211" width="31" height="6" rx="3"/>
             <path class="w" d="M74 200h12M164 200h12M254 200h12M344 200h12M434 200h12"/>
           </g>
         </svg>
-        <table class="spec" aria-label="Пример спецификации, собранной по схеме">
-          <tr class="appear" style="--d:2.6s"><td>QF1</td><td>Выключатель автоматический 3P, 400 А, литой корпус</td><td>1 шт.</td></tr>
-          <tr class="appear" style="--d:2.9s"><td>QF2–QF6</td><td>Выключатели автоматические 3P, 25–160 А</td><td>5 шт.</td></tr>
-          <tr class="appear" style="--d:3.2s"><td>Ш1</td><td>Шина медная 40×5 с изоляторами</td><td>1 компл.</td></tr>
-          <tr class="appear" style="--d:3.5s"><td>Корпус</td><td>Шкаф напольный IP31, 2000×800×600</td><td>1 шт.</td></tr>
-          <tr class="total appear" style="--d:3.9s"><td colspan="2">Итого по вашему прайсу</td><td>— ₽</td></tr>
-        </table>
-        <div class="stamp appear" style="--d:4.2s"><span>Черновик ТКП, ждёт проверки инженера</span><span>Ред. 1</span><span>Лист 1</span></div>
       </div>
     </figure>
     </div>
@@ -415,22 +422,22 @@
       <li><h3>Схема приходит на вашу почту</h3><p>Как и сейчас, от проектировщика, монтажника или заказчика. Ассистент забирает её сам.</p></li>
       <li><h3>Ассистент разбирает схему</h3><p>Аппараты, номиналы, кабели. Цены только из вашего прайса. Что не прочиталось, помечает красным, а не придумывает.</p></li>
       <li><h3>Инженеру приходит готовый ТКП</h3><p>Уведомление в личном кабинете, ТКП в вашем шаблоне.</p></li>
-      <li class="human"><h3>Проверил и нажал «Утвердить»</h3><p>ТКП уходит заказчику с вашей почты.</p></li>
+      <li class="human"><h3>Проверил и нажал «Утвердить»</h3><p>ТКП сам уходит заказчику. Открывать почту не нужно.</p></li>
     </ol>
-    <p class="how-note">Не хотите подключать почту, загружайте схемы в личный кабинет. Все схемы и ТКП остаются у вас, даже если перестанете пользоваться сервисом.</p>
+    <p class="how-note">Не хотите подключать свою почту, дам отдельный адрес для схем, подрядчики будут слать туда. Или загружайте схемы в личный кабинет. Все схемы и ТКП хранятся в кабинете, а если отключитесь, выгружу вам архив целиком.</p>
   </div>
 </section>
 
 <!-- 3б. Демо на реальной схеме -->
-<section class="demo" aria-labelledby="h-demo">
+<section class="demo" id="demo" aria-labelledby="h-demo">
   <div class="wrap">
     <h2 id="h-demo">Пример на реальной схеме</h2>
     <p class="demo-lead">Силовой щит ЩС-1 цеха в Санкт-Петербурге из открытого проекта: ввод 100&nbsp;А, 18 линий и 4 резерва. Штамп с фамилиями проектировщиков скрыт.</p>
     <figure class="demo-in">
-      <a href="demo-shema.png" target="_blank" rel="noopener"><img src="demo-shema.png" alt="Однолинейная схема щита ЩС-1: вводной автомат 100 А и 22 отходящие линии" width="1600" height="598" loading="lazy"></a>
-      <figcaption>Схема как пришла: скан PDF. Нажмите, чтобы открыть крупно</figcaption>
+      <a href="demo-shema-big.png" class="zoom" data-zoom><img src="demo-shema.png" alt="Однолинейная схема щита ЩС-1: вводной автомат 100 А и 22 отходящие линии" width="1600" height="598" loading="lazy"></a>
+      <figcaption>Схема как пришла: скан PDF. Нажмите, чтобы увеличить</figcaption>
     </figure>
-    <div class="demo-time" aria-label="Разбор схемы занял 82 секунды"><b>82 секунды</b><span>и черновик готов</span></div>
+    <div class="demo-time" aria-label="Разбор схемы занял 82 секунды"><b>82 секунды</b><span>реальный замер на этой схеме</span></div>
     <figure class="sheet demo-out">
       <div class="sheet-inner">
         <div class="sheet-cap"><span>Черновик ТКП: щит ЩС-1</span><span>Ред. 1</span></div>
@@ -510,7 +517,7 @@
       <details open>
         <summary>Мы и так считаем сами. Зачем платить вам?</summary>
         <div class="ans">
-          <p>Считает за вас ассистент, вам остаётся проверить, что всё на месте. Меняется то, сколько заявок вы успеваете и как быстро отвечаете.</p>
+          <p>Вместо вас будет считать ассистент, вам остаётся проверить, что всё на месте. Меняется то, сколько заявок вы успеваете и как быстро отвечаете.</p>
           <p>Сколько приносит вам один заказ, вы знаете лучше меня. Прикиньте, сколько их уходит, пока заявка ждёт очереди.</p>
         </div>
       </details>
@@ -550,6 +557,7 @@
       <p class="lead">Посмотрю вашу однолинейку или опросный лист и честно скажу, получится ли у вас автоматизировать расчёт. Ни к чему не обязывает.</p>
       <div class="actions">
         <a class="btn btn-main" href="mailto:vankov@deploid.ru?subject=%D0%A1%D1%85%D0%B5%D0%BC%D0%B0%20%D0%BD%D0%B0%20%D1%80%D0%B0%D1%81%D1%87%D1%91%D1%82%20%D0%A2%D0%9A%D0%9F"><svg aria-hidden="true"><use href="#i-mail"/></svg>Прислать схему на почту</a>
+        <a class="btn btn-line" href="tel:+79139849877"><svg aria-hidden="true"><use href="#i-phone"/></svg>Позвоните мне, всё обговорим</a>
       </div>
       <p class="alt">Или напишите в <a href="https://t.me/+79139849877" target="_blank" rel="noopener">Telegram</a> или <a href="https://wa.me/79139849877?text=%D0%97%D0%B4%D1%80%D0%B0%D0%B2%D1%81%D1%82%D0%B2%D1%83%D0%B9%D1%82%D0%B5!%20%D0%9F%D0%BE%20%D0%BF%D0%BE%D0%B2%D0%BE%D0%B4%D1%83%20%D1%80%D0%B0%D1%81%D1%87%D1%91%D1%82%D0%B0%20%D0%A2%D0%9A%D0%9F%20%D0%BD%D0%B0%20%D1%89%D0%B8%D1%82%D1%8B." target="_blank" rel="noopener">WhatsApp</a></p>
       <p class="mail">Адрес для схем: vankov@deploid.ru</p>
@@ -588,6 +596,12 @@
   // плавающие кнопки появляются, когда кнопки первого экрана ушли из вида
   var dock=document.querySelector('.dock'),first=document.querySelector('.hero .actions');
   if('IntersectionObserver' in window){new IntersectionObserver(function(e){dock.classList.toggle('on',!e[0].isIntersecting)}).observe(first)}else{dock.classList.add('on')}
+</script>
+<dialog class="lb" id="lb" aria-label="Схема крупно"><div class="lb-in"><img alt=""></div><button class="lb-x" aria-label="Закрыть">×</button></dialog>
+<script>
+(function(){var d=document.getElementById('lb');if(!d||!d.showModal)return;var im=d.querySelector('img');
+document.querySelectorAll('[data-zoom]').forEach(function(a){a.addEventListener('click',function(e){e.preventDefault();im.src=a.getAttribute('href');im.alt=a.querySelector('img').alt;d.showModal();});});
+d.addEventListener('click',function(){d.close();});})();
 </script>
 </body>
 </html>
