@@ -45,6 +45,9 @@
   .btn-line:hover{background:var(--ink);color:var(--paper)}
   .actions{display:flex;flex-wrap:wrap;gap:12px}
   .alt{margin:14px 0 0;font-size:16px}
+  .actions.msg{margin-top:12px}
+  .actions.msg .btn{padding:12px 18px;font-size:16px}
+  .hero h1 em{font-style:normal;background:linear-gradient(transparent 60%,var(--signal) 60%)}
   .alt a{color:inherit;font-weight:600}
 
   /* шапка */
@@ -144,7 +147,8 @@
   .quote p{color:#C9CDC9;font-size:15.5px;margin:8px 0 0}
 
   /* как будет — три шага */
-  .steps{display:grid;grid-template-columns:repeat(3,1fr);list-style:none;margin:56px 0 0;padding:0;counter-reset:s}
+  .how-note{margin:40px 0 0;color:var(--graphite);font-size:16px;max-width:70ch}
+  .steps{display:grid;grid-template-columns:repeat(4,1fr);list-style:none;margin:56px 0 0;padding:0;counter-reset:s}
   .steps li{position:relative;padding:64px 36px 0 0}
   .steps li::before{counter-increment:s;content:counter(s);position:absolute;top:0;left:0;width:42px;height:42px;border:2px solid var(--ink);border-radius:50%;display:grid;place-items:center;font:700 19px var(--display);background:var(--cabinet)}
   .steps li::after{content:"";position:absolute;top:21px;left:46px;right:6px;height:2px;background:var(--ink)}
@@ -186,6 +190,24 @@
   .plan ul{margin:0;padding:14px 0 0 18px;border-top:1px solid var(--rule);font-size:16px}
   .plan li{margin:6px 0}
   .plans-note{margin:24px 0 0;color:var(--graphite);font-size:16px}
+  .demo-lead{max-width:760px;margin:0 0 22px}
+  .demo-in{margin:0;background:#fff;border:1.5px solid var(--ink);padding:8px}
+  .demo-in img{display:block;width:100%;height:auto}
+  .demo-in figcaption{font:500 13px/1.3 var(--display);color:var(--graphite);padding:8px 2px 0}
+  .demo-time{display:flex;flex-direction:column;align-items:center;margin:14px 0 18px;font:500 15px/1.3 var(--display)}
+  .demo-time b{font:700 30px/1.1 var(--display);background:var(--signal);padding:4px 12px}
+  .demo-time::after{content:"";width:0;height:0;margin-top:10px;border:12px solid transparent;border-top:16px solid var(--ink);border-bottom:0}
+  .demo-out{max-width:760px;margin:0 auto}
+  .demo-scroll{overflow-x:auto}
+  .tkp{width:100%;border-collapse:collapse;font:500 14px/1.35 var(--display);font-variant-numeric:tabular-nums;margin-top:8px}
+  .tkp th{text-align:left;font-weight:600;padding:6px;border-bottom:1.5px solid var(--ink)}
+  .tkp td{padding:7px 6px;border-top:1px solid var(--rule);vertical-align:top}
+  .tkp th:not(:first-child),.tkp td:not(:first-child){text-align:right;white-space:nowrap}
+  .tkp tr.doubt td{color:var(--fault);font-weight:600;background:rgba(180,38,29,.07)}
+  .tkp tr.total td{border-top:1.5px solid var(--ink);font-weight:600;font-size:15px;padding:10px 6px}
+  .tkp tr.total td:first-child{text-align:left}
+  .demo-note{font:500 13px/1.3 var(--display);color:var(--graphite);margin:8px 0 14px}
+  .demo-check{max-width:760px;margin:22px auto 0}
   @media (max-width:980px){.plans{grid-template-columns:1fr;max-width:520px}}
 
   /* возражения */
@@ -281,6 +303,7 @@
   <symbol id="i-mail" viewBox="0 0 24 24"><path fill="currentColor" d="M3 5h18a1 1 0 0 1 1 1v12a1 1 0 0 1-1 1H3a1 1 0 0 1-1-1V6a1 1 0 0 1 1-1zm1 2.4V17h16V7.4l-8 5.3-8-5.3zM5.6 7l6.4 4.2L18.4 7H5.6z"/></symbol>
   <symbol id="i-tg" viewBox="0 0 24 24"><path fill="currentColor" d="M21.4 3.6 2.9 10.7c-1.2.5-1.2 1.2-.2 1.5l4.7 1.5 1.8 5.6c.2.6.4.8.9.8.4 0 .6-.2.8-.4l2.3-2.2 4.7 3.5c.9.5 1.5.2 1.7-.8l3.1-14.6c.3-1.3-.5-1.8-1.3-1.5zM8.9 13.4l9.3-5.9c.4-.3.8-.1.5.2l-7.6 6.9-.3 3.2-1.9-4.4z"/></symbol>
   <symbol id="i-wa" viewBox="0 0 24 24"><path fill="currentColor" d="M12 2a10 10 0 0 0-8.6 15.1L2 22l5-1.3A10 10 0 1 0 12 2zm0 18.2c-1.5 0-3-.4-4.3-1.2l-.3-.2-3 .8.8-2.9-.2-.3A8.2 8.2 0 1 1 12 20.2zm4.5-6.1c-.2-.1-1.5-.7-1.7-.8-.2-.1-.4-.1-.6.1l-.8 1c-.1.2-.3.2-.5.1-.7-.3-1.4-.7-2-1.2-.5-.5-1-1.1-1.3-1.7-.1-.2 0-.4.1-.5l.4-.5.3-.4v-.5l-.8-1.9c-.2-.5-.4-.4-.6-.4h-.5c-.2 0-.5.1-.7.3-.6.6-.9 1.4-.9 2.2.1 1 .5 1.9 1.1 2.7 1.1 1.6 2.5 2.9 4.2 3.7.5.2.9.4 1.4.5.6.2 1.1.1 1.6.1.6-.1 1.4-.6 1.6-1.1.2-.4.2-.9.1-1.1l-.4-.1z"/></symbol>
+  <symbol id="i-phone" viewBox="0 0 24 24"><path fill="currentColor" d="M6.6 10.8a15.1 15.1 0 0 0 6.6 6.6l2.2-2.2c.3-.3.7-.4 1-.2 1.1.4 2.3.6 3.6.6.6 0 1 .4 1 1V20c0 .6-.4 1-1 1A17 17 0 0 1 3 4c0-.6.4-1 1-1h3.5c.6 0 1 .4 1 1 0 1.3.2 2.5.6 3.6.1.3 0 .7-.2 1l-2.3 2.2z"/></symbol>
   <symbol id="i-person" viewBox="0 0 100 110"><circle cx="50" cy="34" r="20" fill="currentColor"/><path d="M8 110c0-26 19-42 42-42s42 16 42 42z" fill="currentColor"/></symbol>
 </svg>
 
@@ -300,22 +323,22 @@
 <section class="hero" aria-labelledby="h1">
   <div class="wrap hero-grid">
     <div>
-      <h1 id="h1">ТКП минимум вдвое быстрее, без рутины</h1>
-      <p class="lead">ИИ-ассистент читает однолинейку или опросный лист, собирает спецификацию по вашему прайсу, подбирает аналоги и оформляет ТКП в вашем шаблоне. Вам остаётся проверить и отправить заказчику в день запроса, пока конкуренты ещё считают.</p>
-      <div class="pledge">
-        <svg viewBox="0 0 34 34" aria-hidden="true"><circle cx="17" cy="17" r="16" fill="#F2B200"/><path d="M10 17.5l5 5 9-10" fill="none" stroke="#1D2226" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"/></svg>
-        <div><b>Расчёт ТКП на типовые щиты не станет минимум вдвое быстрее, возвращаю полную стоимость работы</b><span>Замеряем на ваших заявках: сколько времени уходило до и сколько уходит после. А до оплаты бесплатно покажу результат на одной вашей схеме.</span></div>
-      </div>
+      <h1 id="h1">Ускорю расчёт ТКП <em>минимум</em> вдвое или верну деньги</h1>
+      <p class="lead">Присылаете однолинейку как есть, ассистент собирает ТКП по вашему прайсу. Инженеру остаётся проверить и отправить.</p>
       <div class="actions">
         <a class="btn btn-main" href="mailto:vankov@deploid.ru?subject=%D0%A1%D1%85%D0%B5%D0%BC%D0%B0%20%D0%BD%D0%B0%20%D1%80%D0%B0%D1%81%D1%87%D1%91%D1%82%20%D0%A2%D0%9A%D0%9F"><svg aria-hidden="true"><use href="#i-mail"/></svg>Прислать схему на почту</a>
+        <a class="btn btn-line" href="tel:+79139849877"><svg aria-hidden="true"><use href="#i-phone"/></svg>Позвонить</a>
       </div>
-      <p class="alt">Или напишите в <a href="https://t.me/+79139849877" target="_blank" rel="noopener">Telegram</a> или <a href="https://wa.me/79139849877?text=%D0%97%D0%B4%D1%80%D0%B0%D0%B2%D1%81%D1%82%D0%B2%D1%83%D0%B9%D1%82%D0%B5!%20%D0%9F%D0%BE%20%D0%BF%D0%BE%D0%B2%D0%BE%D0%B4%D1%83%20%D1%80%D0%B0%D1%81%D1%87%D1%91%D1%82%D0%B0%20%D0%A2%D0%9A%D0%9F%20%D0%BD%D0%B0%20%D1%89%D0%B8%D1%82%D1%8B." target="_blank" rel="noopener">WhatsApp</a></p>
+      <div class="actions msg">
+        <a class="btn btn-line" href="https://t.me/+79139849877" target="_blank" rel="noopener"><svg aria-hidden="true"><use href="#i-tg"/></svg>Telegram</a>
+        <a class="btn btn-line" href="https://wa.me/79139849877?text=%D0%97%D0%B4%D1%80%D0%B0%D0%B2%D1%81%D1%82%D0%B2%D1%83%D0%B9%D1%82%D0%B5!%20%D0%9F%D0%BE%20%D0%BF%D0%BE%D0%B2%D0%BE%D0%B4%D1%83%20%D1%80%D0%B0%D1%81%D1%87%D1%91%D1%82%D0%B0%20%D0%A2%D0%9A%D0%9F%20%D0%BD%D0%B0%20%D1%89%D0%B8%D1%82%D1%8B." target="_blank" rel="noopener"><svg aria-hidden="true"><use href="#i-wa"/></svg>WhatsApp</a>
+      </div>
       <p class="reply">vankov@deploid.ru, отвечаю сам в течение рабочего дня</p>
     </div>
 
     <div class="hero-visual">
       <img class="hero-me" src="me.webp" alt="Вячеслав" width="824" height="1000">
-      <p class="callout"><b>Вячеслав</b>Настраиваю расчёт под ваш прайс и отвечаю за результат лично</p>
+      <p class="callout"><b>Вячеслав</b>Лично ручаюсь за результат</p>
     <figure class="sheet" aria-label="Пример: однолинейная схема превращается в спецификацию">
       <span class="example">Пример, позиции условные</span>
       <div class="sheet-inner">
@@ -368,12 +391,13 @@
 <!-- 2. Боль -->
 <section class="pain" aria-labelledby="h-pain">
   <div class="wrap">
-    <h2 id="h-pain">Отвечаете раньше конкурентов и не тонете в расчётах</h2>
+    <h2 id="h-pain">Отвечаете раньше конкурентов и забираете больше заказов</h2>
     <div class="pain-grid">
       <ul class="hurts">
-        <li class="loss"><h3>Ваше КП приходит первым</h3><p>Черновик ТКП готов, пока заявка свежая. Инженер проверяет и отправляет в тот же день, и заказ чаще остаётся у вас.</p></li>
-        <li><h3>Замена бренда без расчёта с нуля</h3><p>Заказчик попросил IEK вместо Schneider или урезал бюджет. Новый вариант собирается по вашему прайсу, инженер только сверяет.</p></li>
-        <li><h3>Меньше сил на каждый расчёт</h3><p>Набивку позиций и поиск цен берёт на себя ассистент. Вам остаётся проверить, и заявок успеваете больше.</p></li>
+        <li class="loss"><h3>ТКП минимум вдвое быстрее</h3><p>Черновик готов, пока заявка свежая. Ваше КП приходит первым.</p></li>
+        <li><h3>Рутину берёт ассистент</h3><p>Набивку позиций и поиск цен делает он. Инженеру остаётся проверить.</p></li>
+        <li><h3>Считает так, как считаете вы</h3><p>Ваш прайс, скидки, наценка, бренды и шаблон ТКП. Сменить бренд по просьбе заказчика можно без расчёта с нуля.</p></li>
+        <li><h3>Схема как есть</h3><p>PDF, скан или фото. Перерисовывать и заполнять ничего не нужно.</p></li>
       </ul>
       <figure class="quote">
         <blockquote>«Щитовики очень не любят считать, потому что загружены и тратят на это много времени. А больше расчётов, больше продаж».</blockquote>
@@ -388,10 +412,49 @@
   <div class="wrap">
     <h2 id="h-how">Инженер проверяет, а не набирает</h2>
     <ol class="steps">
-      <li><h3>Присылаете схему как есть</h3><p>Однолинейка, опросный лист, ТЗ: PDF, скан, Excel, письмо. Ничего переделывать не нужно.</p></li>
-      <li><h3>ИИ-ассистент собирает черновик</h3><p>Позиции и цены берёт только из вашего прайса, по вашим правилам замен и наценки. Чего нет в прайсе или что неясно на схеме, помечает, а не придумывает.</p></li>
-      <li class="human"><h3>Инженер проверяет и отправляет</h3><p>Решение и подпись остаются за ним. Время уходит на сложные щиты, а не на набивку позиций.</p></li>
+      <li><h3>Схема приходит на вашу почту</h3><p>Как и сейчас, от проектировщика, монтажника или заказчика. Ассистент забирает её сам.</p></li>
+      <li><h3>Ассистент разбирает схему</h3><p>Аппараты, номиналы, кабели. Цены только из вашего прайса. Что не прочиталось, помечает красным, а не придумывает.</p></li>
+      <li><h3>Инженеру приходит готовый ТКП</h3><p>Уведомление в личном кабинете, ТКП в вашем шаблоне.</p></li>
+      <li class="human"><h3>Проверил и нажал «Утвердить»</h3><p>ТКП уходит заказчику с вашей почты.</p></li>
     </ol>
+    <p class="how-note">Не хотите подключать почту, загружайте схемы в личный кабинет. Все схемы и ТКП остаются у вас, даже если перестанете пользоваться сервисом.</p>
+  </div>
+</section>
+
+<!-- 3б. Демо на реальной схеме -->
+<section class="demo" aria-labelledby="h-demo">
+  <div class="wrap">
+    <h2 id="h-demo">Пример на реальной схеме</h2>
+    <p class="demo-lead">Силовой щит ЩС-1 цеха в Санкт-Петербурге из открытого проекта: ввод 100&nbsp;А, 18 линий и 4 резерва. Штамп с фамилиями проектировщиков скрыт.</p>
+    <figure class="demo-in">
+      <a href="demo-shema.png" target="_blank" rel="noopener"><img src="demo-shema.png" alt="Однолинейная схема щита ЩС-1: вводной автомат 100 А и 22 отходящие линии" width="1600" height="598" loading="lazy"></a>
+      <figcaption>Схема как пришла: скан PDF. Нажмите, чтобы открыть крупно</figcaption>
+    </figure>
+    <div class="demo-time" aria-label="Разбор схемы занял 82 секунды"><b>82 секунды</b><span>и черновик готов</span></div>
+    <figure class="sheet demo-out">
+      <div class="sheet-inner">
+        <div class="sheet-cap"><span>Черновик ТКП: щит ЩС-1</span><span>Ред. 1</span></div>
+        <div class="demo-scroll">
+        <table class="tkp">
+          <thead><tr><th>Позиция</th><th>Кол.</th><th>Цена, ₽</th><th>Сумма, ₽</th></tr></thead>
+          <tbody>
+            <tr><td>Выключатель вводной 3P 100&nbsp;А, ABB XT1B 160</td><td>1</td><td>28&nbsp;000</td><td>28&nbsp;000</td></tr>
+            <tr><td>Выключатель 3P C50, ABB S203</td><td>3</td><td>6&nbsp;900</td><td>20&nbsp;700</td></tr>
+            <tr><td>Выключатель 3P C40, ABB S203</td><td>1</td><td>5&nbsp;600</td><td>5&nbsp;600</td></tr>
+            <tr><td>Выключатель 3P C32, ABB S203</td><td>2</td><td>4&nbsp;900</td><td>9&nbsp;800</td></tr>
+            <tr><td>Выключатель 3P C25, ABB S203 (2 из них резерв)</td><td>11</td><td>4&nbsp;700</td><td>51&nbsp;700</td></tr>
+            <tr><td>Выключатель 1P C25, ABB S201 (2 из них резерв)</td><td>3</td><td>1&nbsp;300</td><td>3&nbsp;900</td></tr>
+            <tr><td>Выключатель 1P C16, ABB S201</td><td>1</td><td>1&nbsp;200</td><td>1&nbsp;200</td></tr>
+            <tr><td>Дифавтомат 1P+N C16 30&nbsp;мА, ABB DS941</td><td>1</td><td>6&nbsp;200</td><td>6&nbsp;200</td></tr>
+            <tr class="doubt"><td>Корпус щита: на схеме не указан, подберите</td><td>1</td><td>?</td><td>?</td></tr>
+            <tr class="total"><td colspan="3">Итого аппаратура, без корпуса</td><td>127&nbsp;100</td></tr>
+          </tbody>
+        </table>
+        </div>
+        <p class="demo-note">Цены условные, из демо-прайса. У вас будут ваши цены, наценка и работы.</p>
+      </div>
+    </figure>
+    <p class="demo-check"><b>Проверили:</b> в том же проекте есть спецификация проектировщика. Все 23 аппарата совпали с ней по типу, полюсам, номиналу и количеству. Корпуса на схеме нет, поэтому ассистент его не выдумал, а пометил красным.</p>
   </div>
 </section>
 
@@ -402,10 +465,10 @@
       <h2 id="h-me">Как начинаем</h2>
       <p class="lead">Это не коробочная программа. Я настраиваю расчёт ТКП под ваше производство и отвечаю за результат.</p>
       <ol class="terms">
-        <li><p><b>Разбор, 30 минут, бесплатно.</b> Смотрим, как вы считаете сейчас и где теряется время.</p></li>
-        <li><p><b>Пробный расчёт, бесплатно.</b> Берём одну вашу прошлую заявку и сравниваем черновик с вашим ТКП.</p></li>
-        <li><p><b>Внедрение под вас.</b> Подключаю вашу почту для заявок, загружаю прайс со скидками и наценками, ваш шаблон ТКП и правила подбора: любимые бренды, запасы, аналоги. Удалённо, ставить ничего не нужно. Схема пришла на почту, черновик ТКП уже ждёт инженера.</p></li>
-        <li><p><b>Первый месяц с замером.</b> До старта и после меряем время на ваших заявках. Если расчёт типовых щитов не стал минимум вдвое быстрее, возвращаю полную стоимость работы.</p></li>
+        <li><p><b>Подключаю вашу почту.</b> Заявки сами попадают к ассистенту, ставить ничего не нужно.</p></li>
+        <li><p><b>Настраиваю под ваш прайс.</b> Скидки, наценки, любимые бренды и ваш шаблон ТКП.</p></li>
+        <li><p><b>Тестирую на ваших старых заявках.</b> Сверяем с вашими ТКП и замеряем время до и после.</p></li>
+        <li><p><b>Подключаю инженеров к личному кабинету.</b> С этого дня схема пришла, а черновик ТКП уже ждёт проверки.</p></li>
       </ol>
     </div>
   </div>
@@ -419,14 +482,14 @@
       <div class="plan">
         <h3>Базовый</h3>
         <p class="cost">45 000 ₽<small> / месяц</small></p>
-        <p class="year">или 450 000 ₽ за год</p>
-        <ul><li>до 80 схем в месяц</li><li>до 3 пользователей</li><li>один прайс и шаблон ТКП</li></ul>
+        <p class="year">37 500 ₽ / месяц при оплате за год</p>
+        <ul><li>80 схем в месяц</li><li>3 пользователя</li><li>заявки сами приходят с вашей почты</li><li>один прайс и шаблон ТКП</li></ul>
       </div>
       <div class="plan main">
         <h3>Бизнес</h3>
         <p class="cost">75 000 ₽<small> / месяц</small></p>
-        <p class="year">или 750 000 ₽ за год</p>
-        <ul><li>до 250 схем в месяц</li><li>до 10 пользователей</li><li>заявки сами приходят с вашей почты</li><li>несколько прайсов, ТКП в вариантах брендов</li></ul>
+        <p class="year">62 500 ₽ / месяц при оплате за год</p>
+        <ul><li>250 схем в месяц</li><li>10 пользователей</li><li>заявки сами приходят с вашей почты</li><li>несколько прайсов, ТКП в вариантах брендов</li></ul>
       </div>
       <div class="plan">
         <h3>Предприятие</h3>
@@ -435,7 +498,7 @@
         <ul><li>пользователей без ограничений</li><li>работа в вашем закрытом контуре</li><li>связь с 1С</li></ul>
       </div>
     </div>
-    <p class="plans-note">Внедрение 100 000 ₽, при оплате за год бесплатно. Оплата за год выходит на два месяца дешевле. Работаю по договору и счёту.</p>
+    <p class="plans-note">Внедрение 50 000 ₽, при оплате за год бесплатно. Работаю по договору и счёту.</p>
   </div>
 </section>
 
@@ -447,13 +510,13 @@
       <details open>
         <summary>Мы и так считаем сами. Зачем платить вам?</summary>
         <div class="ans">
-          <p>Считать вы продолжаете сами, только минимум вдвое быстрее: рутину берёт ассистент. Меняется то, сколько заявок вы успеваете и как быстро отвечаете.</p>
+          <p>Считает за вас ассистент, вам остаётся проверить, что всё на месте. Меняется то, сколько заявок вы успеваете и как быстро отвечаете.</p>
           <p>Сколько приносит вам один заказ, вы знаете лучше меня. Прикиньте, сколько их уходит, пока заявка ждёт очереди.</p>
         </div>
       </details>
       <details>
         <summary>А если заявок у нас немного?</summary>
-        <div class="ans"><p>Тогда выгода в скорости: отвечаете в день запроса и чаще выигрываете то, что приходит. А инженер тратит время на сборку и сложные щиты, а не на Excel. Если на разборе увижу, что выгоды для вас нет, так и скажу и браться не буду.</p></div>
+        <div class="ans"><p>Выгода в скорости остаётся: отвечаете в день запроса и чаще выигрываете то, что приходит. А инженер тратит время на сборку и сложные щиты, а не на Excel. Если увижу, что выгоды для вас нет, так и скажу и браться не буду.</p></div>
       </details>
       <details>
         <summary>Это нейросеть? Она же ошибается</summary>
